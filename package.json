@@ -19,26 +19,19 @@
     "test:e2e": "pnpm --filter frontend test:e2e",
     "clean": "pnpm -r exec rm -rf node_modules dist .next .turbo && rm -rf node_modules",
     "prepare": "husky",
-    "db:start": "supabase start",
-    "db:stop": "supabase stop",
-    "db:status": "supabase status",
-    "db:reset": "supabase db reset",
-    "db:migrate": "supabase db push",
-    "db:diff": "supabase db diff -f",
-    "db:seed": "supabase db reset --include-all --db-url $DATABASE_URL",
-    "db:verify": "tsx scripts/verify-tenant-isolation.ts"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.45.4"
+    "db:migrate": "tsx scripts/migrate.ts",
+    "db:seed": "tsx scripts/seed.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.13.0",
+    "@types/pg": "^8.11.10",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
+    "pg": "^8.13.1",
     "playwright": "^1.63.0",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",

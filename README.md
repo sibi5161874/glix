@@ -49,14 +49,14 @@ Built as a modern replatform of a legacy system — see
 | :--- | :--- |
 | Frontend | Next.js (App Router) + React |
 | Backend | Fastify (Node.js 20) |
-| Database | PostgreSQL (Supabase) |
-| Auth | Supabase Auth (email + OAuth) |
-| Storage | Supabase Storage (signed URLs) |
+| Database | PostgreSQL 16 (self-hosted / local) |
+| Auth | NextAuth v5 + Fastify JWT claims |
+| Storage | Local filesystem (`UPLOAD_DIR`) + `attachments` table |
 | UI | Tailwind + shadcn/ui |
 | Validation | Zod (shared FE + BE) |
 | Tests | Vitest + Playwright |
 | CI/CD | GitHub Actions |
-| Hosting | Vercel (frontend) + Fly/Railway (backend) |
+| Hosting | Vercel (frontend) + Self-hosted VPS (backend + db) |
 | Monorepo | pnpm workspaces |
 
 ---
@@ -67,7 +67,7 @@ Built as a modern replatform of a legacy system — see
 
 - Node.js `>=20.0.0` (use `nvm use`)
 - pnpm `>=9.0.0`
-- A Supabase project (added Step 3)
+- PostgreSQL 16 (local or VPS)
 
 ### Install
 
@@ -77,7 +77,9 @@ cd your-app
 nvm use
 pnpm install
 cp .env.example .env.local
-# fill in Supabase keys (see .env.example)
+# configure DATABASE_URL, JWT_SECRET in .env.local
+pnpm db:migrate
+pnpm db:seed
 ```
 
 ### Run
@@ -86,9 +88,9 @@ cp .env.example .env.local
 pnpm dev
 ```
 
-- Frontend → http://localhost:3000
-- Backend  → http://localhost:4000
-- Health   → http://localhost:4000/health
+- Frontend → http://localhost:4000
+- Backend  → http://localhost:5000
+- Health   → http://localhost:5000/health
 
 ---
 
@@ -97,10 +99,11 @@ pnpm dev
 ```
 your-app/
 ├── frontend/     # Next.js (App Router)
-├── backend/      # Fastify (Node.js)
+├── backend/      # Fastify (Node.js + pg)
 ├── shared/       # Config, types, schemas, utils (used by both)
-├── docs/         # Architecture, ADRs, runbooks (Step 4+)
-├── prompts/      # Reusable AI prompts (Step 4)
+├── db/           # PostgreSQL migrations & seed data
+├── docs/         # Architecture, ADRs, runbooks
+├── prompts/      # Reusable AI prompts
 ├── sample-data/  # Fixtures and seed CSVs
 ├── .github/      # CI, PR template, CODEOWNERS
 ├── CLAUDE.md     # AI agent instructions
@@ -126,6 +129,8 @@ your-app/
 | `pnpm format:check` | Prettier check (CI) |
 | `pnpm test` | Unit tests (Vitest) |
 | `pnpm test:e2e` | E2E tests (Playwright) |
+| `pnpm db:migrate` | Run SQL migrations via `scripts/migrate.ts` |
+| `pnpm db:seed` | Seed initial database data via `scripts/seed.ts` |
 | `pnpm clean` | Remove all build artifacts |
 
 ---
@@ -138,15 +143,15 @@ See `.env.example`. Copy to `.env.local` and fill in.
 | :--- | :--- | :--- |
 | `NEXT_PUBLIC_APP_URL` | Public | Frontend base URL |
 | `NEXT_PUBLIC_API_URL` | Public | Backend base URL |
-| `NEXT_PUBLIC_SUPABASE_URL` | Public | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public | Supabase anon key |
-| `SUPABASE_SERVICE_ROLE_KEY` | **Server only** | Admin ops, migrations |
-| `DATABASE_URL` | **Server only** | Postgres connection |
-| `BACKEND_PORT` | Server | Fastify port |
+| `DATABASE_URL` | **Server only** | Postgres connection string |
+| `JWT_SECRET` | **Server only** | Session JWT secret key |
+| `JWT_EXPIRES_IN` | **Server only** | Session token expiration |
+| `UPLOAD_DIR` | **Server only** | Filesystem storage path for uploads |
+| `BACKEND_PORT` | Server | Fastify port (default 5000) |
 | `CORS_ORIGIN` | Server | Allowed frontend origin |
 | `LOG_LEVEL` | Server | Pino log level |
 
-**Never commit `.env.local`.** Never expose `SUPABASE_SERVICE_ROLE_KEY` to the frontend.
+**Never commit `.env.local`.** Never expose secrets to the frontend.
 
 ---
 

@@ -5,45 +5,42 @@ graph TB
     end
 
     subgraph Vercel["Vercel (Frontend)"]
-        NX[Next.js App Router<br/>Server Components + Client]
+        NX[Next.js App Router<br/>NextAuth v5 + UI Components]
     end
 
-    subgraph Backend["Fly / Railway (Backend)"]
+    subgraph Backend["VPS / Self-Hosted (Backend)"]
         FY[Fastify<br/>JWT verify · Zod · Rate limit]
+        DT[DB Plugin<br/>withTenant session RLS]
         SV[Services<br/>Business rules · Tier gates]
-        RP[Repos<br/>RLS-scoped queries]
+        RP[Repos<br/>pg-client queries]
     end
 
-    subgraph Supabase["Supabase (Managed)"]
-        AU[Auth<br/>JWT + custom claims hook]
-        DB[(Postgres<br/>RLS enabled)]
-        ST[Storage<br/>org-documents bucket]
+    subgraph Database["Self-Hosted Infrastructure"]
+        DB[(PostgreSQL 16<br/>Session RLS enabled)]
+        FS[Filesystem Storage<br/>UPLOAD_DIR attachments]
     end
 
     subgraph External["External (planned)"]
-        RZ[Razorpay]
-        RS[Resend]
+        RZ[Razorpay / Stripe]
+        RS[Resend / SMTP]
         SN[Sentry]
     end
 
     B --> NX
     M --> NX
-    NX -->|HTTP + JWT| FY
-    NX -.->|Auth SDK| AU
+    NX -->|HTTP + JWT Bearer| FY
 
-    FY --> SV
+    FY --> DT
+    DT --> SV
     SV --> RP
     RP --> DB
-    SV -.->|signed URLs| ST
-
-    AU -.->|JWKS| FY
-    AU --> DB
+    SV -.->|filesystem I/O| FS
 
     SV -.->|webhooks| RZ
     SV -.->|email| RS
     FY -.->|errors| SN
 
     classDef external fill:#FEF3C7,stroke:#92400E,color:#92400E
-    classDef managed fill:#DBEAFE,stroke:#1E40AF,color:#1E40AF
+    classDef infra fill:#DBEAFE,stroke:#1E40AF,color:#1E40AF
     class RZ,RS,SN external
-    class AU,DB,ST managed
+    class DB,FS infra

@@ -1,10 +1,11 @@
--- 002: Organizations (tenants) + users profile mirror
+-- 002: Users and Organizations (tenants)
 -- -------------------------------------------------------------------
 
--- Mirror of auth.users so we can FK from tenant tables
+-- Users table
 create table public.users (
-  id uuid primary key references auth.users(id) on delete cascade,
+  id uuid primary key default gen_random_uuid(),
   email citext unique not null,
+  password_hash text,
   full_name text,
   avatar_url text,
   created_at timestamptz not null default now(),
@@ -15,37 +16,16 @@ create trigger users_set_updated_at
   before update on public.users
   for each row execute function public.set_updated_at();
 
--- Auto-create public.users row when auth.users row is created
-create or replace function public.handle_new_auth_user()
-returns trigger
-language plpgsql
-security definer
-set search_path = public
-as $$
-begin
-  insert into public.users (id, email, full_name, avatar_url)
-  values (
-    new.id,
-    new.email,
-    new.raw_user_meta_data->>'full_name',
-    new.raw_user_meta_data->>'avatar_url'
-  )
-  on conflict (id) do nothing;
-  return new;
-end;
-$$;
-
-create trigger on_auth_user_created
-  after insert on auth.users
-  for each row execute function public.handle_new_auth_user();
-
 -- Organizations (tenants)
 create table public.organizations (
   id uuid primary key default gen_random_uuid(),
   name text not null,
   slug citext unique not null,
   owner_id uuid not null references public.users(id) on delete restrict,
-  tier text not null default 'free' check (tier in ('free','pro')),
+  tier text not null default 'free' check (tier in ('free','pro','enterprise')),
+  currency text not null default 'AED',
+  phone text,
+  industry text,
   logo_url text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),

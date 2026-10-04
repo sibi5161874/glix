@@ -12,10 +12,10 @@
 
   "stack": {
     "frontend": "Next.js 15 App Router + React 19",
-    "backend": "Fastify 5 + Node.js 20",
-    "database": "PostgreSQL 15 via Supabase",
-    "auth": "Supabase Auth + custom JWT claims hook",
-    "storage": "Supabase Storage (private, signed URLs)",
+    "backend": "Fastify 5 + Node.js 20 (pg driver)",
+    "database": "PostgreSQL 16 (self-hosted / local)",
+    "auth": "NextAuth v5 + JWT session claims",
+    "storage": "Local VPS filesystem + attachments table",
     "ui": "Tailwind + shadcn/ui",
     "validation": "Zod (shared FE + BE)",
     "tests": "Vitest + Playwright",
@@ -39,13 +39,12 @@
       "stage": "data",
       "files": [
         "DATA_MODEL.md",
-        "supabase/migrations/001_extensions.sql",
-        "supabase/migrations/002_organizations.sql",
-        "supabase/migrations/003_memberships.sql",
-        "supabase/migrations/004_audit_log.sql",
-        "supabase/migrations/005_jwt_claims_hook.sql",
-        "supabase/migrations/006_rls_policies.sql",
-        "supabase/migrations/007_storage_buckets.sql"
+        "db/migrations/001_extensions.sql",
+        "db/migrations/002_organizations.sql",
+        "db/migrations/003_memberships.sql",
+        "db/migrations/004_audit_log.sql",
+        "db/migrations/006_rls_policies.sql",
+        "db/migrations/007_storage_buckets.sql"
       ],
       "required": true,
       "note": "Understand tenancy + RLS before writing anything."

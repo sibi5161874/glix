@@ -8,11 +8,11 @@ These two files override your defaults. If unsure, ask — don't guess.
 
 ## Project
 
-- **Name:** YourApp
+- **Name:** Glix Connect HR Portal
 - **Domain:** Multi-tenant SaaS — employee documents & info management
 - **Tenancy:** Shared schema + `org_id` + Postgres RLS on every tenant table
 - **Actors:** `project_owner`, `org_admin`, `org_staff`, `org_viewer`
-- **Tiers:** `free`, `pro` (limits editable by project_owner at runtime)
+- **Tiers:** `free`, `pro`, `enterprise` (limits editable by project_owner at runtime)
 - **Origin:** Replatform of a client's legacy system (see `docs/legacy-analysis/`)
 
 ---
@@ -22,15 +22,15 @@ These two files override your defaults. If unsure, ask — don't guess.
 | Layer | Tech |
 | :--- | :--- |
 | Frontend | Next.js (App Router) + React |
-| Backend | Fastify (Node.js 20) |
-| Database | PostgreSQL (Supabase) |
-| Auth | Supabase Auth (email + OAuth), JWT carries `org_id` + `role` |
-| Storage | Supabase Storage (signed URLs only) |
+| Backend | Fastify (Node.js 20) with direct `pg` driver + `@fastify/postgres` |
+| Database | PostgreSQL 16 (self-hosted / local) |
+| Auth | NextAuth v5 (Phase 1) + JWT carries `org_id` + `role` |
+| Storage | Local VPS filesystem (`UPLOAD_DIR`) + `attachments` table |
 | UI | Tailwind + shadcn/ui |
 | Validation | Zod (shared frontend + backend) |
 | Tests | Vitest (unit) + Playwright (E2E) |
 | CI | GitHub Actions |
-| Hosting | Vercel (frontend) + [Fly/Railway] (backend) |
+| Hosting | Vercel (frontend) + VPS / Self-hosted (backend + db) |
 | Monorepo | pnpm workspaces (`frontend/`, `backend/`, `shared/`) |
 
 ---
@@ -39,7 +39,7 @@ These two files override your defaults. If unsure, ask — don't guess.
 
 ```bash
 # Setup
-nvm use && pnpm install && cp .env.example .env.local
+pnpm install && cp .env.example .env.local
 
 # Dev
 pnpm dev                    # all workspaces in parallel
@@ -53,10 +53,9 @@ pnpm format                 # Prettier write
 pnpm test                   # unit tests
 pnpm test:e2e               # Playwright
 
-# DB (added Step 7)
-pnpm db:migrate
-pnpm db:seed
-pnpm db:reset
+# DB
+pnpm db:migrate             # run migrations via scripts/migrate.ts
+pnpm db:seed                # run seed via scripts/seed.ts
 ```
 
 ---
@@ -66,18 +65,19 @@ pnpm db:reset
 - **Apps:** `frontend/` (UI only), `backend/` (API + business logic)
 - **Shared:** `shared/` — config, types, schemas, utils (imported by both)
 - **Request flow:** UI → Fastify route → Zod validate → service → DB (RLS) → response
-- **Auth:** Supabase issues JWT → frontend sends `Authorization: Bearer <jwt>` → backend verifies → uses user JWT for DB calls
+- **Auth:** NextAuth / JWT → frontend sends `Authorization: Bearer <jwt>` → backend verifies → sets session variables (`app.user_id`, `app.org_id`, etc.) via `withTenant`
 - **RLS is the safety net:** even a buggy backend cannot cross tenants
-- **`service_role` key:** only migrations, seeds, admin crons. **Never** in user requests. **Never** in frontend.
-- See `ARCHITECTURE.md` (Step 4) and `docs/architecture/tenant-isolation.mermaid`.
+- **Database:** Self-hosted PostgreSQL 16. Fastify uses raw `pg` queries. RLS reads `current_setting('app.*')` set by `db.plugin.ts`.
+- **Database Superuser:** only migrations, seeds, admin maintenance. **Never** in user requests. **Never** in frontend.
+- See `ARCHITECTURE.md` and `docs/architecture/tenant-isolation.mermaid`.
 
 ---
 
 ## Non-negotiable rules (details in `RULES.md`)
 
 - RLS on every table — no exceptions (§2)
-- Every tenant query filters `org_id = auth.jwt()->>'org_id'` (§2)
-- `service_role` key server-side only (§2)
+- Every tenant query filters `org_id = current_org_id()` (§2)
+- Database superuser role server-side only (§2)
 - Zod validation on every input (§5)
 - Tier limits enforced **server-side** (§9)
 - Migrations reversible; never edit after push (§1)
@@ -90,11 +90,11 @@ pnpm db:reset
 
 ## Domain
 
-Read `GLOSSARY.md` + `DATA_MODEL.md` (Step 4).
+Read `GLOSSARY.md` + `DATA_MODEL.md`.
 
 Core entities: `Organization`, `User`, `Membership`, `Employee`,
 `Document`, `DocumentType`, `DocumentVersion`, `Tier`, `Subscription`,
-`AuditLog`.
+`AuditLog`, `Attachment`.
 
 ---
 
@@ -107,8 +107,8 @@ Core entities: `Organization`, `User`, `Membership`, `Employee`,
 | Colors, logo, brand | `shared/config/brand.config.ts` |
 | Feature flags (global) | `shared/config/features.config.ts` |
 | Env vars + validation | `shared/config/env.ts` |
-| Tier limits (per-tenant) | `config/tiers.config.ts` (Step 7) |
-| RBAC matrix | `config/permissions.config.ts` (Step 7) |
+| Tier limits (per-tenant) | `shared/config/tiers.config.ts` |
+| RBAC matrix | `shared/config/permissions.config.ts` |
 
 **Rule:** if it's user-editable, it's config. If it's a secret, it's env. Never mix.
 
@@ -116,31 +116,10 @@ Core entities: `Organization`, `User`, `Membership`, `Employee`,
 
 ## Tier model (summary)
 
-- `config/tiers.config.ts` is the single source of truth.
+- `shared/config/tiers.config.ts` is the single source of truth.
 - All checks go through `canDo(orgId, action, resource)` in `shared/`.
 - Client reads flags for UI hints only — **never** for security.
 - Downgrades block new writes; never delete data.
-
----
-
-## Common tasks
-
-See `PROMPTS.md` (Step 4). Use the prompt for the task, don't improvise:
-
-- `prompts/feature-add.md`
-- `prompts/bug-fix.md`
-- `prompts/refactor.md`
-- `prompts/migration-create.md`
-- `prompts/security-review.md`
-- `prompts/code-review.md`
-- `prompts/legacy-analysis.md`
-
----
-
-## Skills (multi-step workflows)
-
-See `SKILLS.md` (Step 4): `add-module`, `add-role`, `add-doc-type`,
-`seed-tenant`, `import-legacy-analysis`, `deploy`.
 
 ---
 
@@ -149,13 +128,11 @@ See `SKILLS.md` (Step 4): `add-module`, `add-role`, `add-doc-type`,
 - ❌ Query without `org_id` filter
 - ❌ Client-side-only permission or tier checks
 - ❌ `any` without `// why:` comment
-- ❌ Manual DB edits via Supabase dashboard (production)
+- ❌ Manual DB edits on shared environments
 - ❌ Secrets in client code or committed `.env` files
-- ❌ Copying legacy app's branding / copy / logos verbatim
 - ❌ Direct commits to `main`
 - ❌ Files > 250 lines or functions > 50 lines
-- ❌ Importing legacy data without a mapping doc
-- ❌ Using `service_role` key for user-initiated requests
+- ❌ Using superuser db role for user-initiated requests
 - ❌ Inline styles (use Tailwind tokens)
 
 ---

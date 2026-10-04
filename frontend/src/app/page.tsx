@@ -175,8 +175,8 @@ export default function HomePage() {
             </div>
             <h3 className="text-base font-semibold text-white">Postgres RLS Security</h3>
             <p className="mt-2 text-xs leading-relaxed text-slate-400">
-              Guaranteed tenant data isolation enforced at the database layer via Supabase JWT
-              claims.
+              Guaranteed tenant data isolation enforced at the database layer via session-scoped RLS
+              policies.
             </p>
           </div>
         </div>
@@ -201,7 +201,7 @@ export default function HomePage() {
             </div>
             <div>
               <span className="block text-slate-500">Database / Tenancy:</span>
-              <span className="text-white">Postgres RLS + Supabase JWT</span>
+              <span className="text-white">PostgreSQL 16 RLS (Self-Hosted)</span>
             </div>
           </div>
         </div>

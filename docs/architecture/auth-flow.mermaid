@@ -10,10 +10,10 @@ stateDiagram-v2
     Authenticating --> Authenticated: Success
     Authenticating --> Anonymous: Failure
 
-    Authenticated --> SessionActive: JWT issued<br/>(sub, org_id, role, is_project_owner)
+    Authenticated --> SessionActive: JWT issued<br/>(sub, org_id, role, is_platform_admin)
     SessionActive --> SessionActive: User actions<br/>JWT in every request
 
-    SessionActive --> Refreshing: Access token expires (1h)
+    SessionActive --> Refreshing: Access token expires
     Refreshing --> SessionActive: Refresh token valid
     Refreshing --> Anonymous: Refresh expired
 
@@ -30,7 +30,7 @@ stateDiagram-v2
 
     note right of Authenticated
         Backend verifies every JWT
-        with Supabase JWKS.
-        Custom claims hook injects
-        org_id + role at issuance.
+        with JWT_SECRET.
+        Session context injects
+        org_id + role into withTenant.
     end note

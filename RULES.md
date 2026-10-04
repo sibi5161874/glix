@@ -10,7 +10,7 @@ Do not violate without explicit written approval from the project owner.
 
 - Never edit a migration after it has been pushed to a shared branch.
 - Every migration must be reversible: `UP` and `DOWN`.
-- Never edit schema via the Supabase dashboard on shared environments.
+- Never edit schema directly on shared environments without a migration file.
 - Every tenant table must have:
   - `id UUID PRIMARY KEY DEFAULT gen_random_uuid()`
   - `org_id UUID NOT NULL REFERENCES organizations(id) ON DELETE CASCADE`
@@ -20,23 +20,22 @@ Do not violate without explicit written approval from the project owner.
 - Index every `(org_id, ...)` query path.
 - Multi-step migrations run inside a transaction.
 - Run migration drift check before every push.
-- Seed data lives in `supabase/seed.sql` — never inline in migrations.
+- Seed data lives in `db/seed.sql` — never inline in migrations.
 
 ---
 
 ## §2 Security & Tenancy
 
 - **RLS enabled on every table. No exceptions.**
-- Every tenant query filters `org_id = auth.jwt()->>'org_id'`.
-- `service_role` key:
-  - Only in backend server code
+- Every tenant query filters `org_id = current_org_id()`.
+- `SUPERUSER` postgres role:
+  - Only for migrations, automated test setups, and system maintenance
+  - Never used in application code or user-initiated requests
   - Never in the frontend bundle
-  - Never for user-initiated requests
-  - Used only for: migrations, seeds, admin crons
 - Every route/server action validates input with Zod.
 - Every user-facing route enforces: auth → membership → permission.
 - Cross-tenant access = **Critical** bug, P0, fix before anything else.
-- Document access uses **signed URLs** with short TTL. No public buckets.
+- Document access uses authenticated application routes. No public buckets.
 - Every document download is written to `audit_log`.
 - Rate limit all public endpoints.
 - Secrets only via env vars. Never commit `.env.local`.

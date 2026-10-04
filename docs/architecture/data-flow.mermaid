@@ -3,24 +3,23 @@ sequenceDiagram
     participant U as User
     participant FE as Next.js Frontend
     participant BE as Fastify Backend
-    participant AU as Supabase Auth
+    participant FS as Local Filesystem
     participant DB as Postgres (RLS)
-    participant ST as Storage
 
     Note over U,FE: Session already established
 
     U->>FE: Click "Upload document"
-    FE->>FE: Read JWT from Supabase session
+    FE->>FE: Read JWT from session
     FE->>BE: POST /v1/documents<br/>Authorization: Bearer <JWT><br/>{ employeeId, typeKey, file }
 
-    BE->>BE: Verify JWT (JWKS)
-    Note right of BE: Extract sub, org_id,<br/>role, is_project_owner
+    BE->>BE: Verify JWT signature
+    Note right of BE: Extract userId, org_id,<br/>role, isPlatformAdmin
     BE->>BE: Zod validate body
     BE->>BE: Check permission (role)
     BE->>BE: Check tier gate (canDo)
-    BE->>ST: Upload file → org-documents/{org_id}/...
-    ST-->>BE: Storage path
-    BE->>DB: INSERT document (RLS applies)
+    BE->>FS: Write file to UPLOAD_DIR/{org_id}/...
+    FS-->>BE: file_path & size
+    BE->>DB: withTenant session RLS: INSERT attachment & document
     DB-->>BE: Row
     BE->>DB: INSERT audit_log (doc.upload)
     DB-->>BE: OK

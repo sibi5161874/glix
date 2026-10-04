@@ -45,9 +45,8 @@ Thumbs.db
 *.pid
 *.seed
 
-# ── Supabase local ───────────────────────────
-supabase/.branches/
-supabase/.temp/
+# ── Uploads & Storage ────────────────────────
+uploads/
 
 # ── Misc ─────────────────────────────────────
 *.bak

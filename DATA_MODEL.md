@@ -65,7 +65,7 @@ Superadmin team members. Separate from tenant users.
 
 | Column | Type | Constraints | Notes |
 | :--- | :--- | :--- | :--- |
-| `id` | uuid | PK, FK → `auth.users(id)` | |
+| `id` | uuid | PK, FK → `users(id)` | |
 | `email` | citext | UNIQUE, NOT NULL | |
 | `full_name` | text | NOT NULL | |
 | `role` | text | NOT NULL | `owner`, `admin`, `support` |
@@ -449,7 +449,7 @@ One row per employee per leave type per year.
 
 | # | File | What |
 | :--- | :--- | :--- |
-| 001–007 | (already applied) | Base tenancy, RLS, storage, JWT hook |
+| 001–007 | (already applied) | Base tenancy, RLS, attachments, session variables |
 | 008 | `008_plans.sql` | `plans`, seed 3 tiers |
 | 009 | `009_departments_designations.sql` | `departments`, `designations` |
 | 010 | `010_employees.sql` | `employees` |
