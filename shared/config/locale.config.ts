@@ -5,21 +5,21 @@
  * across the entire app. Nothing else should hardcode these.
  */
 export const localeConfig = {
-  defaultCurrency: "INR",
-  currencySymbol: "₹",
+  defaultCurrency: "AED",
+  currencySymbol: "AED",
   currencyPosition: "prefix" as "prefix" | "suffix",
 
   defaultLanguage: "en",
-  supportedLanguages: ["en", "hi"] as const,
+  supportedLanguages: ["en", "ar"] as const,
 
-  timezone: "Asia/Kolkata",
+  timezone: "Asia/Dubai",
   dateFormat: "dd/MM/yyyy",
   dateTimeFormat: "dd/MM/yyyy HH:mm",
   timeFormat: "HH:mm",
   timeFormat24h: true,
 
-  numberLocale: "en-IN",
-  firstDayOfWeek: 1 as const, // 0=Sunday, 1=Monday
+  numberLocale: "en-AE",
+  firstDayOfWeek: 0 as const, // 0=Sunday (Standard in UAE/GCC), 1=Monday
 } as const;
 
 export type LocaleConfig = typeof localeConfig;

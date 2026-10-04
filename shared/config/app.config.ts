@@ -7,7 +7,7 @@ const env = getPublicEnv();
  * Secrets NEVER live here — they stay in env.ts.
  */
 export const appConfig = {
-  name: "YourApp",
+  name: "Glix Connect",
   appUrl: env.NEXT_PUBLIC_APP_URL,
   apiUrl: env.NEXT_PUBLIC_API_URL,
   env: process.env["NODE_ENV"] ?? "development",

@@ -1,23 +1,22 @@
 /**
  * Brand identity — colors, name, logo.
  * ─────────────────────────────────────
- * Colors should match the CSS variables in frontend's globals.css.
+ * Colors match Glix Connect theme tokens.
  */
 export const brandConfig = {
-  name: "YourApp",
-  shortName: "YA",
-  tagline: "Employee documents & info, simplified.",
-  description:
-    "A multi-tenant SaaS for organizations to manage employee records and documents securely.",
+  name: "Glix Connect",
+  shortName: "GC",
+  tagline: "Multi-tenant HR operations & document automation",
+  description: "Enterprise HR SaaS for the GCC — employees, leave, loans, documents, compliance.",
 
   logo: "/logo.svg",
   logoDark: "/logo-dark.svg",
   favicon: "/favicon.ico",
 
   colors: {
-    primary: "#F57C00",
+    primary: "#2563EB",
     primaryForeground: "#FFFFFF",
-    accent: "#1E293B",
+    accent: "#0F172A",
     danger: "#DC2626",
     success: "#16A34A",
     warning: "#F59E0B",
@@ -25,9 +24,9 @@ export const brandConfig = {
 
   defaultTheme: "system" as "light" | "dark" | "system",
 
-  madeIn: "India",
-  supportEmail: "support@yourapp.com",
-  website: "https://yourapp.com",
+  madeIn: "UAE",
+  supportEmail: "support@glix.ae",
+  website: "https://connect.rmd.city",
 } as const;
 
 export type BrandConfig = typeof brandConfig;

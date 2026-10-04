@@ -65,5 +65,3 @@ docs/legacy-analysis/screenshots/*.jpeg
 docs/legacy-analysis/screenshots/*.webp
 docs/legacy-analysis/*.har
 docs/legacy-analysis/.credentials*
-
-docs/legacy-analysis/00-client-brief.md
