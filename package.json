@@ -28,11 +28,13 @@
     "db:seed": "supabase db reset --include-all --db-url $DATABASE_URL",
     "db:verify": "tsx scripts/verify-tenant-isolation.ts"
   },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.13.0",
-    "@supabase/supabase-js": "^2.45.4",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.6",

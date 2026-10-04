@@ -1,0 +1,4 @@
+employee_code,first_name,last_name,email,phone,department,designation,joining_date,salary_basic
+EMP-001,Ahmed,Al Mansoori,ahmed@example.ae,+971501112233,Engineering,Senior Software Engineer,2024-01-15,18000
+EMP-002,Fatima,Zahra,fatima@example.ae,+971502223344,Human Resources,HR Specialist,2024-02-01,14000
+EMP-003,John,Smith,john.smith@example.ae,+971503334455,Finance,Financial Analyst,2024-03-10,16000
