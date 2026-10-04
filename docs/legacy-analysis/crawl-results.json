@@ -1,0 +1,53 @@
+[
+  [
+    "https://connect.rmd.city/public/superadmin/login",
+    {
+      "url": "https://connect.rmd.city/public/superadmin/login",
+      "title": "Sign In - Glix System Control Panel",
+      "screenshot": "docs/legacy-analysis/screenshots/01-landing.png",
+      "inputs": [
+        {
+          "name": "_token",
+          "type": "hidden",
+          "id": "",
+          "placeholder": "",
+          "required": false
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "id": "",
+          "placeholder": "superadmin@glix.ae",
+          "required": true
+        },
+        {
+          "name": "password",
+          "type": "password",
+          "id": "",
+          "placeholder": "••••••••",
+          "required": true
+        },
+        {
+          "name": "remember",
+          "type": "checkbox",
+          "id": "",
+          "placeholder": "",
+          "required": false
+        }
+      ],
+      "selects": [],
+      "buttons": [
+        {
+          "text": "Sign In to CP",
+          "type": "submit",
+          "id": "",
+          "className": "btn btn-primary w-100 mt-2"
+        }
+      ],
+      "tables": [],
+      "links": [],
+      "navItems": [],
+      "errors": []
+    }
+  ]
+]

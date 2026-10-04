@@ -20,13 +20,11 @@ async function main(): Promise<void> {
   if (error) throw error;
 
   const orgCount = data?.length ?? 0;
-  // eslint-disable-next-line no-console
   console.log(`Visible organizations for this user: ${orgCount}`);
 
   if (orgCount > 1) {
     throw new Error("❌ TENANT ISOLATION FAILED — user sees multiple orgs");
   }
-  // eslint-disable-next-line no-console
   console.log("✅ Tenant isolation OK");
 }
 

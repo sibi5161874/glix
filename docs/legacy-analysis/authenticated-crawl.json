@@ -1,0 +1,6144 @@
+[
+  {
+    "id": "10-dashboard",
+    "name": "Dashboard Overview",
+    "url": "https://connect.rmd.city/public/dashboard",
+    "finalUrl": "https://connect.rmd.city/public/dashboard",
+    "module": "Dashboard",
+    "title": "Connect - Dashboard",
+    "screenshot": "docs/legacy-analysis/screenshots/10-dashboard.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Add Employee",
+        "type": "button",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "0 Valid",
+        "type": "button",
+        "className": "btn btn-dark btn-sm text-muted cursor-default border-secondary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "0 Expired",
+        "type": "button",
+        "className": "btn btn-dark btn-sm text-muted cursor-default border-secondary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Edit Settings",
+        "type": "button",
+        "className": "btn btn-primary btn-sm",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/dashboard#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link active"
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/dashboard#navbar-employees",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/dashboard#navbar-leaves",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/dashboard#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/dashboard#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/dashboard#navbar-settings",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/dashboard#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "btn btn-primary"
+      },
+      {
+        "text": "0 Pending Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans?status=pending",
+        "className": "row align-items-center text-decoration-none"
+      },
+      {
+        "text": "Edit Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "btn btn-primary btn-sm"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/dashboard#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item active"
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item "
+      }
+    ],
+    "tables": [
+      {
+        "headers": ["Name", "Code", "Department", "Designation", "Joining Date"],
+        "rowCount": 1
+      }
+    ],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nLeave Management\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\n Plan: Free Version\nApex Admin\nTenant Admin\nAccount and organization Apex Enterprise 50639 registered successfully!\nWelcome back, Apex Admin!\n\nHere is a quick overview of your organization today.\n\nAdd Employee\n0\nTotal Employees\n0\nOn Leave Today\n0\nPending Leaves\n0\nPending Loans\nWorkforce Compliance Health\n100%\nExcellent\n0 Valid\n0 Expired\nDepartment Headcount\n\nNo active employees assigned to departments.\n\nApproved Leaves by Type\n\nNo approved leave requests to display.\n\nCompany Announcements\n\nNo active announcements at the moment.\n\nRecently Joined Employees\nNAME\tCODE\tDEPARTMENT\tDESIGNATION\tJOINING DATE\nNo employees registered yet.\nRecent Activities\n\nNo recent activity logs.\n\nDid you know?\n\nYou can customize your organization logo, branding colors, default timezone, and office settings in the settings panel.\n\nEdit Settings\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "11-employees-list",
+    "name": "Employees Directory",
+    "url": "https://connect.rmd.city/public/employees",
+    "finalUrl": "https://connect.rmd.city/public/employees",
+    "module": "Employees",
+    "title": "Connect - Employees",
+    "screenshot": "docs/legacy-analysis/screenshots/11-employees-list.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "search",
+        "type": "text",
+        "id": "",
+        "placeholder": "Search by name, email, code...",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [
+      {
+        "name": "company_id",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Companies",
+            "selected": true
+          },
+          {
+            "value": "2",
+            "text": "Apex Enterprise 50639",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "department_id",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Departments",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "name": "designation_id",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Designations",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "name": "status",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Statuses",
+            "selected": true
+          },
+          {
+            "value": "active",
+            "text": "Active",
+            "selected": false
+          },
+          {
+            "value": "inactive",
+            "text": "Inactive",
+            "selected": false
+          },
+          {
+            "value": "terminated",
+            "text": "Terminated",
+            "selected": false
+          }
+        ]
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle show",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Import / Export",
+        "type": "button",
+        "className": "btn btn-outline-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Add Employee",
+        "type": "button",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "submit",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Clear",
+        "type": "button",
+        "className": "btn btn-link link-secondary text-white-50 p-0 text-center align-self-center",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/employees#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees#navbar-employees",
+        "className": "nav-link dropdown-toggle show"
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item active"
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/employees#navbar-leaves",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/employees#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/employees#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/employees#navbar-settings",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/employees#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "btn btn-outline-secondary text-white-50"
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "btn btn-primary"
+      },
+      {
+        "text": "Clear",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "btn btn-link link-secondary text-white-50 p-0 text-center align-self-center"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/employees#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item active"
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item "
+      }
+    ],
+    "tables": [
+      {
+        "headers": [
+          "Employee Name",
+          "Code",
+          "Company",
+          "Department",
+          "Designation",
+          "Status",
+          "Date Joined",
+          "Actions"
+        ],
+        "rowCount": 1
+      }
+    ],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nAll Employees\nAdd Employee\nImport / Export\nLeave Management\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\n Plan: Free Version\nApex Admin\nTenant Admin\nEmployees\nSearch, filter, and view employee records.\nImport / Export\nAdd Employee\nSearch\nCompany\nAll Companies\nApex Enterprise 50639\nDepartment\nAll Departments\nDesignation\nAll Designations\nStatus\nAll Statuses\nActive\nInactive\nTerminated\nClear\nEMPLOYEE NAME\tCODE\tCOMPANY\tDEPARTMENT\tDESIGNATION\tSTATUS\tDATE JOINED\tACTIONS\n\n\nNo employee records match the filter criteria.\n\nShowing 0 to 0 of 0 entries\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "12-employees-create",
+    "name": "Create Employee Form",
+    "url": "https://connect.rmd.city/public/employees/create",
+    "finalUrl": "https://connect.rmd.city/public/employees/create",
+    "module": "Employees",
+    "title": "Connect - Register Employee",
+    "screenshot": "docs/legacy-analysis/screenshots/12-employees-create.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "id": "",
+        "placeholder": "Identity as per Passport",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "employee_id",
+        "type": "text",
+        "id": "",
+        "placeholder": "EMP-000",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "id": "",
+        "placeholder": "corporate@domain.com",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "uae_mobile",
+        "type": "text",
+        "id": "",
+        "placeholder": "+971 -- --- ----",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "home_country_mobile",
+        "type": "text",
+        "id": "",
+        "placeholder": "Overseas Number",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "date_of_birth",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "join_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": true,
+        "value": "2026-10-04",
+        "ariaLabel": ""
+      },
+      {
+        "name": "photo",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "emergency_contact_name",
+        "type": "text",
+        "id": "",
+        "placeholder": "Contact Person Name",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "emergency_contact_relationship",
+        "type": "text",
+        "id": "",
+        "placeholder": "Spouse, Father, Friend...",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "emergency_contact_no",
+        "type": "text",
+        "id": "",
+        "placeholder": "+971 -- --- ----",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "passport_number",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "passport_issued_country",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "passport_issue_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "passport_expiry_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "passport_file",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "visa_file_number",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "unified_number",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "visa_issue_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "visa_expiry_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "visa_file",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "emirates_id_number",
+        "type": "text",
+        "id": "",
+        "placeholder": "784-XXXX-XXXXXXX-X",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "emirates_id_issue_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "emirates_id_expiry_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "emirates_id_file",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "basic_salary",
+        "type": "number",
+        "id": "",
+        "placeholder": "0.00",
+        "required": false,
+        "value": "0",
+        "ariaLabel": ""
+      },
+      {
+        "name": "allowance",
+        "type": "number",
+        "id": "",
+        "placeholder": "0.00",
+        "required": false,
+        "value": "0",
+        "ariaLabel": ""
+      },
+      {
+        "name": "",
+        "type": "checkbox",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "on",
+        "ariaLabel": ""
+      },
+      {
+        "name": "labour_personal_no",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "work_permit_no",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "labor_card_expiry_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "labor_card_issue_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "labor_card_file",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "labour_contract_file",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "",
+        "type": "checkbox",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "on",
+        "ariaLabel": ""
+      },
+      {
+        "name": "driving_license_number",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "driving_license_place_of_issue",
+        "type": "text",
+        "id": "",
+        "placeholder": "UAE Emirate",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "driving_license_issue_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "driving_license_expiry_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "driving_license_file",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "",
+        "type": "checkbox",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "on",
+        "ariaLabel": ""
+      },
+      {
+        "name": "soe_card_no",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "soe_degree",
+        "type": "text",
+        "id": "",
+        "placeholder": "e.g. B.Tech Civil",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "soe_expiry_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "soe_card_file",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "",
+        "type": "checkbox",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "on",
+        "ariaLabel": ""
+      },
+      {
+        "name": "iloe_coi_number",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "iloe_start_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "iloe_expiry_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "",
+        "type": "checkbox",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "on",
+        "ariaLabel": ""
+      },
+      {
+        "name": "medical_card_no",
+        "type": "text",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "medical_plan",
+        "type": "text",
+        "id": "",
+        "placeholder": "e.g. VIP, Gold, Standard",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "medical_start_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "medical_expiry_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "medical_card_file",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "notes",
+        "type": "textarea",
+        "id": "",
+        "placeholder": "Enter confidential notes (only visible to HR and Admins)...",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [
+      {
+        "name": "company_id",
+        "id": "",
+        "required": true,
+        "options": [
+          {
+            "value": "",
+            "text": "Select Company",
+            "selected": true
+          },
+          {
+            "value": "2",
+            "text": "Apex Enterprise 50639",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "nationality",
+        "id": "nationality-select",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "Select Nationality",
+            "selected": false
+          },
+          {
+            "value": "United Arab Emirates",
+            "text": "United Arab Emirates",
+            "selected": false
+          },
+          {
+            "value": "Afghanistan",
+            "text": "Afghanistan",
+            "selected": false
+          },
+          {
+            "value": "Albania",
+            "text": "Albania",
+            "selected": false
+          },
+          {
+            "value": "Algeria",
+            "text": "Algeria",
+            "selected": false
+          },
+          {
+            "value": "Argentina",
+            "text": "Argentina",
+            "selected": false
+          },
+          {
+            "value": "Australia",
+            "text": "Australia",
+            "selected": false
+          },
+          {
+            "value": "Austria",
+            "text": "Austria",
+            "selected": false
+          },
+          {
+            "value": "Azerbaijan",
+            "text": "Azerbaijan",
+            "selected": false
+          },
+          {
+            "value": "Bahrain",
+            "text": "Bahrain",
+            "selected": false
+          },
+          {
+            "value": "Bangladesh",
+            "text": "Bangladesh",
+            "selected": false
+          },
+          {
+            "value": "Belarus",
+            "text": "Belarus",
+            "selected": false
+          },
+          {
+            "value": "Belgium",
+            "text": "Belgium",
+            "selected": false
+          },
+          {
+            "value": "Brazil",
+            "text": "Brazil",
+            "selected": false
+          },
+          {
+            "value": "Bulgaria",
+            "text": "Bulgaria",
+            "selected": false
+          },
+          {
+            "value": "Canada",
+            "text": "Canada",
+            "selected": false
+          },
+          {
+            "value": "Chile",
+            "text": "Chile",
+            "selected": false
+          },
+          {
+            "value": "China",
+            "text": "China",
+            "selected": false
+          },
+          {
+            "value": "Colombia",
+            "text": "Colombia",
+            "selected": false
+          },
+          {
+            "value": "Croatia",
+            "text": "Croatia",
+            "selected": false
+          },
+          {
+            "value": "Cyprus",
+            "text": "Cyprus",
+            "selected": false
+          },
+          {
+            "value": "Czech Republic",
+            "text": "Czech Republic",
+            "selected": false
+          },
+          {
+            "value": "Denmark",
+            "text": "Denmark",
+            "selected": false
+          },
+          {
+            "value": "Egypt",
+            "text": "Egypt",
+            "selected": false
+          },
+          {
+            "value": "Estonia",
+            "text": "Estonia",
+            "selected": false
+          },
+          {
+            "value": "Ethiopia",
+            "text": "Ethiopia",
+            "selected": false
+          },
+          {
+            "value": "Finland",
+            "text": "Finland",
+            "selected": false
+          },
+          {
+            "value": "France",
+            "text": "France",
+            "selected": false
+          },
+          {
+            "value": "Georgia",
+            "text": "Georgia",
+            "selected": false
+          },
+          {
+            "value": "Germany",
+            "text": "Germany",
+            "selected": false
+          },
+          {
+            "value": "Ghana",
+            "text": "Ghana",
+            "selected": false
+          },
+          {
+            "value": "Greece",
+            "text": "Greece",
+            "selected": false
+          },
+          {
+            "value": "Hungary",
+            "text": "Hungary",
+            "selected": false
+          },
+          {
+            "value": "Iceland",
+            "text": "Iceland",
+            "selected": false
+          },
+          {
+            "value": "India",
+            "text": "India",
+            "selected": true
+          },
+          {
+            "value": "Indonesia",
+            "text": "Indonesia",
+            "selected": false
+          },
+          {
+            "value": "Iran",
+            "text": "Iran",
+            "selected": false
+          },
+          {
+            "value": "Iraq",
+            "text": "Iraq",
+            "selected": false
+          },
+          {
+            "value": "Ireland",
+            "text": "Ireland",
+            "selected": false
+          },
+          {
+            "value": "Italy",
+            "text": "Italy",
+            "selected": false
+          },
+          {
+            "value": "Japan",
+            "text": "Japan",
+            "selected": false
+          },
+          {
+            "value": "Jordan",
+            "text": "Jordan",
+            "selected": false
+          },
+          {
+            "value": "Kazakhstan",
+            "text": "Kazakhstan",
+            "selected": false
+          },
+          {
+            "value": "Kenya",
+            "text": "Kenya",
+            "selected": false
+          },
+          {
+            "value": "Kuwait",
+            "text": "Kuwait",
+            "selected": false
+          },
+          {
+            "value": "Kyrgyzstan",
+            "text": "Kyrgyzstan",
+            "selected": false
+          },
+          {
+            "value": "Latvia",
+            "text": "Latvia",
+            "selected": false
+          },
+          {
+            "value": "Lebanon",
+            "text": "Lebanon",
+            "selected": false
+          },
+          {
+            "value": "Libya",
+            "text": "Libya",
+            "selected": false
+          },
+          {
+            "value": "Lithuania",
+            "text": "Lithuania",
+            "selected": false
+          },
+          {
+            "value": "Luxembourg",
+            "text": "Luxembourg",
+            "selected": false
+          },
+          {
+            "value": "Malaysia",
+            "text": "Malaysia",
+            "selected": false
+          },
+          {
+            "value": "Malta",
+            "text": "Malta",
+            "selected": false
+          },
+          {
+            "value": "Mexico",
+            "text": "Mexico",
+            "selected": false
+          },
+          {
+            "value": "Moldova",
+            "text": "Moldova",
+            "selected": false
+          },
+          {
+            "value": "Montenegro",
+            "text": "Montenegro",
+            "selected": false
+          },
+          {
+            "value": "Morocco",
+            "text": "Morocco",
+            "selected": false
+          },
+          {
+            "value": "Nepal",
+            "text": "Nepal",
+            "selected": false
+          },
+          {
+            "value": "Netherlands",
+            "text": "Netherlands",
+            "selected": false
+          },
+          {
+            "value": "New Zealand",
+            "text": "New Zealand",
+            "selected": false
+          },
+          {
+            "value": "Nigeria",
+            "text": "Nigeria",
+            "selected": false
+          },
+          {
+            "value": "Norway",
+            "text": "Norway",
+            "selected": false
+          },
+          {
+            "value": "Oman",
+            "text": "Oman",
+            "selected": false
+          },
+          {
+            "value": "Pakistan",
+            "text": "Pakistan",
+            "selected": false
+          },
+          {
+            "value": "Palestine",
+            "text": "Palestine",
+            "selected": false
+          },
+          {
+            "value": "Philippines",
+            "text": "Philippines",
+            "selected": false
+          },
+          {
+            "value": "Poland",
+            "text": "Poland",
+            "selected": false
+          },
+          {
+            "value": "Portugal",
+            "text": "Portugal",
+            "selected": false
+          },
+          {
+            "value": "Qatar",
+            "text": "Qatar",
+            "selected": false
+          },
+          {
+            "value": "Romania",
+            "text": "Romania",
+            "selected": false
+          },
+          {
+            "value": "Russia",
+            "text": "Russia",
+            "selected": false
+          },
+          {
+            "value": "Saudi Arabia",
+            "text": "Saudi Arabia",
+            "selected": false
+          },
+          {
+            "value": "Serbia",
+            "text": "Serbia",
+            "selected": false
+          },
+          {
+            "value": "Singapore",
+            "text": "Singapore",
+            "selected": false
+          },
+          {
+            "value": "Slovakia",
+            "text": "Slovakia",
+            "selected": false
+          },
+          {
+            "value": "Slovenia",
+            "text": "Slovenia",
+            "selected": false
+          },
+          {
+            "value": "South Africa",
+            "text": "South Africa",
+            "selected": false
+          },
+          {
+            "value": "South Korea",
+            "text": "South Korea",
+            "selected": false
+          },
+          {
+            "value": "Spain",
+            "text": "Spain",
+            "selected": false
+          },
+          {
+            "value": "Sri Lanka",
+            "text": "Sri Lanka",
+            "selected": false
+          },
+          {
+            "value": "Sudan",
+            "text": "Sudan",
+            "selected": false
+          },
+          {
+            "value": "Sweden",
+            "text": "Sweden",
+            "selected": false
+          },
+          {
+            "value": "Switzerland",
+            "text": "Switzerland",
+            "selected": false
+          },
+          {
+            "value": "Syria",
+            "text": "Syria",
+            "selected": false
+          },
+          {
+            "value": "Taiwan",
+            "text": "Taiwan",
+            "selected": false
+          },
+          {
+            "value": "Tajikistan",
+            "text": "Tajikistan",
+            "selected": false
+          },
+          {
+            "value": "Thailand",
+            "text": "Thailand",
+            "selected": false
+          },
+          {
+            "value": "Tunisia",
+            "text": "Tunisia",
+            "selected": false
+          },
+          {
+            "value": "Turkey",
+            "text": "Turkey",
+            "selected": false
+          },
+          {
+            "value": "Turkmenistan",
+            "text": "Turkmenistan",
+            "selected": false
+          },
+          {
+            "value": "Ukraine",
+            "text": "Ukraine",
+            "selected": false
+          },
+          {
+            "value": "United Kingdom",
+            "text": "United Kingdom",
+            "selected": false
+          },
+          {
+            "value": "United States",
+            "text": "United States",
+            "selected": false
+          },
+          {
+            "value": "Uzbekistan",
+            "text": "Uzbekistan",
+            "selected": false
+          },
+          {
+            "value": "Venezuela",
+            "text": "Venezuela",
+            "selected": false
+          },
+          {
+            "value": "Vietnam",
+            "text": "Vietnam",
+            "selected": false
+          },
+          {
+            "value": "Yemen",
+            "text": "Yemen",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "designation_id",
+        "id": "",
+        "required": true,
+        "options": [
+          {
+            "value": "",
+            "text": "Select Position",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "name": "department_id",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "Select Department",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "name": "status",
+        "id": "",
+        "required": true,
+        "options": [
+          {
+            "value": "Active",
+            "text": "Active",
+            "selected": true
+          },
+          {
+            "value": "In Notice Period",
+            "text": "Notice Period",
+            "selected": false
+          },
+          {
+            "value": "In Probation Period",
+            "text": "Probation",
+            "selected": false
+          },
+          {
+            "value": "Resigned",
+            "text": "Resigned",
+            "selected": false
+          },
+          {
+            "value": "Terminated",
+            "text": "Terminated",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "gender",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "Select Gender",
+            "selected": true
+          },
+          {
+            "value": "male",
+            "text": "Male",
+            "selected": false
+          },
+          {
+            "value": "female",
+            "text": "Female",
+            "selected": false
+          },
+          {
+            "value": "other",
+            "text": "Other",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "marital_status",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "Select Marital Status",
+            "selected": true
+          },
+          {
+            "value": "single",
+            "text": "Single",
+            "selected": false
+          },
+          {
+            "value": "married",
+            "text": "Married",
+            "selected": false
+          },
+          {
+            "value": "divorced",
+            "text": "Divorced",
+            "selected": false
+          },
+          {
+            "value": "widowed",
+            "text": "Widowed",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "blood_group",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "Select Blood Group",
+            "selected": true
+          },
+          {
+            "value": "A+",
+            "text": "A+",
+            "selected": false
+          },
+          {
+            "value": "A-",
+            "text": "A-",
+            "selected": false
+          },
+          {
+            "value": "B+",
+            "text": "B+",
+            "selected": false
+          },
+          {
+            "value": "B-",
+            "text": "B-",
+            "selected": false
+          },
+          {
+            "value": "AB+",
+            "text": "AB+",
+            "selected": false
+          },
+          {
+            "value": "AB-",
+            "text": "AB-",
+            "selected": false
+          },
+          {
+            "value": "O+",
+            "text": "O+",
+            "selected": false
+          },
+          {
+            "value": "O-",
+            "text": "O-",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "role",
+        "id": "role-select",
+        "required": true,
+        "options": [
+          {
+            "value": "Employee",
+            "text": "Employee",
+            "selected": true
+          },
+          {
+            "value": "HR Manager",
+            "text": "HR Manager",
+            "selected": false
+          },
+          {
+            "value": "Tenant Admin",
+            "text": "Tenant Admin",
+            "selected": false
+          }
+        ]
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle show",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Back to Directory",
+        "type": "button",
+        "className": "btn btn-outline-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Cancel",
+        "type": "button",
+        "className": "btn btn-outline-secondary px-4",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Save Employee Profile",
+        "type": "submit",
+        "className": "btn btn-primary px-5",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/employees/create#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees/create#navbar-employees",
+        "className": "nav-link dropdown-toggle show"
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item active"
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/employees/create#navbar-leaves",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/employees/create#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/employees/create#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/employees/create#navbar-settings",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/employees/create#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Back to Directory",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "btn btn-outline-secondary text-white-50"
+      },
+      {
+        "text": "Cancel",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "btn btn-outline-secondary px-4"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/employees/create#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item active"
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item "
+      }
+    ],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nAll Employees\nAdd Employee\nImport / Export\nLeave Management\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\n Plan: Free Version\nApex Admin\nTenant Admin\nRegister New Employee\nEnter employee details to onboard them.\nBack to Directory\nPersonal Details\nFull Legal Name\nEmployee ID\nCompany Entity\nSelect Company\nApex Enterprise 50639\nEmail Address\nThis email maps directly to their SSO logins.\nMobile Number (UAE)\nHome Country Phone\nNationality\nSelect Nationality\nUnited Arab Emirates\nAfghanistan\nAlbania\nAlgeria\nArgentina\nAustralia\nAustria\nAzerbaijan\nBahrain\nBangladesh\nBelarus\nBelgium\nBrazil\nBulgaria\nCanada\nChile\nChina\nColombia\nCroatia\nCyprus\nCzech Republic\nDenmark\nEgypt\nEstonia\nEthiopia\nFinland\nFrance\nGeorgia\nGermany\nGhana\nGreece\nHungary\nIceland\nIndia\nIndonesia\nIran\nIraq\nIreland\nItaly\nJapan\nJordan\nKazakhstan\nKenya\nKuwait\nKyrgyzstan\nLatvia\nLebanon\nLibya\nLithuania\nLuxembourg\nMalaysia\nMalta\nMexico\nMoldova\nMontenegro\nMorocco\nNepal\nNetherlands\nNew Zealand\nNigeria\nNorway\nOman\nPakistan\nPalestine\nPhilippines\nPoland\nPortugal\nQatar\nRomania\nRussia\nSaudi Arabia\nSerbia\nSingapore\nSlovakia\nSlovenia\nSouth Africa\nSouth Korea\nSpain\nSri Lanka\nSudan\nSweden\nSwitzerland\nSyria\nTaiwan\nTajikistan\nThailand\nTunisia\nTurkey\nTurkmenistan\nUkraine\nUnited Kingdom\nUnited States\nUzbekistan\nVenezuela\nVietnam\nYemen\nPosition / Designation\nSelect Position\nDepartment / Unit\nSelect Department\nEmployment Status\nActive\nNotice Period\nProbation\nResigned\nTerminated\nDate of Birth\nJoin Date\nProfile Photo\nGender\nSelect Gender\nMale\nFemale\nOther\nMarital Status\nSelect Marital Status\nSingle\nMarried\nDivorced\nWidowed\nBlood Group\nSelect Blood Group\nA+\nA-\nB+\nB-\nAB+\nAB-\nO+\nO-\nEmergency Contact\nFull Name\nRelationship\nContact Number (UAE/Local)\nPassport Details\nPassport Number\nIssued Country\nIssue Date\nExpiry Date\nUpload Passport (PDF/Image)\nVisa Details\nVisa File Number\nUnified Number\nVisa Issue Date\nVisa Expiry Date\nUpload Visa (PDF/Image)\nEmirates ID\nIdentity Numb"
+  },
+  {
+    "id": "13-leaves-list",
+    "name": "Leave Management",
+    "url": "https://connect.rmd.city/public/leaves/requests",
+    "finalUrl": "https://connect.rmd.city/public/leaves/requests",
+    "module": "Leaves",
+    "title": "Connect - Leave Authorization",
+    "screenshot": "docs/legacy-analysis/screenshots/13-leaves-list.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [
+      {
+        "name": "employee_id",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Employees",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "name": "leave_type_id",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Types",
+            "selected": true
+          },
+          {
+            "value": "6",
+            "text": "Annual Leave",
+            "selected": false
+          },
+          {
+            "value": "8",
+            "text": "Maternity Leave",
+            "selected": false
+          },
+          {
+            "value": "9",
+            "text": "Paternity Leave",
+            "selected": false
+          },
+          {
+            "value": "7",
+            "text": "Sick Leave",
+            "selected": false
+          },
+          {
+            "value": "10",
+            "text": "Unpaid Leave",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "status",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Statuses",
+            "selected": true
+          },
+          {
+            "value": "pending",
+            "text": "Pending",
+            "selected": false
+          },
+          {
+            "value": "approved",
+            "text": "Approved",
+            "selected": false
+          },
+          {
+            "value": "rejected",
+            "text": "Rejected",
+            "selected": false
+          }
+        ]
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle show",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Log Leave Request",
+        "type": "button",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Clear Filters",
+        "type": "button",
+        "className": "btn btn-link link-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/leaves/requests#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/leaves/requests#navbar-employees",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/leaves/requests#navbar-leaves",
+        "className": "nav-link dropdown-toggle show"
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item active"
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/leaves/requests#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/leaves/requests#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/leaves/requests#navbar-settings",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/leaves/requests#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Log Leave Request",
+        "href": "https://connect.rmd.city/public/leaves/create",
+        "className": "btn btn-primary"
+      },
+      {
+        "text": "Clear Filters",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "btn btn-link link-secondary text-white-50"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/leaves/requests#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item active"
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item "
+      }
+    ],
+    "tables": [
+      {
+        "headers": [
+          "Employee Name",
+          "Leave Type",
+          "Duration",
+          "Total Days",
+          "Reason",
+          "Attachment",
+          "Status",
+          "Actions"
+        ],
+        "rowCount": 1
+      }
+    ],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nLeave Management\nLeave Requests\nLeave Balances\nLeave Types\nHolidays\nCalendar View\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\n Plan: Free Version\nApex Admin\nTenant Admin\nLeave Requests\nAuthorize, review, and audit employee leave applications.\nLog Leave Request\nEmployee\nAll Employees\nLeave Type\nAll Types\nAnnual Leave\nMaternity Leave\nPaternity Leave\nSick Leave\nUnpaid Leave\nStatus\nAll Statuses\nPending\nApproved\nRejected\nClear Filters\nEMPLOYEE NAME\tLEAVE TYPE\tDURATION\tTOTAL DAYS\tREASON\tATTACHMENT\tSTATUS\tACTIONS\n\n\nNo leave requests found matching filters.\n\nShowing 0 to 0 of 0 entries\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "14-leaves-create",
+    "name": "Apply / Create Leave",
+    "url": "https://connect.rmd.city/public/leaves/create",
+    "finalUrl": "https://connect.rmd.city/public/leaves/create",
+    "module": "Leaves",
+    "title": "Connect - Apply for Leave",
+    "screenshot": "docs/legacy-analysis/screenshots/14-leaves-create.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "start_date",
+        "type": "date",
+        "id": "start_date",
+        "placeholder": "",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "end_date",
+        "type": "date",
+        "id": "end_date",
+        "placeholder": "",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "reason",
+        "type": "textarea",
+        "id": "",
+        "placeholder": "Briefly describe the reason for your leave application...",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "attachment",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [
+      {
+        "name": "employee_id",
+        "id": "employee_id",
+        "required": true,
+        "options": [
+          {
+            "value": "",
+            "text": "Select Employee",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "name": "leave_type_id",
+        "id": "leave_type_id",
+        "required": true,
+        "options": [
+          {
+            "value": "",
+            "text": "Select leave type",
+            "selected": true
+          },
+          {
+            "value": "6",
+            "text": "Annual Leave",
+            "selected": false
+          },
+          {
+            "value": "8",
+            "text": "Maternity Leave",
+            "selected": false
+          },
+          {
+            "value": "9",
+            "text": "Paternity Leave",
+            "selected": false
+          },
+          {
+            "value": "7",
+            "text": "Sick Leave",
+            "selected": false
+          },
+          {
+            "value": "10",
+            "text": "Unpaid Leave",
+            "selected": false
+          }
+        ]
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle show",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Back to Requests",
+        "type": "button",
+        "className": "btn btn-outline-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Submit Leave Request",
+        "type": "submit",
+        "className": "btn btn-primary px-5 py-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/leaves/create#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/leaves/create#navbar-employees",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/leaves/create#navbar-leaves",
+        "className": "nav-link dropdown-toggle show"
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/leaves/create#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/leaves/create#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/leaves/create#navbar-settings",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/leaves/create#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Back to Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "btn btn-outline-secondary text-white-50"
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "text-info fw-bold"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/leaves/create#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item active"
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item "
+      }
+    ],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nLeave Management\nLeave Requests\nLeave Balances\nLeave Types\nHolidays\nCalendar View\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\n Plan: Free Version\nApex Admin\nTenant Admin\nApply for Leave\nSubmit a leave request for authorization.\nBack to Requests\nLeave Details\nEmployee\nSelect Employee\nLeave Type\nSelect leave type\nAnnual Leave\nMaternity Leave\nPaternity Leave\nSick Leave\nUnpaid Leave\nStart Date\nEnd Date\nReason for Leave\nAttachment (Optional)\nAllowed formats: PDF, JPG, JPEG, PNG, DOC, DOCX, ZIP (Max: 10MB)\nSubmit Leave Request\nAvailable Balance\n\nAvailable balances are employee-specific. Please check the Leave Balances page to view allocations.\n\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "15-loans-list",
+    "name": "Employee Loans",
+    "url": "https://connect.rmd.city/public/loans",
+    "finalUrl": "https://connect.rmd.city/public/loans",
+    "module": "Loans",
+    "title": "Not Found",
+    "screenshot": "docs/legacy-analysis/screenshots/15-loans-list.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [],
+    "links": [],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": "404\nNOT FOUND"
+  },
+  {
+    "id": "16-loans-create",
+    "name": "Request / Create Loan",
+    "url": "https://connect.rmd.city/public/loans/create",
+    "finalUrl": "https://connect.rmd.city/public/loans/create",
+    "module": "Loans",
+    "title": "Not Found",
+    "screenshot": "docs/legacy-analysis/screenshots/16-loans-create.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [],
+    "links": [],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": "404\nNOT FOUND"
+  },
+  {
+    "id": "17-announcements-list",
+    "name": "Announcements List",
+    "url": "https://connect.rmd.city/public/announcements",
+    "finalUrl": "https://connect.rmd.city/public/announcements",
+    "module": "Announcements",
+    "title": "Connect - Announcements",
+    "screenshot": "docs/legacy-analysis/screenshots/17-announcements-list.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Add Announcement",
+        "type": "button",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/announcements#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/announcements#navbar-employees",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/announcements#navbar-leaves",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link active"
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/announcements#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/announcements#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/announcements#navbar-settings",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/announcements#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Add Announcement",
+        "href": "https://connect.rmd.city/public/announcements/create",
+        "className": "btn btn-primary"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/announcements#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item "
+      }
+    ],
+    "tables": [
+      {
+        "headers": ["Title", "Content Snippet", "Published At", "Expires At", "Status", "Actions"],
+        "rowCount": 1
+      }
+    ],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nLeave Management\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\n Plan: Free Version\nApex Admin\nTenant Admin\nCompany Announcements\nBroadcast news, notifications, and notices to your employees' dashboards.\nAdd Announcement\nTITLE\tCONTENT SNIPPET\tPUBLISHED AT\tEXPIRES AT\tSTATUS\tACTIONS\nNo announcements published yet.\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "18-announcements-create",
+    "name": "Create Announcement",
+    "url": "https://connect.rmd.city/public/announcements/create",
+    "finalUrl": "https://connect.rmd.city/public/announcements/create",
+    "module": "Announcements",
+    "title": "Connect - Publish Announcement",
+    "screenshot": "docs/legacy-analysis/screenshots/18-announcements-create.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "id": "",
+        "placeholder": "e.g. Eid Holidays Notice, Office Timings Update...",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "content",
+        "type": "textarea",
+        "id": "",
+        "placeholder": "Enter the announcement content here...",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "published_at",
+        "type": "datetime-local",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "expires_at",
+        "type": "datetime-local",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Back to List",
+        "type": "button",
+        "className": "btn btn-outline-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Cancel",
+        "type": "button",
+        "className": "btn btn-outline-secondary me-2 text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Publish Announcement",
+        "type": "submit",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/announcements/create#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/announcements/create#navbar-employees",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/announcements/create#navbar-leaves",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link active"
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/announcements/create#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/announcements/create#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/announcements/create#navbar-settings",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/announcements/create#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Back to List",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "btn btn-outline-secondary text-white-50"
+      },
+      {
+        "text": "Cancel",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "btn btn-outline-secondary me-2 text-white-50"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/announcements/create#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item "
+      }
+    ],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nLeave Management\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\n Plan: Free Version\nApex Admin\nTenant Admin\nCreate Announcement\nCompose a new broadcast message for all employees.\nBack to List\nAnnouncement Content\nTitle\nContent\nPublish Date / Time\nLeave blank to publish immediately.\nExpiration Date / Time\nOptional. When the announcement should stop appearing on dashboards.\nCancel\nPublish Announcement\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "19-documents-list",
+    "name": "Document Automation",
+    "url": "https://connect.rmd.city/public/documents",
+    "finalUrl": "https://connect.rmd.city/public/documents",
+    "module": "Documents",
+    "title": "Connect - Document Directory",
+    "screenshot": "docs/legacy-analysis/screenshots/19-documents-list.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "file",
+        "type": "file",
+        "id": "",
+        "placeholder": "",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "document_number",
+        "type": "text",
+        "id": "",
+        "placeholder": "Enter document number",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "issue_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "expiry_date",
+        "type": "date",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [
+      {
+        "name": "employee_id",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Employees",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "name": "document_type_id",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Types",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "name": "is_verified",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Statuses",
+            "selected": true
+          },
+          {
+            "value": "1",
+            "text": "Verified Only",
+            "selected": false
+          },
+          {
+            "value": "0",
+            "text": "Pending Verification",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "expiry_status",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "All Expiries",
+            "selected": true
+          },
+          {
+            "value": "expired",
+            "text": "Expired",
+            "selected": false
+          },
+          {
+            "value": "expiring_soon",
+            "text": "Expiring Soon",
+            "selected": false
+          },
+          {
+            "value": "active",
+            "text": "Active / Valid",
+            "selected": false
+          },
+          {
+            "value": "lifetime",
+            "text": "Lifetime (No Expiry)",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "employee_id",
+        "id": "",
+        "required": true,
+        "options": [
+          {
+            "value": "",
+            "text": "Choose Employee",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "name": "document_type_id",
+        "id": "document_type_select",
+        "required": true,
+        "options": [
+          {
+            "value": "",
+            "text": "Choose Category",
+            "selected": true
+          }
+        ]
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle show",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Upload Document",
+        "type": "button",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Clear",
+        "type": "button",
+        "className": "btn btn-link link-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn-close",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Cancel",
+        "type": "button",
+        "className": "btn btn-link link-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Upload Record",
+        "type": "submit",
+        "className": "btn btn-primary ms-auto",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/documents#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/documents#navbar-employees",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/documents#navbar-leaves",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents#navbar-docs",
+        "className": "nav-link dropdown-toggle show"
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item active"
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/documents#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/documents#navbar-settings",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/documents#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Clear",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "btn btn-link link-secondary text-white-50"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/documents#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item active"
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item "
+      }
+    ],
+    "tables": [
+      {
+        "headers": [
+          "Employee",
+          "Document Category",
+          "File Name",
+          "Storage Disk",
+          "Expiry Date",
+          "Verification",
+          "Actions"
+        ],
+        "rowCount": 1
+      }
+    ],
+    "modals": [
+      {
+        "id": "modal-upload-doc",
+        "title": "Upload Compliance Document",
+        "buttons": ["", "Cancel", "Upload Record"]
+      },
+      {
+        "id": "",
+        "title": "Upload Compliance Document",
+        "buttons": ["", "Cancel", "Upload Record"]
+      }
+    ],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nLeave Management\nEmployee Loans\nAnnouncements\nDocuments\nDocument Types\nAll Documents\nReports\nSubscription & Billing\nSupport\nSettings\n Plan: Free Version\nApex Admin\nTenant Admin\nEmployee Document Directory\nReview, verify, and audit uploaded employee records.\nUpload Document\nEmployee\nAll Employees\nDocument Type\nAll Types\nVerification\nAll Statuses\nVerified Only\nPending Verification\nExpiry Status\nAll Expiries\nExpired\nExpiring Soon\nActive / Valid\nLifetime (No Expiry)\nClear\nEMPLOYEE\tDOCUMENT CATEGORY\tFILE NAME\tSTORAGE DISK\tEXPIRY DATE\tVERIFICATION\tACTIONS\n\n\nNo documents found matching parameters.\n\nShowing 0 to 0 of 0 entries\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "20-documents-upload",
+    "name": "Upload Document",
+    "url": "https://connect.rmd.city/public/documents/upload",
+    "finalUrl": "https://connect.rmd.city/public/documents/upload",
+    "module": "Documents",
+    "title": "Connect",
+    "screenshot": "docs/legacy-analysis/screenshots/20-documents-upload.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "Copy as Markdown",
+        "type": "button",
+        "className": "text-sm rounded-md border px-3 h-8 flex items-center gap-2 transition-colors duration-200 ease-in-out cursor-pointer shadow-xs text-neutral-600 dark:text-neutral-400 bg-white/5 border-neutral-200 hover:bg-neutral-100 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "rounded-md w-6 h-6 flex flex-shrink-0 items-center justify-center cursor-pointer border transition-colors duration-200 ease-in-out bg-white/5 border-neutral-200 hover:bg-neutral-100 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "flex h-6 w-6 cursor-pointer items-center justify-center rounded-md dark:border dark:border-white/8 group-hover:text-blue-500 group-hover:dark:text-emerald-500 text-neutral-500 dark:text-neutral-500 dark:bg-white/3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "flex h-6 w-6 cursor-pointer items-center justify-center rounded-md dark:border dark:border-white/8 group-hover:text-blue-500 group-hover:dark:text-emerald-500 text-blue-500 dark:text-emerald-500 dark:bg-white/5",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "cursor-pointer flex items-center justify-center w-8 h-8 rounded-md transition-colors text-neutral-600 cursor-not-allowed!",
+        "disabled": true,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "cursor-pointer flex items-center justify-center w-8 h-8 rounded-md transition-colors text-neutral-600 cursor-not-allowed!",
+        "disabled": true,
+        "onclick": ""
+      },
+      {
+        "text": "1",
+        "type": "button",
+        "className": "cursor-pointer flex items-center justify-center w-8 h-8 rounded-md text-sm font-medium transition-colors bg-blue-600 text-white",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "cursor-pointer flex items-center justify-center w-8 h-8 rounded-md transition-colors text-neutral-600 cursor-not-allowed!",
+        "disabled": true,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "cursor-pointer flex items-center justify-center w-8 h-8 rounded-md transition-colors text-neutral-600 cursor-not-allowed!",
+        "disabled": true,
+        "onclick": ""
+      }
+    ],
+    "links": [],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": "Method Not Allowed\nCopy as Markdown\nSymfony\\Component\\HttpKernel\\Exception\\MethodNotAllowedHttpException\nvendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php:130\n\nThe GET method is not supported for route documents/upload. Supported methods: DELETE.\n\nLARAVEL\n12.69.3\nPHP\n8.3.35\nUNHANDLED\nCODE 0\n405\nGET\nhttps://connect.rmd.city/public/documents/upload\nException trace\n31 vendor frames\nIlluminate\\Foundation\\Application->handleRequest(object(Illuminate\\Http\\Request))\npublic/index.php:20\n15\n16// Bootstrap Laravel and handle the request...\n17/** @var Application $app */\n18$app = require_once __DIR__.'/../bootstrap/app.php';\n19\n20$app->handleRequest(Request::capture());\n21\nQueries\n1-2 of 2\nmysql\nselect exists (select 1 from information_schema.tables where table_schema = schema() and table_name = 'system_settings' and table_type in ('BASE TABLE', 'SYSTEM VERSIONED')) as `exists`\n3.67ms\nmysql\nselect * from `system_settings`\n0.32ms\nHeaders\nACCEPT\ntext/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7\nACCEPT-ENCODING\ngzip, deflate, br, zstd\nACCEPT-LANGUAGE\nen-US,en;q=0.9\nCOOKIE\nremember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6IlJHUlI5R29Wbks1UGZ6eGZlT3FCc2c9PSIsInZhbHVlIjoiNll2OVhGTlNuc21PYTl0dVdxa0NjWnNGVGM0NWQwR3FVbFVUeGZpNU5DZ3VrZCsrLzY2NWRxNjBsVUE2TTg3NDRkQ2cvbjB0NnFzSFpaRWJXYS9JN0RKcUtnb3VCSXd4RURpYTZFeENhR1VraENEdFhGSmRUNVpSOXBOS2h2TU9UckZtUEtnR1dSQytweFZhaEFkczJUOFNuWU1oTDJacDBsYzJna2todzhDcE9HaGlISzN6cDg5Z05WVDlKSTZ4V09uVGNOYmN2ZTUwVlg0a2NFQ1VRWW0xeEQyWlRpZVk0RlVPQVRvOFNvUT0iLCJtYWMiOiI0ODFiNDdiMzU5YTc5YmMxYmQ1OTdlOGE1NWIwMTRhYWIzOGZhMmY2MWZiZTYxZGZiNDA2ODU4MjYxMTM5OWIxIiwidGFnIjoiIn0%3D; XSRF-TOKEN=eyJpdiI6IjM5NUFIN1NuMnFEVktVcHNOY3Jncnc9PSIsInZhbHVlIjoiZGFxQzZFcnVvMHY5TzVXQ2x6VWpTcW8ydUdIb2NKUDl6ZHVQOFhIeWg0cjg0aGE4bzFEOS9YRE5ScXZLaEltTDJicUlzL3BhUS9LUGdBc1hMWTBMVWVoQU5jUko0L2hScUhUSFpPc2ZkTFpWUEdwTUJsSFVwUFZIZ0FnVWxwcWIiLCJtYWMiOiI0NzljMGFlYWVjNDdlNjAw"
+  },
+  {
+    "id": "21-reports",
+    "name": "Reports & Analytics",
+    "url": "https://connect.rmd.city/public/reports",
+    "finalUrl": "https://connect.rmd.city/public/reports",
+    "module": "Reports",
+    "title": "Forbidden",
+    "screenshot": "docs/legacy-analysis/screenshots/21-reports.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [],
+    "links": [],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": "403\nTHE 'HR REPORTS & ANALYTICS' MODULE IS NOT INCLUDED IN YOUR ORGANIZATION'S ACTIVE SUBSCRIPTION PLAN. PLEASE CONTACT YOUR ADMINISTRATOR TO UPGRADE."
+  },
+  {
+    "id": "22-subscription",
+    "name": "Subscription & Billing",
+    "url": "https://connect.rmd.city/public/subscription",
+    "finalUrl": "https://connect.rmd.city/public/subscription",
+    "module": "Subscription",
+    "title": "Not Found",
+    "screenshot": "docs/legacy-analysis/screenshots/22-subscription.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [],
+    "links": [],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": "404\nNOT FOUND"
+  },
+  {
+    "id": "23-support",
+    "name": "Support Tickets",
+    "url": "https://connect.rmd.city/public/support",
+    "finalUrl": "https://connect.rmd.city/public/support",
+    "module": "Support",
+    "title": "Connect - Help & Support",
+    "screenshot": "docs/legacy-analysis/screenshots/23-support.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "subject",
+        "type": "text",
+        "id": "",
+        "placeholder": "Briefly describe the issue (e.g. Leave balance calculation mismatch)",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "description",
+        "type": "textarea",
+        "id": "",
+        "placeholder": "Please provide all details needed for our team to reproduce and resolve the issue...",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "New Support Ticket",
+        "type": "button",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn-close",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Cancel",
+        "type": "button",
+        "className": "btn btn-link link-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Submit Ticket",
+        "type": "submit",
+        "className": "btn btn-primary ms-auto",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/support#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/support#navbar-employees",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/support#navbar-leaves",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/support#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/support#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link active"
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/support#navbar-settings",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/support#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/support#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item "
+      }
+    ],
+    "tables": [
+      {
+        "headers": ["ID", "Subject", "Description", "Status", "Date Logged", "Actions"],
+        "rowCount": 1
+      }
+    ],
+    "modals": [
+      {
+        "id": "ticket-modal",
+        "title": "New Support Ticket",
+        "buttons": ["", "Cancel", "Submit Ticket"]
+      },
+      {
+        "id": "",
+        "title": "New Support Ticket",
+        "buttons": ["", "Cancel", "Submit Ticket"]
+      }
+    ],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nLeave Management\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\n Plan: Free Version\nApex Admin\nTenant Admin\nHelp & Support\nSubmit support tickets and track responses from our systems engineering team.\nNew Support Ticket\nID\tSUBJECT\tDESCRIPTION\tSTATUS\tDATE LOGGED\tACTIONS\n\n\nNo support tickets submitted yet. Need help? Click 'New Support Ticket'.\n\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "24-settings",
+    "name": "Organization Settings",
+    "url": "https://connect.rmd.city/public/settings",
+    "finalUrl": "https://connect.rmd.city/public/settings",
+    "module": "Settings",
+    "title": "Not Found",
+    "screenshot": "docs/legacy-analysis/screenshots/24-settings.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [],
+    "links": [],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": "404\nNOT FOUND"
+  },
+  {
+    "id": "25-letters",
+    "name": "Official Letters Builder",
+    "url": "https://connect.rmd.city/public/letters",
+    "finalUrl": "https://connect.rmd.city/public/letters",
+    "module": "Letters",
+    "title": "Not Found",
+    "screenshot": "docs/legacy-analysis/screenshots/25-letters.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [],
+    "links": [],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": "404\nNOT FOUND"
+  },
+  {
+    "id": "26-departments",
+    "name": "Departments Management",
+    "url": "https://connect.rmd.city/public/departments",
+    "finalUrl": "https://connect.rmd.city/public/departments",
+    "module": "Departments",
+    "title": "Connect - Departments",
+    "screenshot": "docs/legacy-analysis/screenshots/26-departments.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "id": "",
+        "placeholder": "IT Infrastructure, Human Resources, etc.",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "description",
+        "type": "textarea",
+        "id": "",
+        "placeholder": "Define the department's role within the organization",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [
+      {
+        "name": "parent_id",
+        "id": "",
+        "required": false,
+        "options": [
+          {
+            "value": "",
+            "text": "None",
+            "selected": true
+          }
+        ]
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle show",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Add Department",
+        "type": "button",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn-close btn-close-white",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Cancel",
+        "type": "button",
+        "className": "btn btn-link link-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Create Department",
+        "type": "submit",
+        "className": "btn btn-primary ms-auto",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/departments#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/departments#navbar-employees",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/departments#navbar-leaves",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/departments#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/departments#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/departments#navbar-settings",
+        "className": "nav-link dropdown-toggle show"
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item active"
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/departments#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/departments#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item active"
+      }
+    ],
+    "tables": [
+      {
+        "headers": ["Name", "Parent Department", "Description", "Created", "Actions"],
+        "rowCount": 1
+      }
+    ],
+    "modals": [
+      {
+        "id": "create-department-modal",
+        "title": "Add Department",
+        "buttons": ["", "Cancel", "Create Department"]
+      },
+      {
+        "id": "",
+        "title": "Add Department",
+        "buttons": ["", "Cancel", "Create Department"]
+      }
+    ],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nLeave Management\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\nOrganization Profile\nDepartments\nPositions\nRoles & Permissions\nNotification Templates\n Plan: Free Version\nApex Admin\nTenant Admin\nDepartments\nManage organizational units and hierarchy tree structure.\nAdd Department\nNAME\tPARENT DEPARTMENT\tDESCRIPTION\tCREATED\tACTIONS\nNo departments found. Create one to get started!\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "27-designations",
+    "name": "Designations Management",
+    "url": "https://connect.rmd.city/public/designations",
+    "finalUrl": "https://connect.rmd.city/public/designations",
+    "module": "Designations",
+    "title": "Connect - Designations",
+    "screenshot": "docs/legacy-analysis/screenshots/27-designations.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false,
+        "value": "Aohjmx8esCYIvUz2Wqpgflhoxg4NdNBf6Vj3AylB",
+        "ariaLabel": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "id": "",
+        "placeholder": "Senior Software Engineer, HR Specialist, etc.",
+        "required": true,
+        "value": "",
+        "ariaLabel": ""
+      },
+      {
+        "name": "description",
+        "type": "textarea",
+        "id": "",
+        "placeholder": "Brief details about the role's primary function",
+        "required": false,
+        "value": "",
+        "ariaLabel": ""
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Employees",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Leave Management",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Documents",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Reports",
+        "type": "button",
+        "className": "nav-link dropdown-toggle ",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Settings",
+        "type": "button",
+        "className": "nav-link dropdown-toggle show",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 me-3",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn btn-link nav-link px-0 text-reset border-0 theme-toggle-btn",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Sign Out",
+        "type": "submit",
+        "className": "dropdown-item text-danger border-0 bg-transparent w-100 text-start",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Add Designation",
+        "type": "button",
+        "className": "btn btn-primary",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "btn-close btn-close-white",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Cancel",
+        "type": "button",
+        "className": "btn btn-link link-secondary text-white-50",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Create Designation",
+        "type": "submit",
+        "className": "btn btn-primary ms-auto",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Not Now",
+        "type": "button",
+        "className": "btn btn-sm btn-link text-muted me-2",
+        "disabled": false,
+        "onclick": ""
+      },
+      {
+        "text": "Install",
+        "type": "button",
+        "className": "btn btn-sm btn-primary",
+        "disabled": false,
+        "onclick": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Connect Connect",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "text-white text-decoration-none fw-bold d-flex align-items-center"
+      },
+      {
+        "text": "",
+        "href": "https://connect.rmd.city/public/designations#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "nav-link "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/designations#navbar-employees",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "All Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Add Employee",
+        "href": "https://connect.rmd.city/public/employees/create",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Import / Export",
+        "href": "https://connect.rmd.city/public/employees/import-export",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Management",
+        "href": "https://connect.rmd.city/public/designations#navbar-leaves",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Leave Requests",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Balances",
+        "href": "https://connect.rmd.city/public/leaves/balances",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Types",
+        "href": "https://connect.rmd.city/public/leaves/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Holidays",
+        "href": "https://connect.rmd.city/public/holidays",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Calendar View",
+        "href": "https://connect.rmd.city/public/leaves/calendar",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Loans",
+        "href": "https://connect.rmd.city/public/payroll/loans",
+        "className": "nav-link "
+      },
+      {
+        "text": "Announcements",
+        "href": "https://connect.rmd.city/public/announcements",
+        "className": "nav-link "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/designations#navbar-docs",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Document Types",
+        "href": "https://connect.rmd.city/public/documents/types",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "All Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Reports",
+        "href": "https://connect.rmd.city/public/designations#navbar-reports",
+        "className": "nav-link dropdown-toggle "
+      },
+      {
+        "text": "Reports Overview",
+        "href": "https://connect.rmd.city/public/reports",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Employee Reports",
+        "href": "https://connect.rmd.city/public/reports/employees",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Leave Reports",
+        "href": "https://connect.rmd.city/public/reports/leaves",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Document Expiries",
+        "href": "https://connect.rmd.city/public/reports/documents",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Loan Summaries",
+        "href": "https://connect.rmd.city/public/reports/loans",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Subscription & Billing",
+        "href": "https://connect.rmd.city/public/settings/subscription",
+        "className": "nav-link "
+      },
+      {
+        "text": "Support",
+        "href": "https://connect.rmd.city/public/support",
+        "className": "nav-link "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/designations#navbar-settings",
+        "className": "nav-link dropdown-toggle show"
+      },
+      {
+        "text": "Organization Profile",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Departments",
+        "href": "https://connect.rmd.city/public/departments",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Positions",
+        "href": "https://connect.rmd.city/public/designations",
+        "className": "dropdown-item active"
+      },
+      {
+        "text": "Roles & Permissions",
+        "href": "https://connect.rmd.city/public/settings/roles",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Notification Templates",
+        "href": "https://connect.rmd.city/public/settings/templates",
+        "className": "dropdown-item "
+      },
+      {
+        "text": "Apex Admin Tenant Admin",
+        "href": "https://connect.rmd.city/public/designations#",
+        "className": "nav-link d-flex lh-1 text-reset p-0"
+      },
+      {
+        "text": "Dashboard",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "dropdown-item"
+      },
+      {
+        "text": "Connect",
+        "href": "https://connect.rmd.city/public/designations#",
+        "className": "text-primary fw-bold"
+      },
+      {
+        "text": "Home",
+        "href": "https://connect.rmd.city/public/dashboard",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Employees",
+        "href": "https://connect.rmd.city/public/employees",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Leaves",
+        "href": "https://connect.rmd.city/public/leaves/requests",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Documents",
+        "href": "https://connect.rmd.city/public/documents",
+        "className": "mobile-bottom-nav-item "
+      },
+      {
+        "text": "Settings",
+        "href": "https://connect.rmd.city/public/settings/profile",
+        "className": "mobile-bottom-nav-item active"
+      }
+    ],
+    "tables": [
+      {
+        "headers": ["Job Title / Designation", "Description", "Created", "Actions"],
+        "rowCount": 1
+      }
+    ],
+    "modals": [
+      {
+        "id": "create-designation-modal",
+        "title": "Add Designation",
+        "buttons": ["", "Cancel", "Create Designation"]
+      },
+      {
+        "id": "",
+        "title": "Add Designation",
+        "buttons": ["", "Cancel", "Create Designation"]
+      }
+    ],
+    "tabs": [],
+    "bodySnippet": " Connect\nDashboard\nEmployees\nLeave Management\nEmployee Loans\nAnnouncements\nDocuments\nReports\nSubscription & Billing\nSupport\nSettings\nOrganization Profile\nDepartments\nPositions\nRoles & Permissions\nNotification Templates\n Plan: Free Version\nApex Admin\nTenant Admin\nDesignations\nManage job roles, titles, and definitions within the company.\nAdd Designation\nJOB TITLE / DESIGNATION\tDESCRIPTION\tCREATED\tACTIONS\nNo designations found. Add your company job titles!\nCopyright © 2026 Connect. All rights reserved."
+  },
+  {
+    "id": "28-checklists",
+    "name": "Onboarding Checklists",
+    "url": "https://connect.rmd.city/public/checklists",
+    "finalUrl": "https://connect.rmd.city/public/checklists",
+    "module": "Checklists",
+    "title": "Not Found",
+    "screenshot": "docs/legacy-analysis/screenshots/28-checklists.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [],
+    "links": [],
+    "tables": [],
+    "modals": [],
+    "tabs": [],
+    "bodySnippet": "404\nNOT FOUND"
+  }
+]

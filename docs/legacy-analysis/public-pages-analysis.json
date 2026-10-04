@@ -1,0 +1,548 @@
+[
+  {
+    "name": "01-landing",
+    "url": "https://connect.rmd.city/public/",
+    "finalUrl": "https://connect.rmd.city/public/",
+    "status": 200,
+    "title": "Glix Connect HR Portal",
+    "screenshot": "docs/legacy-analysis/screenshots/01-landing.png",
+    "inputs": [
+      {
+        "name": "",
+        "type": "checkbox",
+        "id": "billing-cycle-toggle",
+        "placeholder": "",
+        "required": false
+      },
+      {
+        "name": "",
+        "type": "range",
+        "id": "employee-slider",
+        "placeholder": "",
+        "required": false
+      },
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "id": "",
+        "placeholder": "e.g. John Doe",
+        "required": true
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "id": "",
+        "placeholder": "e.g. john@company.com",
+        "required": true
+      },
+      {
+        "name": "phone",
+        "type": "text",
+        "id": "",
+        "placeholder": "e.g. +971 50 123 4567",
+        "required": false
+      },
+      {
+        "name": "subject",
+        "type": "text",
+        "id": "",
+        "placeholder": "e.g. Enterprise Trial Request",
+        "required": false
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "Sign In",
+        "type": "button",
+        "className": "btn btn-outline-light px-3 px-md-4 me-2 text-white"
+      },
+      {
+        "text": "Register Org",
+        "type": "button",
+        "className": "btn btn-brand px-3 px-md-4 d-none d-sm-inline-block"
+      },
+      {
+        "text": "",
+        "type": "button",
+        "className": "navbar-toggler ms-2 border-secondary"
+      },
+      {
+        "text": "Get Started Now",
+        "type": "button",
+        "className": "btn btn-brand btn-lg px-5 py-3 fs-3 fw-bold"
+      },
+      {
+        "text": "Register Org",
+        "type": "button",
+        "className": "btn btn-outline-light btn-lg px-5 py-3 fs-3 text-white"
+      },
+      {
+        "text": "Select Plan",
+        "type": "button",
+        "className": "btn btn-outline-light text-white w-100 py-3 fs-3"
+      },
+      {
+        "text": "Send Message",
+        "type": "submit",
+        "className": "btn btn-brand btn-lg px-4"
+      }
+    ],
+    "links": [
+      {
+        "text": "Glix Connect\n                        \n                    \n                                            \n                            \n                            Glix Connect",
+        "href": "https://connect.rmd.city/public"
+      },
+      {
+        "text": "Sign In",
+        "href": "https://connect.rmd.city/public/login"
+      },
+      {
+        "text": "Register Org",
+        "href": "https://connect.rmd.city/public/register"
+      },
+      {
+        "text": "Features",
+        "href": "https://connect.rmd.city/public/#features"
+      },
+      {
+        "text": "Pricing",
+        "href": "https://connect.rmd.city/public/#pricing"
+      },
+      {
+        "text": "FAQ",
+        "href": "https://connect.rmd.city/public/#faq"
+      },
+      {
+        "text": "Contact",
+        "href": "https://connect.rmd.city/public/#contact"
+      },
+      {
+        "text": "Get Started Now",
+        "href": "https://connect.rmd.city/public/login"
+      },
+      {
+        "text": "Register Org",
+        "href": "https://connect.rmd.city/public/register"
+      },
+      {
+        "text": "Select Plan",
+        "href": "https://connect.rmd.city/public/tenant/setup?plan=free"
+      },
+      {
+        "text": "Privacy Policy",
+        "href": "https://connect.rmd.city/public/privacy-policy"
+      },
+      {
+        "text": "Terms & Conditions",
+        "href": "https://connect.rmd.city/public/terms-conditions"
+      },
+      {
+        "text": "Refund Policy",
+        "href": "https://connect.rmd.city/public/refund-policy"
+      }
+    ],
+    "bodySnippet": " Glix Connect\nSign In\n Register Org\nFeatures\nPricing\nFAQ\nContact\nSaaS Organization Management Portal\nCentralized HR Operations & Document Automation\n\nManage onboarding checklists, leave applications, automated document expiries, payroll batches, and secure cloud storage in one high-performance dashboard.\n\nGet Started Now\nRegister Org\n edocs.glix.ae/dashboard\nGC\nGlix Connect\nDashboard\nEmployees\nLeaves\nAnnouncements\nDocuments\nSystem Control Dashboard\nLive Sync\nActive Employees\n124\nPending Leaves\n3\nExpiring Docs\n8\nRecent Activity\nPassport Expiry alert\tJohn Doe\tExpires in 12 days\nAnnual Leave approved\tSarah Jenkins\tApproved by Admin\nAnnouncement published\tOffice Renovation Notice\tPublished\nPlatform Capabilities\n\nEnterprise-grade modules designed to automate daily operations\n\nOnboarding Checklists\n\nDefine reusable onboarding checklist templates, assign tasks, and track step-by-step progress for new hires.\n\nLeave & Vacation Planner\n\nApply for leaves, track dynamic entitlement balances, view team calendars, and process approvals with one click.\n\nDocument Automation\n\nSecurely upload documents, receive email alerts before critical expiries, and verify validity status instantly.\n\nOfficial Letters Builder\n\nGenerate professional HR letters, salary certificates, and official documents dynamically for employees.\n\nMulti-Tenant Context\n\nIsolate organization datasets completely using Spatie teams, enforcing strict tenant access controls and rules.\n\nHybrid Storage Integration\n\nStore data local"
+  },
+  {
+    "name": "02-login",
+    "url": "https://connect.rmd.city/public/login",
+    "finalUrl": "https://connect.rmd.city/public/login",
+    "status": 200,
+    "title": "Sign In - Glix Connect HR Portal",
+    "screenshot": "docs/legacy-analysis/screenshots/02-login.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      },
+      {
+        "name": "login",
+        "type": "text",
+        "id": "",
+        "placeholder": "name@company.com or EMP-001",
+        "required": true
+      },
+      {
+        "name": "password",
+        "type": "password",
+        "id": "",
+        "placeholder": "•••••••• or YYYY-MM-DD",
+        "required": true
+      },
+      {
+        "name": "remember",
+        "type": "checkbox",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "Sign In to Account",
+        "type": "submit",
+        "className": "btn btn-primary w-100 mt-2"
+      }
+    ],
+    "links": [
+      {
+        "text": "Register Organization",
+        "href": "https://connect.rmd.city/public/register"
+      },
+      {
+        "text": "Back to Landing Page",
+        "href": "https://connect.rmd.city/public"
+      }
+    ],
+    "bodySnippet": "Glix Connect HR\n\nSign in with your local account credentials\n\nEmail Address or Employee ID\nPassword or Date of Birth\nKeep me signed in\nSign In to Account\nDon't have an account? Register Organization\n Back to Landing Page"
+  },
+  {
+    "name": "03-superadmin-login",
+    "url": "https://connect.rmd.city/public/superadmin/login",
+    "finalUrl": "https://connect.rmd.city/public/superadmin/login",
+    "status": 200,
+    "title": "Sign In - Glix System Control Panel",
+    "screenshot": "docs/legacy-analysis/screenshots/03-superadmin-login.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "id": "",
+        "placeholder": "superadmin@glix.ae",
+        "required": true
+      },
+      {
+        "name": "password",
+        "type": "password",
+        "id": "",
+        "placeholder": "••••••••",
+        "required": true
+      },
+      {
+        "name": "remember",
+        "type": "checkbox",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "Sign In to CP",
+        "type": "submit",
+        "className": "btn btn-primary w-100 mt-2"
+      }
+    ],
+    "links": [],
+    "bodySnippet": "Glix System Control\n\nAccess reserved for system Super Administrators.\n\nSuperadmin Email\nPassword\nRemember me on this device\nSign In to CP"
+  },
+  {
+    "name": "04-register-org",
+    "url": "https://connect.rmd.city/public/register",
+    "finalUrl": "https://connect.rmd.city/public/register",
+    "status": 200,
+    "title": "Register Organization - Glix Connect",
+    "screenshot": "docs/legacy-analysis/screenshots/04-register-org.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "id": "",
+        "placeholder": "Full Name",
+        "required": true
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "id": "",
+        "placeholder": "admin@organization.com",
+        "required": true
+      },
+      {
+        "name": "password",
+        "type": "password",
+        "id": "",
+        "placeholder": "Min. 8 characters",
+        "required": true
+      },
+      {
+        "name": "password_confirmation",
+        "type": "password",
+        "id": "",
+        "placeholder": "Repeat password",
+        "required": true
+      },
+      {
+        "name": "org_name",
+        "type": "text",
+        "id": "",
+        "placeholder": "e.g. Acme Corporation",
+        "required": true
+      },
+      {
+        "name": "org_slug",
+        "type": "text",
+        "id": "",
+        "placeholder": "acme-corp",
+        "required": true
+      },
+      {
+        "name": "org_phone",
+        "type": "text",
+        "id": "",
+        "placeholder": "+971 -- --- ----",
+        "required": false
+      },
+      {
+        "name": "plan_id",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      },
+      {
+        "name": "",
+        "type": "radio",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      },
+      {
+        "name": "org_industry",
+        "type": "text",
+        "id": "",
+        "placeholder": "e.g. Technology, Retail, Hospitality, Logistics",
+        "required": false
+      }
+    ],
+    "selects": [
+      {
+        "name": "org_currency",
+        "id": "",
+        "options": [
+          "AED - UAE Dirham",
+          "USD - US Dollar",
+          "EUR - Euro",
+          "GBP - British Pound",
+          "INR - Indian Rupee",
+          "SAR - Saudi Riyal",
+          "QAR - Qatari Riyal",
+          "OMR - Omani Rial",
+          "BHD - Bahraini Dinar"
+        ]
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Continue",
+        "type": "button",
+        "className": "btn btn-primary px-5"
+      },
+      {
+        "text": "Back",
+        "type": "button",
+        "className": "btn btn-secondary px-4"
+      },
+      {
+        "text": "Continue",
+        "type": "button",
+        "className": "btn btn-primary px-5"
+      },
+      {
+        "text": "Back",
+        "type": "button",
+        "className": "btn btn-secondary px-4"
+      },
+      {
+        "text": "Continue",
+        "type": "button",
+        "className": "btn btn-primary px-5"
+      },
+      {
+        "text": "Back",
+        "type": "button",
+        "className": "btn btn-secondary px-4"
+      },
+      {
+        "text": "Complete Signup",
+        "type": "submit",
+        "className": "btn btn-primary px-5"
+      }
+    ],
+    "links": [
+      {
+        "text": "Sign In here",
+        "href": "https://connect.rmd.city/public/login"
+      }
+    ],
+    "bodySnippet": "Create Workspace\n\nRegister organization and set up admin access in 4 quick steps.\n\n1\nAdmin Account\n2\nOrganization\n3\nSelect Plan\n4\nFinalize\nAdministrator Details\n\nEnter owner or administrator profile details.\n\nAdministrator Name\nEmail Address\nPassword\nConfirm Password\nContinue\nAlready registered? Sign In here"
+  },
+  {
+    "name": "05-tenant-setup",
+    "url": "https://connect.rmd.city/public/tenant/setup?plan=free",
+    "finalUrl": "https://connect.rmd.city/public/login",
+    "status": 200,
+    "title": "Sign In - Glix Connect HR Portal",
+    "screenshot": "docs/legacy-analysis/screenshots/05-tenant-setup.png",
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "hidden",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      },
+      {
+        "name": "login",
+        "type": "text",
+        "id": "",
+        "placeholder": "name@company.com or EMP-001",
+        "required": true
+      },
+      {
+        "name": "password",
+        "type": "password",
+        "id": "",
+        "placeholder": "•••••••• or YYYY-MM-DD",
+        "required": true
+      },
+      {
+        "name": "remember",
+        "type": "checkbox",
+        "id": "",
+        "placeholder": "",
+        "required": false
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "Sign In to Account",
+        "type": "submit",
+        "className": "btn btn-primary w-100 mt-2"
+      }
+    ],
+    "links": [
+      {
+        "text": "Register Organization",
+        "href": "https://connect.rmd.city/public/register"
+      },
+      {
+        "text": "Back to Landing Page",
+        "href": "https://connect.rmd.city/public"
+      }
+    ],
+    "bodySnippet": "Glix Connect HR\n\nSign in with your local account credentials\n\nEmail Address or Employee ID\nPassword or Date of Birth\nKeep me signed in\nSign In to Account\nDon't have an account? Register Organization\n Back to Landing Page"
+  },
+  {
+    "name": "06-privacy-policy",
+    "url": "https://connect.rmd.city/public/privacy-policy",
+    "finalUrl": "https://connect.rmd.city/public/privacy-policy",
+    "status": 200,
+    "title": "Privacy Policy - Glix Connect",
+    "screenshot": "docs/legacy-analysis/screenshots/06-privacy-policy.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "Back to Home",
+        "type": "button",
+        "className": "btn btn-outline-light px-3 px-md-4 text-white"
+      }
+    ],
+    "links": [
+      {
+        "text": "Glix Connect\n                        \n                    \n                                            \n                            \n                            Glix Connect",
+        "href": "https://connect.rmd.city/public"
+      },
+      {
+        "text": "Back to Home",
+        "href": "https://connect.rmd.city/public"
+      }
+    ],
+    "bodySnippet": " Glix Connect\nBack to Home\nLegal & Policies\nPrivacy Policy\n\nLast Updated: October 2026\n\nThis policy has not yet been configured in the System Control Panel.\nGlix Connect\n© 2026 Glix Connect HR Portal. All rights reserved."
+  },
+  {
+    "name": "07-terms-conditions",
+    "url": "https://connect.rmd.city/public/terms-conditions",
+    "finalUrl": "https://connect.rmd.city/public/terms-conditions",
+    "status": 200,
+    "title": "Terms & Conditions - Glix Connect",
+    "screenshot": "docs/legacy-analysis/screenshots/07-terms-conditions.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "Back to Home",
+        "type": "button",
+        "className": "btn btn-outline-light px-3 px-md-4 text-white"
+      }
+    ],
+    "links": [
+      {
+        "text": "Glix Connect\n                        \n                    \n                                            \n                            \n                            Glix Connect",
+        "href": "https://connect.rmd.city/public"
+      },
+      {
+        "text": "Back to Home",
+        "href": "https://connect.rmd.city/public"
+      }
+    ],
+    "bodySnippet": " Glix Connect\nBack to Home\nLegal & Policies\nTerms & Conditions\n\nLast Updated: October 2026\n\nThis policy has not yet been configured in the System Control Panel.\nGlix Connect\n© 2026 Glix Connect HR Portal. All rights reserved."
+  },
+  {
+    "name": "08-refund-policy",
+    "url": "https://connect.rmd.city/public/refund-policy",
+    "finalUrl": "https://connect.rmd.city/public/refund-policy",
+    "status": 200,
+    "title": "Refund Policy - Glix Connect",
+    "screenshot": "docs/legacy-analysis/screenshots/08-refund-policy.png",
+    "inputs": [],
+    "selects": [],
+    "buttons": [
+      {
+        "text": "Back to Home",
+        "type": "button",
+        "className": "btn btn-outline-light px-3 px-md-4 text-white"
+      }
+    ],
+    "links": [
+      {
+        "text": "Glix Connect\n                        \n                    \n                                            \n                            \n                            Glix Connect",
+        "href": "https://connect.rmd.city/public"
+      },
+      {
+        "text": "Back to Home",
+        "href": "https://connect.rmd.city/public"
+      }
+    ],
+    "bodySnippet": " Glix Connect\nBack to Home\nLegal & Policies\nRefund Policy\n\nLast Updated: October 2026\n\nThis policy has not yet been configured in the System Control Panel.\nGlix Connect\n© 2026 Glix Connect HR Portal. All rights reserved."
+  }
+]

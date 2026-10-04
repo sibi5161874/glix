@@ -1,0 +1,317 @@
+{
+  "dropdowns": [
+    {
+      "toggle": "",
+      "items": [
+        {
+          "text": "Dashboard",
+          "href": "https://connect.rmd.city/public/dashboard"
+        },
+        {
+          "text": "Sign Out"
+        },
+        {
+          "text": "Sign Out"
+        }
+      ]
+    },
+    {
+      "toggle": "Employees",
+      "items": [
+        {
+          "text": "All Employees",
+          "href": "https://connect.rmd.city/public/employees"
+        },
+        {
+          "text": "Add Employee",
+          "href": "https://connect.rmd.city/public/employees/create"
+        },
+        {
+          "text": "Import / Export",
+          "href": "https://connect.rmd.city/public/employees/import-export"
+        }
+      ]
+    },
+    {
+      "toggle": "Leave Management",
+      "items": [
+        {
+          "text": "Leave Requests",
+          "href": "https://connect.rmd.city/public/leaves/requests"
+        },
+        {
+          "text": "Leave Balances",
+          "href": "https://connect.rmd.city/public/leaves/balances"
+        },
+        {
+          "text": "Leave Types",
+          "href": "https://connect.rmd.city/public/leaves/types"
+        },
+        {
+          "text": "Holidays",
+          "href": "https://connect.rmd.city/public/holidays"
+        },
+        {
+          "text": "Calendar View",
+          "href": "https://connect.rmd.city/public/leaves/calendar"
+        }
+      ]
+    },
+    {
+      "toggle": "Documents",
+      "items": [
+        {
+          "text": "Document Types",
+          "href": "https://connect.rmd.city/public/documents/types"
+        },
+        {
+          "text": "All Documents",
+          "href": "https://connect.rmd.city/public/documents"
+        }
+      ]
+    },
+    {
+      "toggle": "Reports",
+      "items": [
+        {
+          "text": "Reports Overview",
+          "href": "https://connect.rmd.city/public/reports"
+        },
+        {
+          "text": "Employee Reports",
+          "href": "https://connect.rmd.city/public/reports/employees"
+        },
+        {
+          "text": "Leave Reports",
+          "href": "https://connect.rmd.city/public/reports/leaves"
+        },
+        {
+          "text": "Document Expiries",
+          "href": "https://connect.rmd.city/public/reports/documents"
+        },
+        {
+          "text": "Loan Summaries",
+          "href": "https://connect.rmd.city/public/reports/loans"
+        }
+      ]
+    },
+    {
+      "toggle": "Settings",
+      "items": [
+        {
+          "text": "Organization Profile",
+          "href": "https://connect.rmd.city/public/settings/profile"
+        },
+        {
+          "text": "Departments",
+          "href": "https://connect.rmd.city/public/departments"
+        },
+        {
+          "text": "Positions",
+          "href": "https://connect.rmd.city/public/designations"
+        },
+        {
+          "text": "Roles & Permissions",
+          "href": "https://connect.rmd.city/public/settings/roles"
+        },
+        {
+          "text": "Notification Templates",
+          "href": "https://connect.rmd.city/public/settings/templates"
+        }
+      ]
+    },
+    {
+      "toggle": "",
+      "items": [
+        {
+          "text": "Dashboard",
+          "href": "https://connect.rmd.city/public/dashboard"
+        },
+        {
+          "text": "Sign Out"
+        },
+        {
+          "text": "Sign Out"
+        }
+      ]
+    }
+  ],
+  "allLinks": [
+    {
+      "text": "Connect Connect",
+      "href": "https://connect.rmd.city/public/dashboard"
+    },
+    {
+      "text": "",
+      "href": "https://connect.rmd.city/public/dashboard#"
+    },
+    {
+      "text": "Dashboard",
+      "href": "https://connect.rmd.city/public/dashboard"
+    },
+    {
+      "text": "Dashboard",
+      "href": "https://connect.rmd.city/public/dashboard"
+    },
+    {
+      "text": "Employees",
+      "href": "https://connect.rmd.city/public/dashboard#navbar-employees"
+    },
+    {
+      "text": "All Employees",
+      "href": "https://connect.rmd.city/public/employees"
+    },
+    {
+      "text": "Add Employee",
+      "href": "https://connect.rmd.city/public/employees/create"
+    },
+    {
+      "text": "Import / Export",
+      "href": "https://connect.rmd.city/public/employees/import-export"
+    },
+    {
+      "text": "Leave Management",
+      "href": "https://connect.rmd.city/public/dashboard#navbar-leaves"
+    },
+    {
+      "text": "Leave Requests",
+      "href": "https://connect.rmd.city/public/leaves/requests"
+    },
+    {
+      "text": "Leave Balances",
+      "href": "https://connect.rmd.city/public/leaves/balances"
+    },
+    {
+      "text": "Leave Types",
+      "href": "https://connect.rmd.city/public/leaves/types"
+    },
+    {
+      "text": "Holidays",
+      "href": "https://connect.rmd.city/public/holidays"
+    },
+    {
+      "text": "Calendar View",
+      "href": "https://connect.rmd.city/public/leaves/calendar"
+    },
+    {
+      "text": "Employee Loans",
+      "href": "https://connect.rmd.city/public/payroll/loans"
+    },
+    {
+      "text": "Announcements",
+      "href": "https://connect.rmd.city/public/announcements"
+    },
+    {
+      "text": "Documents",
+      "href": "https://connect.rmd.city/public/dashboard#navbar-docs"
+    },
+    {
+      "text": "Document Types",
+      "href": "https://connect.rmd.city/public/documents/types"
+    },
+    {
+      "text": "All Documents",
+      "href": "https://connect.rmd.city/public/documents"
+    },
+    {
+      "text": "Reports",
+      "href": "https://connect.rmd.city/public/dashboard#navbar-reports"
+    },
+    {
+      "text": "Reports Overview",
+      "href": "https://connect.rmd.city/public/reports"
+    },
+    {
+      "text": "Employee Reports",
+      "href": "https://connect.rmd.city/public/reports/employees"
+    },
+    {
+      "text": "Leave Reports",
+      "href": "https://connect.rmd.city/public/reports/leaves"
+    },
+    {
+      "text": "Document Expiries",
+      "href": "https://connect.rmd.city/public/reports/documents"
+    },
+    {
+      "text": "Loan Summaries",
+      "href": "https://connect.rmd.city/public/reports/loans"
+    },
+    {
+      "text": "Subscription & Billing",
+      "href": "https://connect.rmd.city/public/settings/subscription"
+    },
+    {
+      "text": "Support",
+      "href": "https://connect.rmd.city/public/support"
+    },
+    {
+      "text": "Settings",
+      "href": "https://connect.rmd.city/public/dashboard#navbar-settings"
+    },
+    {
+      "text": "Organization Profile",
+      "href": "https://connect.rmd.city/public/settings/profile"
+    },
+    {
+      "text": "Departments",
+      "href": "https://connect.rmd.city/public/departments"
+    },
+    {
+      "text": "Positions",
+      "href": "https://connect.rmd.city/public/designations"
+    },
+    {
+      "text": "Roles & Permissions",
+      "href": "https://connect.rmd.city/public/settings/roles"
+    },
+    {
+      "text": "Notification Templates",
+      "href": "https://connect.rmd.city/public/settings/templates"
+    },
+    {
+      "text": "Apex Admin Tenant Admin",
+      "href": "https://connect.rmd.city/public/dashboard#"
+    },
+    {
+      "text": "Dashboard",
+      "href": "https://connect.rmd.city/public/dashboard"
+    },
+    {
+      "text": "Add Employee",
+      "href": "https://connect.rmd.city/public/employees/create"
+    },
+    {
+      "text": "0 Pending Loans",
+      "href": "https://connect.rmd.city/public/payroll/loans?status=pending"
+    },
+    {
+      "text": "Edit Settings",
+      "href": "https://connect.rmd.city/public/settings/profile"
+    },
+    {
+      "text": "Connect",
+      "href": "https://connect.rmd.city/public/dashboard#"
+    },
+    {
+      "text": "Home",
+      "href": "https://connect.rmd.city/public/dashboard"
+    },
+    {
+      "text": "Employees",
+      "href": "https://connect.rmd.city/public/employees"
+    },
+    {
+      "text": "Leaves",
+      "href": "https://connect.rmd.city/public/leaves/requests"
+    },
+    {
+      "text": "Documents",
+      "href": "https://connect.rmd.city/public/documents"
+    },
+    {
+      "text": "Settings",
+      "href": "https://connect.rmd.city/public/settings/profile"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+auto_approve_all: true
+allow_terminal_commands: true
+skip_confirmation_prompts: true

@@ -52,3 +52,18 @@ supabase/.temp/
 # ── Misc ─────────────────────────────────────
 *.bak
 *.tmp
+
+# ── history ─────────────────────────────────────
+.history
+
+
+
+# ── Legacy analysis (internal reference only) ─────
+docs/legacy-analysis/screenshots/*.png
+docs/legacy-analysis/screenshots/*.jpg
+docs/legacy-analysis/screenshots/*.jpeg
+docs/legacy-analysis/screenshots/*.webp
+docs/legacy-analysis/*.har
+docs/legacy-analysis/.credentials*
+
+docs/legacy-analysis/00-client-brief.md

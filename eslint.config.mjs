@@ -45,5 +45,13 @@ export default tseslint.config(
     },
   },
 
+  {
+    files: ["scripts/**"],
+    rules: {
+      "no-console": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
+
   prettier,
 );

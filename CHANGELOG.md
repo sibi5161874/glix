@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Step 4: Documentation block — `ARCHITECTURE.md`, `DATA_MODEL.md`, `UI_SPEC.md`,
   and 5 core architecture diagrams (`system-overview`, `data-flow`, `auth-flow`,
   `entity-relationships`, `tenant-isolation`).
+- Added Global Backend Engineering Constitution (`.agents/rules/backend-constitution.md`) and Global Engineering Constitution (`.agents/rules/engineering-constitution.md`).
 
 ### Changed
 - `README.md` — replaced placeholder with full project documentation.
