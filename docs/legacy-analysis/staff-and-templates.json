@@ -1,0 +1,27 @@
+{
+  "testedAt": "2026-10-04T15:35:13.249Z",
+  "empCode": "EMP-5734",
+  "empEmail": "omar.staff.5734@glix-hr.ae",
+  "empDob": "1992-08-20",
+  "capturedApisCount": 0,
+  "capturedApisSample": [],
+  "emailTemplates": [
+    "Automated System Notifications Template Name Email Subject Placeholders Available Last Modified Action Document Expiration Notice Key: document_expiry Important: Document Expiration Notice {employee_name} {document_type} {filename} {expiry_date} {portal_url} 2 days ago Edit Template New Leave Request (To Admin) Key: leave_applied New Leave Request Applied - {employee_name} {employee_name} {leave_type} {start_date} {end_date} {total_days} {reason} {portal_url} 2 days ago Edit Template Leave Request Decision Key: leave_status Leave Request Status Updated - {status} {employee_name} {leave_type} {start_date} {end_date} {total_days} {status} {status_color} {admin_notes} {portal_url} 2 days ago Edit Template Onboarding Checklist Assigned Key: onboarding_assigned Onboarding Checklist Assigned {employee_name} {designation} {department} {joining_date} {portal_url} 2 days ago Edit Template Billing Invoice Generated Key: billing_invoice_created New Invoice Generated - {invoice_number} {tenant_name} {amount} {invoice_number} {status} {app_name} 2 days ago Edit Template Billing Invoice Paid Key: billing_invoice_paid Invoice Paid Confirmation - {invoice_number} {tenant_name} {amount} {invoice_number} {app_name} 2 days ago Edit Template",
+    "Document Expiration Notice Key: document_expiry Important: Document Expiration Notice {employee_name} {document_type} {filename} {expiry_date} {portal_url} 2 days ago Edit Template",
+    "New Leave Request (To Admin) Key: leave_applied New Leave Request Applied - {employee_name} {employee_name} {leave_type} {start_date} {end_date} {total_days} {reason} {portal_url} 2 days ago Edit Template",
+    "Leave Request Decision Key: leave_status Leave Request Status Updated - {status} {employee_name} {leave_type} {start_date} {end_date} {total_days} {status} {status_color} {admin_notes} {portal_url} 2 days ago Edit Template",
+    "Onboarding Checklist Assigned Key: onboarding_assigned Onboarding Checklist Assigned {employee_name} {designation} {department} {joining_date} {portal_url} 2 days ago Edit Template",
+    "Billing Invoice Generated Key: billing_invoice_created New Invoice Generated - {invoice_number} {tenant_name} {amount} {invoice_number} {status} {app_name} 2 days ago Edit Template",
+    "Billing Invoice Paid Key: billing_invoice_paid Invoice Paid Confirmation - {invoice_number} {tenant_name} {amount} {invoice_number} {app_name} 2 days ago Edit Template"
+  ],
+  "whatsappTemplates": [
+    "WhatsApp Business API Templates Template Name Meta Template Name Language Status Placeholders Available Action Document Expiration Reminder Key: document_expiry document_expiry en_US Active (employee_name) (app_name) (document_type) (expiry_date) Edit Template New Leave Request (Admin Notification) Key: leave_applied leave_applied en_US Active (employee_name) Edit Template Leave Approved Notification Key: leave_approved leave_approved en_US Active (employee_name) (remarks) Edit Template Leave Rejected Notification Key: leave_rejected leave_rejected en_US Active (employee_name) (remarks) Edit Template Onboarding Checklist Assigned Key: onboarding_assigned onboarding_assigned en_US Active (employee_name) (template_name) Edit Template Billing Invoice Generated Key: billing_invoice_created billing_invoice_created en_US Active (tenant_name) (invoice_number) (amount) (status) (app_name) Edit Template Billing Invoice Paid Key: billing_invoice_paid billing_invoice_paid en_US Active (tenant_name) (amount) (invoice_number) (app_name) Edit Template",
+    "Document Expiration Reminder Key: document_expiry document_expiry en_US Active (employee_name) (app_name) (document_type) (expiry_date) Edit Template",
+    "New Leave Request (Admin Notification) Key: leave_applied leave_applied en_US Active (employee_name) Edit Template",
+    "Leave Approved Notification Key: leave_approved leave_approved en_US Active (employee_name) (remarks) Edit Template",
+    "Leave Rejected Notification Key: leave_rejected leave_rejected en_US Active (employee_name) (remarks) Edit Template",
+    "Onboarding Checklist Assigned Key: onboarding_assigned onboarding_assigned en_US Active (employee_name) (template_name) Edit Template",
+    "Billing Invoice Generated Key: billing_invoice_created billing_invoice_created en_US Active (tenant_name) (invoice_number) (amount) (status) (app_name) Edit Template",
+    "Billing Invoice Paid Key: billing_invoice_paid billing_invoice_paid en_US Active (tenant_name) (amount) (invoice_number) (app_name) Edit Template"
+  ]
+}
