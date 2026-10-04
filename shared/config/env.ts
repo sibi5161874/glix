@@ -6,7 +6,7 @@ import { z } from "zod";
  */
 const publicEnvSchema = z.object({
   NEXT_PUBLIC_APP_URL: z.string().url().default("http://localhost:4000"),
-  NEXT_PUBLIC_API_URL: z.string().url().default("http://localhost:6000"),
+  NEXT_PUBLIC_API_URL: z.string().url().default("http://localhost:5000"),
   NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1).optional(),
 });
@@ -19,7 +19,7 @@ const serverEnvSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
   DATABASE_URL: z.string().url().optional(),
-  BACKEND_PORT: z.coerce.number().int().positive().default(6000),
+  BACKEND_PORT: z.coerce.number().int().positive().default(5000),
   BACKEND_HOST: z.string().min(1).default("0.0.0.0"),
   CORS_ORIGIN: z.string().url().default("http://localhost:4000"),
   LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace"]).default("info"),

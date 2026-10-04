@@ -16,19 +16,19 @@ export default function HomePage() {
         </div>
         <div className="flex items-center gap-3">
           <a
-            href="http://localhost:6000/health"
+            href="http://localhost:5000/health"
             target="_blank"
             rel="noreferrer"
             className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-blue-700"
           >
-            API Health (:6000)
+            API Health (:5000)
           </a>
         </div>
       </header>
 
       <section className="mx-auto flex max-w-6xl flex-col items-center px-6 py-20 text-center">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-          <Activity className="h-3.5 w-3.5" /> Backend API Connected on Port 6000
+          <Activity className="h-3.5 w-3.5" /> Backend API Connected on Port 5000
         </div>
         <h1 className="max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-6xl">
           Next-Generation HR Operations &amp; Multi-Tenant Document Automation
@@ -40,12 +40,12 @@ export default function HomePage() {
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a
-            href="http://localhost:6000/health"
+            href="http://localhost:5000/health"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-base font-semibold text-white shadow-md transition-all hover:bg-blue-700 hover:shadow-lg"
           >
-            Fastify API Health (:6000) <ArrowRight className="h-4 w-4" />
+            Fastify API Health (:5000) <ArrowRight className="h-4 w-4" />
           </a>
         </div>
 

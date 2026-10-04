@@ -6,7 +6,7 @@ This document outlines the deployment workflow and hosting environments.
 
 | Environment | Frontend URL | Backend API URL | Database |
 | :--- | :--- | :--- | :--- |
-| **Development** | \`http://localhost:4000\` | \`http://localhost:6000\` | Local Supabase Docker |
+| **Development** | \`http://localhost:4000\` | \`http://localhost:5000\` | Local Supabase Docker |
 | **Staging** | \`https://staging.yourdomain.com\` | \`https://api-staging.yourdomain.com\` | Supabase Staging Project |
 | **Production** | \`https://app.yourdomain.com\` | \`https://api.yourdomain.com\` | Supabase Production Project |
 
