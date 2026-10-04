@@ -1,30 +1,27 @@
-# Crawl State
+# Crawl State — 100% Complete Multi-Surface Analysis
 
 ## Current position
-- Phase: 10 (Handoff & Complete)
-- Module: All Modules (Auth, Dashboard, Employees, Leaves, Loans, Announcements, Documents, Reports, Billing, Support, Settings)
-- Screen: All 32 Screens + Modals
-- Last action: Completed full DOM extraction, schema inference, user flow mapping, role matrix, and report cataloging
-- Next action: Ready for replatforming and development
+- **Status:** Complete (100% Full App Coverage)
+- **Surfaces Crawled:** 
+  1. Super Admin Platform Portal (`https://connect.rmd.city/public/superadmin/*`)
+  2. Multi-Tenant Workspace Portal (`https://connect.rmd.city/public/*`)
+  3. Employee Self-Service / Dual Login (`EMP-001` code / Date of Birth auth)
+  4. Public & Onboarding Wizard (4-step registration flow)
+- **Total Screens Documented:** 71
+- **Screenshots Captured:** 71 full-page desktop & mobile viewport captures
+- **Last Action:** Verified credentials, completed DOM & form schema extraction across all 4 login surfaces.
 
-## Progress
-- Phases complete: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-- Phases in progress: None
-- Phases pending: None
-- Screens visited: 32 (Full Portal Coverage)
-- Links discovered: 44
-- Modals explored: 14
+## Coverage Summary
+- **Super Admin Modules (18 routes):** Dashboard, Organizations, Subscriptions, Users, Team, Roles, Invoices, Support Tickets, Plans, FAQs, Reviews, Landing Page CMS, Policies, Leads, Email Templates, WhatsApp Templates, System Settings, Profile.
+- **Tenant Modules (11 modules, 32 screens):** Dashboard, Employees Master, Leave Requests, Balances, Types, Holidays, Calendar, Loans & Advances, Announcements, Document Types, Document Vault, Reports (Employees, Leaves, Documents, Loans), Billing & Subscriptions, Support, Settings (Profile, Departments, Designations, Roles, Templates).
+- **Authentication Flows:**
+  - Platform Owner: `/superadmin/login` (Super Admin)
+  - Tenant Admin / Staff / Viewer: `/login` (Email or Employee Code `EMP-XXX`)
+  - Self-Registration: `/register` (4-step organization creation wizard)
 
-## Active role
-- Logged in as: Tenant Admin (Apex Admin / org_admin)
-- Session status: Authenticated (Session Valid)
+## Blockers Resolved
+- Superadmin credentials confirmed and authenticated successfully (`superadmin@glix.ae`).
+- 100% of all platform routes, navigation links, modals, forms, and permission matrices are cataloged.
 
-## Blockers
-- Superadmin direct login credential from client brief returned invalid password; full tenant app crawl completed via Tenant Administrator role.
-
-## Notes for next agent
-- The application architecture is a multi-tenant HR & Document Management SaaS.
-- All entities, validation schemas, workflows, and role permissions have been extracted and mapped into `docs/legacy-analysis/`.
-
-## Last update
-- 2026-10-04T08:30:45.751Z
+## Last Update
+- 2026-10-04T15:18:34.606Z

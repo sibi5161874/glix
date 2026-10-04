@@ -1,66 +1,92 @@
-# Module & Screen Inventory
+# Module & Screen Inventory (100% Complete)
 
-This document maps all functional modules, navigation trees, and screens discovered during the exhaustive crawl.
+This document maps all functional modules, navigation trees, and screens across both the **Super Admin Platform** and the **Tenant Workspaces**.
 
-## Navigation Hierarchy
+---
+
+## 1. Complete Navigation Architecture
 
 ```text
-Glix Connect HR Portal
-├── Public / Unauthenticated
-│   ├── Landing Page (/)
-│   ├── Tenant & Employee Login (/login)
-│   ├── Superadmin Login Portal (/superadmin/login)
-│   ├── Organization Registration Wizard (/register)
-│   ├── Privacy Policy (/privacy-policy)
-│   ├── Terms & Conditions (/terms-conditions)
-│   └── Refund Policy (/refund-policy)
-└── Authenticated Tenant Workspace
-    ├── Dashboard (/dashboard)
-    ├── Employees Module
-    │   ├── All Employees Directory (/employees)
-    │   ├── Add Employee (/employees/create)
-    │   └── Import & Export Data (/employees/import-export)
-    ├── Leave Management
-    │   ├── Leave Requests & Approvals (/leaves/requests)
-    │   ├── Leave Balances (/leaves/balances)
-    │   ├── Leave Types Configuration (/leaves/types)
-    │   ├── Public & Company Holidays (/holidays)
-    │   └── Calendar View (/leaves/calendar)
-    ├── Payroll & Loans
-    │   └── Employee Loans & Advances (/payroll/loans)
-    ├── Company Announcements
-    │   └── Announcements & Notices (/announcements)
-    ├── Document Automation & Vault
-    │   ├── Document Categories & Types (/documents/types)
-    │   └── Document Expiry & Repository (/documents)
-    ├── Reports & Analytics
-    │   ├── Reports Hub (/reports)
-    │   ├── Employee Demographics Report (/reports/employees)
-    │   ├── Leave Utilization Report (/reports/leaves)
-    │   ├── Document Expiries Report (/reports/documents)
-    │   └── Loan Summaries Report (/reports/loans)
-    ├── Billing & Subscription
-    │   └── Subscription Plans & Add-ons (/settings/subscription)
-    ├── Support Desk
-    │   └── Support Tickets & Inquiries (/support)
-    └── Organization Settings
-        ├── Organization Profile & Branding (/settings/profile)
-        ├── Department Hierarchy (/departments)
-        ├── Designations & Positions (/designations)
-        ├── Roles & Permissions Matrix (/settings/roles)
-        └── Notification Templates (/settings/templates)
+Glix Connect Replatformed Architecture
+│
+├── 🛡️ Super Admin Platform Control (superadmin@glix.ae)
+│   ├── Dashboard & Platform Overview (/superadmin/dashboard)
+│   ├── Organizations Management (/superadmin/organizations)
+│   ├── Subscriptions & MRR Tracking (/superadmin/subscriptions)
+│   ├── Platform Users & Staff Directory (/superadmin/users)
+│   ├── Super Admin Team Hierarchy (/superadmin/team)
+│   ├── Platform Roles & Capabilities (/superadmin/roles)
+│   ├── Platform Invoices & Gateway History (/superadmin/invoices)
+│   ├── Help Desk & Support Ticket Escalation (/superadmin/support)
+│   ├── Subscription Plans & Tier Limits (/superadmin/plans)
+│   ├── Landing Page FAQ Manager (/superadmin/faq)
+│   ├── Customer Testimonials & Reviews (/superadmin/reviews)
+│   ├── Landing Page Hero & Content CMS (/superadmin/landing)
+│   ├── Terms, Privacy & Compliance Policies (/superadmin/policies)
+│   ├── CRM Sales Inquiries & Leads (/superadmin/leads)
+│   ├── Email Notification Templates (/superadmin/email-templates)
+│   ├── WhatsApp Notification Templates (/superadmin/whatsapp-templates)
+│   ├── Super Admin Account Profile (/superadmin/profile)
+│   └── System Global Settings (/superadmin/settings)
+│
+├── 🏢 Tenant Workspace (org_admin, org_staff, org_viewer)
+│   ├── Executive Dashboard (/dashboard)
+│   ├── Employees Module
+│   │   ├── Employee Master Directory (/employees)
+│   │   ├── Onboard / Add Employee (/employees/create)
+│   │   └── Bulk CSV Import & Excel Export (/employees/import-export)
+│   ├── Leave Management
+│   │   ├── Leave Requests & Multi-tier Approvals (/leaves/requests)
+│   │   ├── Entitlement & Leave Balances (/leaves/balances)
+│   │   ├── Leave Policy Types Configuration (/leaves/types)
+│   │   ├── Public & Statutory Holidays (/holidays)
+│   │   └── Team Attendance Calendar (/leaves/calendar)
+│   ├── Payroll & Advances
+│   │   └── Salary Advances & Loan Records (/payroll/loans)
+│   ├── Broadcasts & Notices
+│   │   └── Company Announcements (/announcements)
+│   ├── Document Automation & Vault
+│   │   ├── Document Categories & Expiry Rules (/documents/types)
+│   │   └── Document Vault with Expiry Alarms (/documents)
+│   ├── Operational Reports & Exports
+│   │   ├── Analytics Hub (/reports)
+│   │   ├── Employee Demographics Report (/reports/employees)
+│   │   ├── Leave Utilization & Absenteeism (/reports/leaves)
+│   │   ├── Compliance & Expiry Report (/reports/documents)
+│   │   └── Loan & Advance Balances (/reports/loans)
+│   ├── Subscription & Invoicing
+│   │   └── Tier Upgrades & Multi-Currency Billing (/settings/subscription)
+│   ├── Tenant Support Desk
+│   │   └── Ticket Submission & Support History (/support)
+│   └── Tenant Organization Settings
+│       ├── Organization Branding & Currency (/settings/profile)
+│       ├── Departments Structure (/departments)
+│       ├── Designations & Hierarchy (/designations)
+│       ├── RBAC Roles & Permissions Matrix (/settings/roles)
+│       └── Custom Tenant Notification Templates (/settings/templates)
+│
+└── 🌐 Public & Onboarding
+    ├── Marketing Landing Page (/)
+    ├── Multi-Tenant & Employee Dual Login (/login)
+    ├── Platform Super Admin Login (/superadmin/login)
+    ├── 4-Step Organization Registration Wizard (/register)
+    ├── Privacy Policy (/privacy-policy)
+    ├── Terms & Conditions (/terms-conditions)
+    └── Refund Policy (/refund-policy)
 ```
 
-## Module Summary Table
+---
 
-| Module | Purpose | Key Routes | Approx Screens | Primary Actions |
-| :--- | :--- | :--- | :--- | :--- |
-| **Auth & Onboarding** | Tenant registration, auth, sessions | `/login`, `/register`, `/superadmin/login` | 4 | Login, 4-step wizard registration, password reset |
-| **Dashboard** | Executive overview & operational alerts | `/dashboard` | 1 | Metric cards, compliance score, quick shortcuts |
-| **Employees** | Employee master database & profiles | `/employees`, `/employees/create`, `/employees/import-export` | 3 | Create, edit, bulk CSV import, Excel export |
-| **Leave Management** | Request workflow, entitlement, holidays | `/leaves/requests`, `/leaves/balances`, `/leaves/types`, `/holidays`, `/leaves/calendar` | 5 | Apply, approve, reject, balance adjustment, calendar |
-| **Loans & Advances** | Salary advance & loan repayment | `/payroll/loans` | 1 | Request loan, approve, record EMI installments |
-| **Announcements** | Organization-wide broadcast notices | `/announcements` | 1 | Publish announcement, set priority, target audience |
-| **Documents** | Compliance document tracking & expiry | `/documents`, `/documents/types` | 2 | Upload file, set expiry date, automated email alerts |
-| **Reports** | Operational reporting & exports | `/reports/*` | 5 | Filter by dates/department, generate PDF/CSV/Excel |
-| **Settings & Admin** | Organization branding, RBAC, masters | `/settings/profile`, `/departments`, `/designations`, `/settings/roles`, `/settings/templates` | 5 | Manage departments, job titles, roles, email templates |
+## 2. Master Module Summary
+
+| Module Group | Module Name | Scope & Authority | Primary Capabilities |
+| :--- | :--- | :--- | :--- |
+| **Super Admin** | Organization Control | Platform Owner | Create, suspend, extend trial, impersonate, and manage all tenant accounts |
+| **Super Admin** | Plans & Billing | Platform Owner | Define tiers, currency rates (AED, SAR, USD, etc.), seat limits, add-on features |
+| **Super Admin** | Communications | Platform Owner | Global Email & WhatsApp automated broadcast templates, system-wide alerts |
+| **Super Admin** | CMS & Marketing | Platform Owner | Manage landing page copy, FAQs, customer reviews, legal policy terms |
+| **Tenant Operations** | Employees Master | Org Admin / Staff | Master profile (personal, passport, visa, labor card, salary, department) |
+| **Tenant Operations** | Leave Engine | All Tenant Roles | Workflow approvals, balance deduction, holiday integration, team calendar |
+| **Tenant Operations** | Document Vault | Org Admin / Staff | Passport/Visa/Labor card expiry tracking with 90/60/30 day email reminders |
+| **Tenant Operations** | Loans & Advances | Org Admin / Staff | Loan disbursement, monthly EMI deductions, payoff tracking |
+| **Tenant Operations** | Reports & BI | Org Admin / Viewer | PDF / Excel / CSV exportable operational reports |
