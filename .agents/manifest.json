@@ -1,0 +1,197 @@
+{
+  "$schema": "https://schema.getvibes.dev/manifest/v1",
+  "project": {
+    "name": "Glix Connect HR Portal",
+    "slug": "glix-connect",
+    "type": "multi-tenant-saas",
+    "domain": "HR, leave, loans, document automation",
+    "targetMarket": "GCC / UAE",
+    "defaultCurrency": "AED",
+    "timezone": "Asia/Dubai"
+  },
+
+  "stack": {
+    "frontend": "Next.js 15 App Router + React 19",
+    "backend": "Fastify 5 + Node.js 20",
+    "database": "PostgreSQL 15 via Supabase",
+    "auth": "Supabase Auth + custom JWT claims hook",
+    "storage": "Supabase Storage (private, signed URLs)",
+    "ui": "Tailwind + shadcn/ui",
+    "validation": "Zod (shared FE + BE)",
+    "tests": "Vitest + Playwright",
+    "ci": "GitHub Actions",
+    "monorepo": "pnpm workspaces (frontend/, backend/, shared/)"
+  },
+
+  "readingOrder": [
+    {
+      "stage": "identity",
+      "files": ["README.md", "CLAUDE.md", "RULES.md"],
+      "required": true,
+      "note": "Read fully. These override your defaults."
+    },
+    {
+      "stage": "architecture",
+      "files": ["ARCHITECTURE.md", "SECURITY.md", "DEPLOYMENT.md", "GLOSSARY.md"],
+      "required": true
+    },
+    {
+      "stage": "data",
+      "files": [
+        "DATA_MODEL.md",
+        "supabase/migrations/001_extensions.sql",
+        "supabase/migrations/002_organizations.sql",
+        "supabase/migrations/003_memberships.sql",
+        "supabase/migrations/004_audit_log.sql",
+        "supabase/migrations/005_jwt_claims_hook.sql",
+        "supabase/migrations/006_rls_policies.sql",
+        "supabase/migrations/007_storage_buckets.sql"
+      ],
+      "required": true,
+      "note": "Understand tenancy + RLS before writing anything."
+    },
+    {
+      "stage": "ui",
+      "files": ["UI_SPEC.md"],
+      "required": true
+    },
+    {
+      "stage": "shared",
+      "files": [
+        "shared/config/app.config.ts",
+        "shared/config/env.ts",
+        "shared/config/brand.config.ts",
+        "shared/config/locale.config.ts",
+        "shared/config/features.config.ts",
+        "shared/config/permissions.config.ts",
+        "shared/config/tiers.config.ts",
+        "shared/config/document-types.config.ts",
+        "shared/config/currency.config.ts",
+        "shared/types/index.ts",
+        "shared/constants/index.ts",
+        "shared/utils/logger.ts",
+        "shared/utils/result.ts"
+      ],
+      "required": true,
+      "note": "These are the single source of truth for app behavior."
+    },
+    {
+      "stage": "schemas",
+      "files": [
+        "shared/schemas/employee.schema.ts",
+        "shared/schemas/leave-request.schema.ts",
+        "shared/schemas/document.schema.ts",
+        "shared/schemas/organization.schema.ts",
+        "shared/schemas/loan.schema.ts",
+        "shared/schemas/announcement.schema.ts"
+      ],
+      "required": true
+    },
+    {
+      "stage": "analysis",
+      "files": [
+        "docs/legacy-analysis/01-inventory.md",
+        "docs/legacy-analysis/02-user-flows.md",
+        "docs/legacy-analysis/04-data-shapes.md",
+        "docs/legacy-analysis/05-roles-matrix.md",
+        "docs/legacy-analysis/06-reports-catalog.md",
+        "docs/legacy-analysis/07-notifications.md",
+        "docs/legacy-analysis/08-edge-cases.md",
+        "docs/legacy-analysis/10-redesign-targets.md",
+        "docs/legacy-analysis/11-replatform-spec.md",
+        "docs/legacy-analysis/13-migration-plan.md"
+      ],
+      "required": true,
+      "note": "This is the evidence base. Never guess — cite these."
+    },
+    {
+      "stage": "adr",
+      "files": ["docs/adr/001-initial-architecture.md"],
+      "required": true
+    },
+    {
+      "stage": "agent-rules",
+      "files": [
+        ".agents/rules/autonomous-execution.md",
+        ".agents/rules/backend-constitution.md",
+        ".agents/rules/engineering-constitution.md"
+      ],
+      "required": true,
+      "note": "These govern how you execute."
+    },
+    {
+      "stage": "plan",
+      "files": ["docs/BUILD_PLAN.md"],
+      "required": true,
+      "note": "Compare against your self-generated plan."
+    }
+  ],
+
+  "phases": [
+    { "id": "phase-0", "name": "Basement", "goal": "Migrations 008–020, configs, schemas, seed" },
+    { "id": "phase-1", "name": "Auth + Tenancy", "goal": "Login, register, org creation, shells" },
+    { "id": "phase-2", "name": "Employees", "goal": "CRUD, import/export, detail view" },
+    { "id": "phase-3", "name": "Leave", "goal": "Requests, balances, types, holidays, calendar" },
+    { "id": "phase-4", "name": "Documents", "goal": "Types, vault, signed uploads, expiry alerts" },
+    { "id": "phase-5", "name": "Loans + Announ.", "goal": "Loans CRUD + approvals, announcements" },
+    { "id": "phase-6", "name": "Reports", "goal": "4 reports + Excel/CSV/PDF exports" },
+    {
+      "id": "phase-7",
+      "name": "Settings",
+      "goal": "Profile, departments, designations, roles, templates"
+    },
+    { "id": "phase-8", "name": "Billing + Support", "goal": "Subscription, payment, tickets" },
+    { "id": "phase-9", "name": "Superadmin", "goal": "18-route platform control panel" },
+    { "id": "phase-10", "name": "Polish", "goal": "Dark mode, mobile, a11y, performance" },
+    { "id": "phase-11", "name": "Launch", "goal": "E2E tests, load test, migration, deploy" }
+  ],
+
+  "verification": {
+    "perCommit": ["pnpm typecheck", "pnpm lint", "pnpm test"],
+    "perPhase": [
+      "pnpm typecheck",
+      "pnpm lint",
+      "pnpm test",
+      "pnpm test:e2e",
+      "pnpm db:verify",
+      "supabase db diff"
+    ],
+    "perFeature": [
+      "Playwright E2E test exists",
+      "RLS policy exists for new table",
+      "org_id present + indexed if tenant table",
+      "tier limit enforced server-side if gated",
+      "DATA_MODEL.md updated if schema changed",
+      "CHANGELOG.md updated"
+    ]
+  },
+
+  "constraints": {
+    "never": [
+      "Write credentials to any file",
+      "Skip RLS on any new table",
+      "Query without org_id filter",
+      "Use service_role for user-initiated requests",
+      "Use any type without // why: comment",
+      "Exceed 250 lines per file",
+      "Exceed 50 lines per function",
+      "Commit directly to main",
+      "Skip tests",
+      "Guess field types — inspect code"
+    ],
+    "always": [
+      "Read RULES.md before writing code",
+      "Cite RULES.md §N when a rule applies",
+      "Run verification before marking done",
+      "Update DATA_MODEL.md on schema change",
+      "Update CHANGELOG.md on user-facing change",
+      "Write co-located tests"
+    ]
+  },
+
+  "bootstrap": {
+    "protocol": ".agents/bootstrap.md",
+    "entrypoint": "BOOTSTRAP.md",
+    "resumeFile": ".agents/_session.md"
+  }
+}
