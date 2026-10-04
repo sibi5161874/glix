@@ -1,0 +1,36 @@
+sequenceDiagram
+    autonumber
+    participant U as User
+    participant FE as Next.js Frontend
+    participant BE as Fastify Backend
+    participant AU as Supabase Auth
+    participant DB as Postgres (RLS)
+    participant ST as Storage
+
+    Note over U,FE: Session already established
+
+    U->>FE: Click "Upload document"
+    FE->>FE: Read JWT from Supabase session
+    FE->>BE: POST /v1/documents<br/>Authorization: Bearer <JWT><br/>{ employeeId, typeKey, file }
+
+    BE->>BE: Verify JWT (JWKS)
+    Note right of BE: Extract sub, org_id,<br/>role, is_project_owner
+    BE->>BE: Zod validate body
+    BE->>BE: Check permission (role)
+    BE->>BE: Check tier gate (canDo)
+    BE->>ST: Upload file → org-documents/{org_id}/...
+    ST-->>BE: Storage path
+    BE->>DB: INSERT document (RLS applies)
+    DB-->>BE: Row
+    BE->>DB: INSERT audit_log (doc.upload)
+    DB-->>BE: OK
+    BE-->>FE: { data: document }
+    FE-->>U: Toast + list refresh
+
+    Note over U,FE: Failure path
+
+    U->>FE: Click "Upload document" (over limit)
+    FE->>BE: POST /v1/documents
+    BE->>BE: Check tier gate → FAIL
+    BE-->>FE: 403 { error, code: TIER_LIMIT_EXCEEDED }
+    FE-->>U: Alert + upgrade CTA

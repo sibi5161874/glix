@@ -1,0 +1,58 @@
+erDiagram
+    AUTH_USERS ||--|| USERS : "mirrors"
+    USERS ||--o{ MEMBERSHIPS : "belongs to"
+    USERS ||--o{ ORGANIZATIONS : "owns"
+    USERS ||--o| PROJECT_OWNERS : "may be"
+    ORGANIZATIONS ||--o{ MEMBERSHIPS : "has members"
+    ORGANIZATIONS ||--o{ AUDIT_LOG : "logs"
+
+    USERS {
+        uuid id PK
+        citext email UK
+        text full_name
+        text avatar_url
+        timestamptz created_at
+        timestamptz updated_at
+    }
+
+    PROJECT_OWNERS {
+        uuid user_id PK,FK
+        timestamptz created_at
+    }
+
+    ORGANIZATIONS {
+        uuid id PK
+        text name
+        citext slug UK
+        uuid owner_id FK
+        text tier
+        text logo_url
+        timestamptz created_at
+        timestamptz updated_at
+        timestamptz deleted_at
+    }
+
+    MEMBERSHIPS {
+        uuid id PK
+        uuid org_id FK
+        uuid user_id FK
+        org_role role
+        uuid invited_by FK
+        timestamptz invited_at
+        timestamptz accepted_at
+        timestamptz created_at
+        timestamptz updated_at
+    }
+
+    AUDIT_LOG {
+        uuid id PK
+        uuid org_id FK
+        uuid actor_id FK
+        text action
+        text entity_type
+        uuid entity_id
+        jsonb metadata
+        inet ip_address
+        text user_agent
+        timestamptz created_at
+    }

@@ -1,0 +1,30 @@
+graph TB
+    subgraph OrgA["Org A (Acme)"]
+        U1[User A<br/>JWT: org_id=acme]
+    end
+
+    subgraph OrgB["Org B (Globex)"]
+        U2[User B<br/>JWT: org_id=globex]
+    end
+
+    U1 -->|query| RLS{Postgres RLS<br/>org_id = auth.jwt->>'org_id'}
+    U2 -->|query| RLS
+
+    RLS -->|match| DB[(Shared Tables<br/>organizations, memberships,<br/>employees, documents,<br/>audit_log)]
+    RLS -->|mismatch| Deny[❌ Return 0 rows]
+
+    DB -->|Acme rows| U1
+    DB -->|Globex rows| U2
+
+    Deny --> U1
+    Deny --> U2
+
+    subgraph Storage["Storage (org-documents bucket)"]
+        Path["Path: /{org_id}/..."<br/>RLS: foldername[1] = jwt.org_id"]
+    end
+
+    U1 -.->|signed URL| Path
+    U2 -.->|signed URL| Path
+
+    classDef deny fill:#FEE2E2,stroke:#991B1B,color:#991B1B
+    class Deny deny

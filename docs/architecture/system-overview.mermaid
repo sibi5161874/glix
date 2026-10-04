@@ -1,0 +1,49 @@
+graph TB
+    subgraph Client
+        B[Browser]
+        M[Mobile Browser]
+    end
+
+    subgraph Vercel["Vercel (Frontend)"]
+        NX[Next.js App Router<br/>Server Components + Client]
+    end
+
+    subgraph Backend["Fly / Railway (Backend)"]
+        FY[Fastify<br/>JWT verify · Zod · Rate limit]
+        SV[Services<br/>Business rules · Tier gates]
+        RP[Repos<br/>RLS-scoped queries]
+    end
+
+    subgraph Supabase["Supabase (Managed)"]
+        AU[Auth<br/>JWT + custom claims hook]
+        DB[(Postgres<br/>RLS enabled)]
+        ST[Storage<br/>org-documents bucket]
+    end
+
+    subgraph External["External (planned)"]
+        RZ[Razorpay]
+        RS[Resend]
+        SN[Sentry]
+    end
+
+    B --> NX
+    M --> NX
+    NX -->|HTTP + JWT| FY
+    NX -.->|Auth SDK| AU
+
+    FY --> SV
+    SV --> RP
+    RP --> DB
+    SV -.->|signed URLs| ST
+
+    AU -.->|JWKS| FY
+    AU --> DB
+
+    SV -.->|webhooks| RZ
+    SV -.->|email| RS
+    FY -.->|errors| SN
+
+    classDef external fill:#FEF3C7,stroke:#92400E,color:#92400E
+    classDef managed fill:#DBEAFE,stroke:#1E40AF,color:#1E40AF
+    class RZ,RS,SN external
+    class AU,DB,ST managed

@@ -1,0 +1,29 @@
+{
+  "name": "@app/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./config": "./config/index.ts",
+    "./types": "./types/index.ts",
+    "./schemas": "./schemas/index.ts",
+    "./constants": "./constants/index.ts",
+    "./utils": "./utils/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run --passWithNoTests",
+    "dev": "echo \"(shared) no dev server\"",
+    "build": "echo \"(shared) no build step\""
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.17.0",
+    "vitest": "^2.1.3"
+  }
+}

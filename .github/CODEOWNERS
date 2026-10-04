@@ -1,0 +1,8 @@
+# Default owner
+*                       @your-github-username
+
+# Critical paths — owner must review
+/shared/config/         @your-github-username
+/.github/workflows/     @your-github-username
+/RULES.md               @your-github-username
+/CLAUDE.md              @your-github-username

@@ -1,0 +1,54 @@
+# ── Dependencies ─────────────────────────────
+node_modules/
+.pnpm-store/
+
+# ── Builds ───────────────────────────────────
+.next/
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# ── Env ──────────────────────────────────────
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ── Logs ─────────────────────────────────────
+*.log
+pnpm-debug.log*
+npm-debug.log*
+yarn-error.log*
+
+# ── Tests ────────────────────────────────────
+coverage/
+playwright-report/
+test-results/
+.nyc_output/
+blob-report/
+
+# ── Editors / OS ─────────────────────────────
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# ── Tooling ──────────────────────────────────
+.eslintcache
+.turbo/
+.vercel/
+.swc/
+*.pid
+*.seed
+
+# ── Supabase local ───────────────────────────
+supabase/.branches/
+supabase/.temp/
+
+# ── Misc ─────────────────────────────────────
+*.bak
+*.tmp

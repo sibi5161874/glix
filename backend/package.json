@@ -1,0 +1,17 @@
+{
+  "name": "@app/backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo \"(backend) scaffolded in Step 5\" && exit 0",
+    "build": "echo \"(backend) scaffolded in Step 5\"",
+    "typecheck": "echo \"(backend) scaffolded in Step 5\"",
+    "lint": "echo \"(backend) scaffolded in Step 5\"",
+    "lint:fix": "echo \"(backend) scaffolded in Step 5\"",
+    "test": "echo \"(backend) scaffolded in Step 5\""
+  },
+  "dependencies": {
+    "@app/shared": "workspace:*"
+  }
+}

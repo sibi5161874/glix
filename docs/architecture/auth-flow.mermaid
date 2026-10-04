@@ -1,0 +1,36 @@
+stateDiagram-v2
+    [*] --> Anonymous
+
+    Anonymous --> SigningUp: Click signup
+    SigningUp --> EmailVerify: Email + password submitted
+    EmailVerify --> Authenticated: Email confirmed
+
+    Anonymous --> SigningIn: Click login
+    SigningIn --> Authenticating: Credentials / OAuth
+    Authenticating --> Authenticated: Success
+    Authenticating --> Anonymous: Failure
+
+    Authenticated --> SessionActive: JWT issued<br/>(sub, org_id, role, is_project_owner)
+    SessionActive --> SessionActive: User actions<br/>JWT in every request
+
+    SessionActive --> Refreshing: Access token expires (1h)
+    Refreshing --> SessionActive: Refresh token valid
+    Refreshing --> Anonymous: Refresh expired
+
+    SessionActive --> OrgCreation: No membership found
+    OrgCreation --> SessionActive: Org created<br/>owner → org_admin
+
+    SessionActive --> Invited: User accepts invite
+    Invited --> SessionActive: Membership created
+
+    SessionActive --> SigningOut: Logout
+    SigningOut --> Anonymous
+
+    Anonymous --> [*]
+
+    note right of Authenticated
+        Backend verifies every JWT
+        with Supabase JWKS.
+        Custom claims hook injects
+        org_id + role at issuance.
+    end note
