@@ -1,5 +1,6 @@
-/**
- * Zod schemas shared between frontend + backend.
- * Empty for now — populated when entities are defined.
- */
-export {};
+export * from "./employee.schema";
+export * from "./leave-request.schema";
+export * from "./document.schema";
+export * from "./organization.schema";
+export * from "./loan.schema";
+export * from "./announcement.schema";

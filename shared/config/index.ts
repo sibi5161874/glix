@@ -3,3 +3,7 @@ export * from "./app.config";
 export * from "./locale.config";
 export * from "./brand.config";
 export * from "./features.config";
+export * from "./permissions.config";
+export * from "./tiers.config";
+export * from "./document-types.config";
+export * from "./currency.config";
