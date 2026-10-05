@@ -1,4 +1,4 @@
--- 007: Attachments and file metadata (VPS filesystem storage)
+-- 007: attachments — file metadata (VPS filesystem storage)
 -- -------------------------------------------------------------------
 
 create table public.attachments (

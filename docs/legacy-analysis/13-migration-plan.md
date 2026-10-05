@@ -10,9 +10,9 @@
 ---
 
 ## Target Architecture
-- **Type:** PostgreSQL 15+ (Supabase Managed)
-- **Tenancy:** Strict Row-Level Security (`org_id = (auth.jwt() ->> 'org_id')::uuid`) on 100% of tables
-- **Storage:** Private S3 buckets with time-limited signed URLs
+- **Type:** PostgreSQL 16 (self-hosted PostgreSQL 16 + VPS filesystem)
+- **Tenancy:** Strict Row-Level Security (`org_id = public.current_org_id()`, backed by Fastify-set session variable `app.org_id`) on 100% of tables
+- **Storage:** VPS filesystem under `UPLOAD_DIR`, metadata + authorization tracked in the `attachments` table, served via authenticated backend routes (no public buckets)
 
 ---
 
@@ -67,7 +67,7 @@
 | `employee_docs` | `category_id` | `documents` | `document_type_id` | FK → `document_types.id` | Passport / Visa / Emirates ID |
 | `employee_docs` | `doc_number` | `documents` | `document_number` | Trim uppercase | ID / Policy / Visa number |
 | `employee_docs` | `expiry_date` | `documents` | `expiry_date` | `DATE` format | Expiration date |
-| `employee_docs` | `file_path` | `documents` | `file_url` | Upload to private S3 bucket path | Signed URL access |
+| `employee_docs` | `file_path` | `documents` | `file_path` | Copy into `UPLOAD_DIR/{org_id}/{employee_id}/` on the VPS filesystem | Backend-authenticated download, no public URL |
 
 ---
 
@@ -83,15 +83,15 @@
 
 ### Pre-Migration
 - [ ] Freeze writes on legacy production portal.
-- [ ] Take full MySQL database snapshot & S3 assets backup.
-- [ ] Run dry-run migration script in test Supabase environment.
+- [ ] Take full MySQL database snapshot & legacy file-storage backup.
+- [ ] Run dry-run migration script against a test self-hosted PostgreSQL 16 instance.
 - [ ] Verify zero foreign key violations and verify RLS tenant isolation.
 
 ### Cutover
-- [ ] Execute production migration script against Supabase instance.
+- [ ] Execute production migration script against the self-hosted PostgreSQL 16 instance.
 - [ ] Execute `verify-tenant-isolation.ts` automated assertion suite.
 - [ ] Point application DNS to Next.js + Fastify instances.
-- [ ] Verify live logins and document signed URLs.
+- [ ] Verify live logins and authenticated document download routes.
 
 ### Rollback Plan
 - [ ] Revert DNS entries to legacy server if blocking issues are detected within 2-hour observation window.

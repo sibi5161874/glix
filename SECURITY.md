@@ -15,6 +15,27 @@ This application enforces strict tenant isolation using **PostgreSQL Row-Level S
 - Application connections run under a restricted database user role.
 - Database credentials must never be exposed to the client/frontend bundle.
 
+#### Role separation: owner vs runtime
+Two distinct, non-superuser Postgres roles are used, deliberately kept separate:
+
+| Role | Used by | Owns tables? | Subject to RLS? |
+| :--- | :--- | :---: | :---: |
+| `glix_user` | `scripts/migrate.ts`, `scripts/seed.ts` (`DATABASE_URL_MIGRATE`) | Yes | No (owner exemption) |
+| `glix_app` | Backend runtime (`DATABASE_URL`, `withTenant`) | No | **Yes** |
+
+This split exists because PostgreSQL exempts a table's *owner* from its own
+RLS policies by default (independent of `BYPASSRLS`). A single shared role
+would mean the backend's own queries silently bypass every RLS policy in
+`db/migrations/*_rls_policies.sql` and the per-table policies in `008`–`018`
+— this was discovered and fixed in migration `020_roles.sql` during Phase 0,
+and is continuously verified by `pnpm verify:rls` (`scripts/verify-rls.ts`),
+which proves cross-tenant row isolation empirically rather than just
+checking that policies exist.
+
+`glix_app` has only row-level `SELECT`/`INSERT`/`UPDATE`/`DELETE` grants —
+no `CREATE`, no table ownership, no `BYPASSRLS`. It must never be used to
+run migrations or seeds.
+
 ### 3. File Attachments Security
 - Document attachments are stored on the local/VPS filesystem under the directory defined by `UPLOAD_DIR`.
 - All attachment metadata and authorization is tracked in `public.attachments` protected by tenant-scoped RLS.

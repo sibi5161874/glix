@@ -97,11 +97,21 @@ backend/    → imports shared, owns DB access, owns RLS-scoped queries
 
 ### Backend DB access pattern
 
-| Operation | Client used | RLS |
-| :--- | :--- | :--- |
-| User-initiated request | `withTenant(ctx, fn)` | **enforced via session variables** |
-| Migrations / seeds | `scripts/migrate.ts` | superuser connection |
-| Admin cron jobs | `withTenant(ctx, fn)` | audited |
+| Operation | Client used | DB role | RLS |
+| :--- | :--- | :--- | :--- |
+| User-initiated request | `withTenant(ctx, fn)` | `glix_app` (`DATABASE_URL`) | **enforced via session variables** |
+| Migrations / seeds | `scripts/migrate.ts` / `scripts/seed.ts` | `glix_user` (`DATABASE_URL_MIGRATE`) | owner — exempt (admin/maintenance only, never request-serving) |
+| Admin cron jobs | `withTenant(ctx, fn)` | `glix_app` | audited |
+
+**Role separation (added in migration `020_roles.sql`, see `SECURITY.md` §2):**
+PostgreSQL exempts a table's *owner* from its own RLS policies by default,
+regardless of `BYPASSRLS`. `glix_user` owns every table (it runs migrations),
+so if the backend connected as `glix_user` too, RLS would be silently inert —
+this was discovered and verified empirically during Phase 0 (`scripts/verify-rls.ts`).
+`glix_app` is a separate, non-owner role with only row-level `SELECT`/`INSERT`/`UPDATE`/`DELETE`
+privileges — no `CREATE`, no ownership, no `BYPASSRLS` — so RLS applies to it
+unconditionally. The backend's `DATABASE_URL` must always point at `glix_app`;
+`DATABASE_URL_MIGRATE` (owner) must never be used outside `scripts/migrate.ts`/`scripts/seed.ts`.
 
 ---
 

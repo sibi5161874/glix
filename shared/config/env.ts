@@ -16,6 +16,9 @@ const publicEnvSchema = z.object({
 const serverEnvSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   DATABASE_URL: z.string().url().optional(),
+  // Migrations/seeds only — owns every table. Never used by the backend at
+  // runtime (see db/migrations/020_roles.sql).
+  DATABASE_URL_MIGRATE: z.string().url().optional(),
   JWT_SECRET: z.string().min(32).optional(),
   JWT_EXPIRES_IN: z.string().default("7d"),
   BACKEND_PORT: z.coerce.number().int().positive().default(5000),
@@ -52,6 +55,7 @@ export function getServerEnv(): ServerEnv {
     _serverEnv = serverEnvSchema.parse({
       NODE_ENV: process.env["NODE_ENV"],
       DATABASE_URL: process.env["DATABASE_URL"],
+      DATABASE_URL_MIGRATE: process.env["DATABASE_URL_MIGRATE"],
       JWT_SECRET: process.env["JWT_SECRET"],
       JWT_EXPIRES_IN: process.env["JWT_EXPIRES_IN"],
       BACKEND_PORT: process.env["BACKEND_PORT"],

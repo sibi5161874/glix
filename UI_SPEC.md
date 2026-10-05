@@ -102,10 +102,13 @@ Mobile-first. Always write base → `md:` → `lg:`.
 **All primitives come from shadcn/ui.** No new button/input/dialog components.
 If shadcn has it, use it. If it doesn't, compose.
 
-Installed in Step 5:
-`button, input, label, form, card, dialog, dropdown-menu, table, badge,
-avatar, toast, sonner, tabs, sheet, select, checkbox, radio-group,
-separator, skeleton, alert, tooltip, popover, command, calendar, scroll-area`
+Installed in Phase 1 (manual build — the `shadcn` CLI hung non-interactively
+in this environment; components were hand-written to the same source
+shadcn/ui would generate, same import paths, same `cn()`/CVA conventions):
+`button, input, label, form, card, separator, badge, alert, avatar,
+dropdown-menu, sheet, select, tooltip, sonner`.
+Not yet installed (add when a phase first needs them): `dialog, table, tabs,
+checkbox, radio-group, popover, command, calendar, scroll-area`.
 
 **Composition rule:** never modify files under `frontend/components/ui/`.
 Wrap them in `frontend/components/<feature>/` if you need variation.
@@ -321,6 +324,33 @@ Never show blank screen. Never show raw error messages to users.
 - Respect `prefers-reduced-motion` — disable non-essential
 - No bounce, no spring, no parallax
 
+### 8.1 Animation library (approved addition)
+
+Goal: a professional, "company-standard" feel for both the public marketing
+site (landing, pricing, register wizard) and the app itself (dashboards,
+tables, forms) — polished micro-interactions, not flashy/experimental motion.
+
+- **Approved: [Animate UI](https://animate-ui.com)** — shadcn-compatible
+  animated primitives, installed per-component the same way as any other
+  shadcn/ui piece: `pnpm dlx shadcn@latest add @animate-ui/<component>`.
+  Lightweight, performance-optimized, built for exactly this use case (SaaS
+  dashboards + landing pages). Use for: page transitions, animated numbers/counters
+  (KPI tiles on the dashboard), sliding/fading lists, tab/accordion motion.
+- **Secondary, case-by-case: [Smooth UI](https://smoothui.dev)** — subtle
+  micro-interactions aimed at enterprise/admin panels. Pull in an individual
+  component only when Animate UI doesn't cover the need (e.g. a specific
+  loading/hover micro-interaction) — don't add it as a second blanket dependency.
+- **Not approved:** Acernity UI, Cult UI (pull in `framer-motion` + `three.js`/`@react-three/fiber`
+  — too heavy and visually loud for an HR portal), Berlix UI (installs from a
+  third-party personal registry domain, not an acceptable supply-chain source
+  per the engineering constitution's dependency rules).
+- Same rule as every other shadcn component (UI_SPEC §1): never modify the
+  installed primitive under `frontend/components/ui/` — wrap it in
+  `frontend/components/<feature>/` for variations.
+- Still subject to `prefers-reduced-motion` and the no-bounce/no-spring/no-parallax
+  rules above — these libraries provide the *mechanism*, not a license to override
+  the restraint this section already requires.
+
 ---
 
 ## 9. Copy & Content
@@ -340,4 +370,5 @@ Later decisions that supersede earlier sections are appended here with date.
 
 | Date | Section | Change | Reason |
 | :--- | :--- | :--- | :--- |
-| — | — | — | — |
+| 2026-10-05 | 0.1 Colors | Confirmed `--primary` = `#F57C00` as the single source of truth; `shared/config/brand.config.ts` updated to match (was `#2563EB`). | Resolve brand/UI_SPEC color conflict — `#F57C00` is the legacy app's orange. |
+| 2026-10-05 | 8.1 Motion | Approved Animate UI (primary) + Smooth UI (secondary, case-by-case) as the project's shadcn-compatible animation libraries. | Project owner asked for a "professional company standard" site/app feel; this sets one approved source instead of ad-hoc per-component choices later. |

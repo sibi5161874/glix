@@ -5,6 +5,9 @@ import postgres from "@fastify/postgres";
 import { config } from "dotenv";
 import { resolve } from "path";
 import dbPlugin from "./plugins/db.plugin";
+import authPlugin from "./plugins/auth.plugin";
+import authRoutes from "./routes/v1/auth.routes";
+import { sendError } from "./utils/http";
 
 config({ path: resolve(process.cwd(), "../.env.local") });
 config({ path: resolve(process.cwd(), ".env") });
@@ -23,10 +26,18 @@ async function bootstrap(): Promise<void> {
     credentials: true,
   });
 
+  // Must be set before any routes register — Fastify binds the applicable
+  // error handler onto each route's context at registration time, not
+  // dynamically per-request, so routes registered before this line would
+  // silently keep Fastify's default error shape instead of ours.
+  app.setErrorHandler((err, _req, reply) => sendError(reply, err));
+
   if (DATABASE_URL) {
     await app.register(postgres, { connectionString: DATABASE_URL });
     await app.register(dbPlugin);
   }
+  await app.register(authPlugin);
+  await app.register(authRoutes, { prefix: "/v1/auth" });
 
   app.get("/health", async () => {
     let dbStatus = "unconfigured";

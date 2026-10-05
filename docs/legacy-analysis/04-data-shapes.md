@@ -135,7 +135,7 @@ erDiagram
 | `employee_id` | UUID | FK -> `employees.id` | Owner employee |
 | `document_type_id` | UUID | FK -> `document_types.id` | Passport, Visa, Labor Card, Emirates ID |
 | `document_number` | VARCHAR(100)| NULLABLE | Official document/id reference |
-| `file_path` | VARCHAR(500)| NOT NULL | Supabase Storage path |
+| `file_path` | VARCHAR(500)| NOT NULL | Self-hosted PostgreSQL 16 + VPS filesystem path |
 | `issue_date` | DATE | NULLABLE | Document issue date |
 | `expiry_date` | DATE | NOT NULL | Compliance expiration date |
 | `alert_sent_90` | BOOLEAN | DEFAULT false | 90-day alert flag |

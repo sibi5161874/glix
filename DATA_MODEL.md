@@ -449,20 +449,27 @@ One row per employee per leave type per year.
 
 | # | File | What |
 | :--- | :--- | :--- |
-| 001–007 | (already applied) | Base tenancy, RLS, attachments, session variables |
-| 008 | `008_plans.sql` | `plans`, seed 3 tiers |
-| 009 | `009_departments_designations.sql` | `departments`, `designations` |
-| 010 | `010_employees.sql` | `employees` |
-| 011 | `011_leave_types_balances.sql` | `leave_types`, `leave_balances`, `holidays` |
-| 012 | `012_leave_requests.sql` | `leave_requests` + approval trigger |
-| 013 | `013_document_types_documents.sql` | `document_types`, `documents` |
-| 014 | `014_loans.sql` | `loans` |
-| 015 | `015_announcements.sql` | `announcements` |
-| 016 | `016_subscriptions_invoices.sql` | Billing bridge |
-| 017 | `017_support_tickets.sql` | Support |
-| 018 | `018_notification_templates.sql` | Templates |
-| 019 | `019_platform_users_settings.sql` | Superadmin scope |
-| 020 | `020_org_creation_trigger.sql` | Seed defaults on new org |
+| 001–004, 006–007 | (already applied) | Base tenancy, RLS, attachments, session variables (note: no `005`) |
+| 008 | `008_platform.sql` | `platform_users`, `platform_settings`, `notification_templates` |
+| 009 | `009_plans.sql` | `plans`, seed 3 tiers, `organizations.plan_id` (new source of truth — `tier` kept as a deprecated, trigger-synced mirror; see migration comment) |
+| 010 | `010_employees.sql` | `departments`, `designations`, `employees` |
+| 011 | `011_leave.sql` | `leave_types`, `leave_balances`, `leave_requests` (+ approval trigger), `holidays` |
+| 012 | `012_documents.sql` | `document_types`, `documents` |
+| 013 | `013_loans.sql` | `loans` |
+| 014 | `014_announcements.sql` | `announcements` |
+| 015 | `015_billing.sql` | `subscriptions`, `invoices` |
+| 016 | `016_support.sql` | `support_tickets` |
+| 017 | `017_org_creation_trigger.sql` | Seeds default leave types + document types on new org (extends `handle_new_organization()` from 003) |
+| 018 | `018_audit_triggers.sql` | DB-level audit triggers on `memberships`, `employees`, `documents`, `loans`, `leave_requests`, and `organizations.plan_id` changes |
+| 019 | `019_users_insert_policy.sql` | `INSERT` RLS policy for `users` (missing from `006_rls_policies.sql`) + `create_user()` `SECURITY DEFINER` signup function |
+| 020 | `020_roles.sql` | Creates `glix_app`, a non-owner runtime role, and grants it row-level DML only — see `SECURITY.md` §2 |
+| 021 | `021_auth_functions.sql` | `SECURITY DEFINER` functions for pre-auth login/signup: `find_user_by_email`, `find_employee_login`, `register_organization` |
+| 022 | `022_auth_memberships_lookup.sql` | `find_user_memberships`, `is_user_platform_admin` — resolve org/role for email-based login |
+| 023 | `023_employee_login_dob_text.sql` | Fixes `find_employee_login` to return `dob` as text (avoids a node-pg date-parsing footgun) |
+
+This differs from the original draft timeline (which used different filenames/groupings, e.g. `020_org_creation_trigger.sql`) — this table reflects what was actually built in Phase 0.
+
+**Resolved (was a known gap):** RLS is now verified enforced against the backend's actual runtime role. `glix_user` (table owner, used only by `scripts/migrate.ts`/`scripts/seed.ts` via `DATABASE_URL_MIGRATE`) is RLS-exempt as owner — that's fine, it never serves requests. The backend's `DATABASE_URL` points at `glix_app`, a non-owner role with no exemption. `pnpm verify:rls` (`scripts/verify-rls.ts`) proves empirically that two fixture orgs' employee rows are mutually invisible under `glix_app`.
 
 ---
 

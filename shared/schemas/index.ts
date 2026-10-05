@@ -1,3 +1,4 @@
+export * from "./auth.schema";
 export * from "./employee.schema";
 export * from "./leave-request.schema";
 export * from "./document.schema";

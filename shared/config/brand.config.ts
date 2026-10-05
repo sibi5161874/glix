@@ -14,7 +14,7 @@ export const brandConfig = {
   favicon: "/favicon.ico",
 
   colors: {
-    primary: "#2563EB",
+    primary: "#F57C00",
     primaryForeground: "#FFFFFF",
     accent: "#0F172A",
     danger: "#DC2626",

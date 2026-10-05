@@ -44,7 +44,7 @@
         "db/migrations/003_memberships.sql",
         "db/migrations/004_audit_log.sql",
         "db/migrations/006_rls_policies.sql",
-        "db/migrations/007_storage_buckets.sql"
+        "db/migrations/007_attachments.sql"
       ],
       "required": true,
       "note": "Understand tenancy + RLS before writing anything."
@@ -89,15 +89,20 @@
     {
       "stage": "analysis",
       "files": [
+        "docs/legacy-analysis/00-client-brief.md",
         "docs/legacy-analysis/01-inventory.md",
         "docs/legacy-analysis/02-user-flows.md",
+        "docs/legacy-analysis/03-screens.md",
         "docs/legacy-analysis/04-data-shapes.md",
         "docs/legacy-analysis/05-roles-matrix.md",
-        "docs/legacy-analysis/06-reports-catalog.md",
+        "docs/legacy-analysis/06-integrations.md",
         "docs/legacy-analysis/07-notifications.md",
-        "docs/legacy-analysis/08-edge-cases.md",
-        "docs/legacy-analysis/10-redesign-targets.md",
-        "docs/legacy-analysis/11-replatform-spec.md",
+        "docs/legacy-analysis/07-reports-exports.md",
+        "docs/legacy-analysis/08-gaps.md",
+        "docs/legacy-analysis/09-open-questions.md",
+        "docs/legacy-analysis/10-redesign-notes.md",
+        "docs/legacy-analysis/11-parity-matrix.md",
+        "docs/legacy-analysis/12-new-user-flows.md",
         "docs/legacy-analysis/13-migration-plan.md"
       ],
       "required": true,

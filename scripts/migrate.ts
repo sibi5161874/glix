@@ -7,8 +7,11 @@ config({ path: join(process.cwd(), ".env.local") });
 config({ path: join(process.cwd(), ".env") });
 
 const MIGRATIONS_DIR = join(process.cwd(), "db", "migrations");
-const DATABASE_URL = process.env.DATABASE_URL;
-if (!DATABASE_URL) throw new Error("DATABASE_URL required in environment");
+// Migrations own every table and must run as the owner role, never the
+// restricted runtime role — see db/migrations/020_roles.sql.
+const DATABASE_URL = process.env.DATABASE_URL_MIGRATE ?? process.env.DATABASE_URL;
+if (!DATABASE_URL)
+  throw new Error("DATABASE_URL_MIGRATE (or DATABASE_URL) required in environment");
 
 async function main() {
   const client = new Client({ connectionString: DATABASE_URL });
