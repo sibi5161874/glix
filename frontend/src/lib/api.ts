@@ -25,7 +25,10 @@ export async function apiFetch<T>(
   const res = await fetch(`${API_URL}${path}`, {
     ...rest,
     headers: {
-      "Content-Type": "application/json",
+      // Only set when there's a body — Fastify's JSON parser rejects an empty
+      // body sent with this header (e.g. a bodyless DELETE), which otherwise
+      // surfaces as a misleading 500 instead of the caller's intended request.
+      ...(options.body ? { "Content-Type": "application/json" } : {}),
       ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
       ...headers,
     },

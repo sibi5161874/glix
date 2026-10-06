@@ -33,6 +33,9 @@
 | Logging | Fastify's built-in `pino` | No `console.log` |
 | Password hashing | `argon2` | `argon2id`, never plain/sha, never store raw DOB as a password hash |
 | JWT sign/verify | `jsonwebtoken` | Signs/verifies with `JWT_SECRET`; claims per ARCHITECTURE.md §5 (`sub`, `email`, `orgId`, `role`, `employeeId`, `isPlatformAdmin`) |
+| File upload | `@fastify/multipart` | Added Phase 2 for CSV bulk-import (`POST /v1/employees/import`). Streamed, size-capped. |
+| Spreadsheet export | `exceljs` | Added Phase 2 for XLSX export (`GET /v1/employees/export`). No CSV-injection: numeric/date cells typed, not raw strings. |
+| CSV parsing | hand-rolled (`backend/src/utils/csv.ts`) | No dependency — the import format is a fixed, known column set. |
 | Testing | Vitest + `fastify.inject` | Playwright for E2E |
 | Cache / Queue | **None in v1.** | Do not add Redis or BullMQ without a written proposal + update to this file first |
 
@@ -53,6 +56,7 @@ backend/src/
 ├── index.ts              # bootstrap: load env, register plugins, listen
 ├── plugins/              # one Fastify plugin per concern
 │   └── db.plugin.ts      # decorates fastify.withTenant(ctx, fn)
+├── middleware/           # preHandler factories (e.g. requirePermission)
 ├── routes/
 │   └── v1/
 │       └── <domain>.routes.ts

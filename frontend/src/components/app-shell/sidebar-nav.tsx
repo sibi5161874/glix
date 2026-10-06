@@ -16,8 +16,8 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, enabled: true },
-  { label: "Employees", href: "/employees", icon: Users, enabled: false },
-  { label: "Leave", href: "/leaves/requests", icon: CalendarDays, enabled: false },
+  { label: "Employees", href: "/employees", icon: Users, enabled: true },
+  { label: "Leave", href: "/leaves/requests", icon: CalendarDays, enabled: true },
   { label: "Documents", href: "/documents", icon: FileText, enabled: false },
   { label: "Loans", href: "/payroll/loans", icon: Wallet, enabled: false },
   { label: "Announcements", href: "/announcements", icon: Megaphone, enabled: false },
@@ -31,7 +31,7 @@ export function SidebarNav(): React.JSX.Element {
   return (
     <nav className="flex flex-col gap-1 px-3 py-4">
       {NAV_ITEMS.map(({ label, href, icon: Icon, enabled }) => {
-        const isActive = pathname === href;
+        const isActive = pathname === href || pathname.startsWith(`${href}/`);
         if (!enabled) {
           return (
             <span

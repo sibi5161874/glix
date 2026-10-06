@@ -4,7 +4,11 @@ import { NextResponse } from "next/server";
 export default auth((req) => {
   const { pathname } = req.nextUrl;
   const isSuperadmin = pathname.startsWith("/superadmin") && pathname !== "/superadmin/login";
-  const isApp = pathname.startsWith("/dashboard") || pathname.startsWith("/employees");
+  const isApp =
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/employees") ||
+    pathname.startsWith("/leaves") ||
+    pathname.startsWith("/holidays");
 
   if (!req.auth && (isApp || isSuperadmin)) {
     const loginPath = isSuperadmin ? "/superadmin/login" : "/login";
@@ -19,5 +23,11 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/employees/:path*", "/superadmin/:path*"],
+  matcher: [
+    "/dashboard/:path*",
+    "/employees/:path*",
+    "/leaves/:path*",
+    "/holidays/:path*",
+    "/superadmin/:path*",
+  ],
 };
