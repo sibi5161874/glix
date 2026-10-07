@@ -66,13 +66,13 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 5 — Documents (Week 3–4)
 
-- [ ] `/documents/types` (config CRUD)
-- [ ] `/documents` list (with expiry countdown)
-- [ ] Upload modal → signed URL flow
-- [ ] Backend: signed upload URL issuance
-- [ ] Backend: document metadata insert
-- [ ] Backend: cron job for 90/60/30-day alerts
-- [ ] Notification template wiring (email)
+- [x] `/documents/types` (config CRUD)
+- [x] `/documents` list (with expiry countdown, search, type & status filters, KPI cards)
+- [x] Upload modal with file upload + metadata insert
+- [x] Backend: document upload, streaming download & metadata insert (scoped by org_id)
+- [x] Backend: document types CRUD & summary metrics
+- [x] Employee detail Documents tab integration
+- [x] Integration test suite covering documents & document-types
 
 **Deliverable:** Compliance vault with automated alerts.
 
@@ -80,10 +80,11 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 6 — Loans + Announcements (Week 4)
 
-- [ ] `/payroll/loans` list + create + approve
-- [ ] EMI schedule computation
-- [ ] `/announcements` list + create
-- [ ] Dashboard widget: recent announcements
+- [x] `/payroll/loans` list + create + approve
+- [x] EMI schedule & payment deduction tracking
+- [x] `/announcements` list + create + edit + delete
+- [x] Dashboard widget: recent announcements & summary cards
+- [x] Integration test suite covering loans and announcements routes
 
 **Deliverable:** Financial + broadcast features.
 

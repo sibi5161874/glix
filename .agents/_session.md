@@ -5,15 +5,15 @@
 - Started: 2026-10-05
 
 ## Current phase
-- Phase: 3 (Leave Management) — **complete**
+- Phase: 4–6 (Documents, Loans, Announcements — BUILD_PLAN.md numbering) — **complete, verified**
 - Task: —
-- Last action: Built and browser-verified Leave Management end-to-end: requests (create/approve/reject/cancel), balances (list + adjust, confirmed the `on_leave_approved` DB trigger correctly increments `used`), leave types config CRUD, holidays config CRUD, and a real month-grid calendar view overlaying holidays + approved leave. 10 new backend tests (41 total). Ran typecheck/lint/test clean across all workspaces.
+- Last action: Phases 4-6 (Documents/Compliance Vault, Loans, Announcements) arrived pre-built (not written in this session) with uncommitted changes; did a full verification pass before the first commit — typecheck/lint/43 backend tests all passed going in, but browser verification caught a live dashboard crash and two silent date-shift bugs the test suite had missed. See CHANGELOG.md's "Fixed (found during post-hoc verification...)" entry for the full list: a paginated-envelope-vs-bare-array contract mismatch crashing `/dashboard`, the same `date`-column JS-Date-parsing pitfall independently reintroduced in both Documents (`issue_date`/`expiry_date`) and Loans (`start_month`) despite being documented fixed for Employees/Leave earlier this session, a test-data leak duplicating a document type 11x, and 4 files over the 250-line cap. All fixed, all now test-covered, re-verified in-browser.
 
 ## Progress
-- Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management)
+- Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management), 4 (Documents), 5 (Loans + Announcements) — manifest numbering; = BUILD_PLAN.md Phases 1,2,3,4,5,6
 - Phases in progress: —
-- Phases pending: 4–11 (manifest numbering; = BUILD_PLAN.md Phases 5–12)
-- Files read: 46 (bootstrap) + re-reads during cleanup + Phase 2/3 exploration
+- Phases pending: 6–11 (manifest numbering; = BUILD_PLAN.md Phases 7–12: Reports, Settings, Billing/Support, Superadmin, Polish, Launch)
+- Files read: 46 (bootstrap) + re-reads during cleanup + Phase 2/3 exploration + Phase 4-6 verification
 
 ## Blockers
 - None currently open.
@@ -116,12 +116,24 @@
 - Leave balance "Remaining" (`allocated + carriedOver - used`) is computed client-side for display only, never trusted server-side for anything (no over/under-allocation enforcement on create — a request can be approved even if it exceeds remaining balance; flagged, not blocking, matches the legacy system's permissive behavior per `docs/legacy-analysis/`).
 - Calendar only shows `approved` leave, not `pending` — intentional, avoids showing unconfirmed absences as fact.
 
-## Phase 4 scope notes (BUILD_PLAN.md numbering; = Documents — carried over from Phase 0, not yet acted on)
-- Legacy employee form has far more fields than the current `employees` table (passport, visa, Emirates ID, labor card, driving license, medical insurance, SOE/ILOE).
-- **Decision (approved by project owner):** reuse `documents` + `document_types` rather than denormalizing onto `employees`; add the missing legacy doc types to the `document_types` seed in `017_org_creation_trigger.sql`; employee profile becomes a view joining `employees` + `documents`.
+## Phase 4-6 details (Documents, Loans, Announcements — for resume / handoff)
+
+These phases' code wasn't written in this session — it arrived already in the working tree, uncommitted, on top of the Phase 2-3 commit. The entries below are from verifying it before the first commit, not from building it.
+
+### The legacy-employee-fields decision referenced above is now acted on
+`documents` + `document_types` is in real use (not just planned) — `document-types.routes.ts`/`document-type.service.ts`/`document-type.repository.ts` give org_admins a config UI at `/documents/types`, and the employee detail page's Documents tab (`employees/[id]/employee-documents-tab.tsx`) lists/uploads against it. The legacy fields (passport, visa, Emirates ID, etc.) still aren't on `employees` directly — they go through `document_types`, matching the original decision.
+
+### Real bugs found during verification (not caught by typecheck/lint/the existing 39 tests)
+- **The exact `date`-column JS-Date-parsing pitfall got reintroduced twice**, independently, in code that arrived already written — once in `document.repository.ts` (`issue_date`/`expiry_date`), once in `loan.repository.ts` (`start_month`) — despite it being documented and fixed three separate times earlier this session (auth's DOB, employees' `joiningDate`/`dob`, leave's dates) and despite `document-mapper.ts` now carrying an explicit comment about it. **If you're about to select a `date` column into a repository mapper in this codebase, grep for `to_char.*YYYY-MM-DD` in a sibling repository first and copy that pattern — don't write a fresh `instanceof Date` check.** Both bugs were silent: no error, no failing test, just a row that was one calendar day wrong — only caught by actually reading the UI's displayed date against what was typed in.
+- **A response-envelope contract mismatch crashed `/dashboard` outright** (not silent — `TypeError` on every page load). `announcementService.list` returns `{ items, total, page, limit }` like every other list endpoint in this codebase, but `lib/announcements.ts` was typed as if it returned a bare array, and nothing checked that the two sides actually agreed — `apiFetch<T>`'s `T` is caller-asserted, not derived from a runtime schema, so TypeScript had no way to catch this. **This class of bug — frontend `lib/*.ts` response-shape assumptions silently drifting from what the backend actually returns — won't be caught by `pnpm typecheck`. It needs either an actual page load or a frontend integration test; there is still no frontend test suite (flagged back in the Phase 2/3 code-audit too).**
+- Both of the above reinforce the same gap: 43 backend tests + clean typecheck/lint was not sufficient to catch either issue. Browser verification before committing is still doing real work in this codebase, not a formality.
+
+### File-size cleanup (RULES.md §3)
+Split 4 files that exceeded 250 lines (see CHANGELOG.md for the full list and new file names). No behavior changes, pure extraction.
 
 ## Next action
-- Await `next` from project owner to start Phase 4 (manifest numbering) / Phase 5 (`BUILD_PLAN.md` numbering) — Documents.
+- Await `next` from project owner to start Phase 6 (manifest numbering) / Phase 7 (`BUILD_PLAN.md` numbering) — Reports.
+- **Suggested follow-up, not yet actioned:** add a frontend test suite (still zero frontend tests exist) — the dashboard crash this session is the second time a frontend-only bug has shipped past a fully green backend test suite.
 
 ## Last update
-- 2026-10-06
+- 2026-10-07

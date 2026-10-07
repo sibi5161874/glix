@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FileText, History } from "lucide-react";
+import { History, type LucideIcon } from "lucide-react";
 import { auth } from "@/auth";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getEmployee } from "@/lib/employees";
+import { listDocuments, listDocumentTypes } from "@/lib/documents";
+import { EmployeeDocumentsTab } from "./employee-documents-tab";
 import { ApiError } from "@/lib/api";
 
 export default async function EmployeeDetailPage({
@@ -19,8 +21,17 @@ export default async function EmployeeDetailPage({
   if (!session?.accessToken) return <p className="text-muted-foreground">Sign in required.</p>;
 
   let employee;
+  let employeeDocs;
+  let documentTypes;
   try {
-    employee = await getEmployee(session.accessToken, id);
+    const [emp, docsRes, docTypes] = await Promise.all([
+      getEmployee(session.accessToken, id),
+      listDocuments(session.accessToken, { employeeId: id, limit: 100 }),
+      listDocumentTypes(session.accessToken),
+    ]);
+    employee = emp;
+    employeeDocs = docsRes.items;
+    documentTypes = docTypes;
   } catch (err) {
     if (err instanceof ApiError && err.code === "NOT_FOUND") notFound();
     throw err;
@@ -83,9 +94,12 @@ export default async function EmployeeDetailPage({
         </TabsContent>
 
         <TabsContent value="documents">
-          <EmptyTabState
-            icon={FileText}
-            message="Document management arrives with Phase 4. Nothing to show yet."
+          <EmployeeDocumentsTab
+            initialDocuments={employeeDocs}
+            documentTypes={documentTypes}
+            employee={employee}
+            accessToken={session.accessToken}
+            canWrite={session.user.role === "org_admin" || session.user.role === "org_staff"}
           />
         </TabsContent>
 
@@ -104,7 +118,7 @@ function EmptyTabState({
   icon: Icon,
   message,
 }: {
-  icon: typeof FileText;
+  icon: LucideIcon;
   message: string;
 }): React.JSX.Element {
   return (

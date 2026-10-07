@@ -25,10 +25,12 @@ export async function apiFetch<T>(
   const res = await fetch(`${API_URL}${path}`, {
     ...rest,
     headers: {
-      // Only set when there's a body — Fastify's JSON parser rejects an empty
-      // body sent with this header (e.g. a bodyless DELETE), which otherwise
-      // surfaces as a misleading 500 instead of the caller's intended request.
-      ...(options.body ? { "Content-Type": "application/json" } : {}),
+      // Only set for a JSON body — Fastify's parser rejects an empty body sent
+      // with this header (e.g. a bodyless DELETE), and a `FormData` body (file
+      // uploads) needs the browser to set its own multipart boundary instead.
+      ...(options.body && !(options.body instanceof FormData)
+        ? { "Content-Type": "application/json" }
+        : {}),
       ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
       ...headers,
     },

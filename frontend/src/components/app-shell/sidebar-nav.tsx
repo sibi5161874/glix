@@ -18,9 +18,9 @@ const NAV_ITEMS = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, enabled: true },
   { label: "Employees", href: "/employees", icon: Users, enabled: true },
   { label: "Leave", href: "/leaves/requests", icon: CalendarDays, enabled: true },
-  { label: "Documents", href: "/documents", icon: FileText, enabled: false },
-  { label: "Loans", href: "/payroll/loans", icon: Wallet, enabled: false },
-  { label: "Announcements", href: "/announcements", icon: Megaphone, enabled: false },
+  { label: "Documents", href: "/documents", icon: FileText, enabled: true },
+  { label: "Loans", href: "/payroll/loans", icon: Wallet, enabled: true },
+  { label: "Announcements", href: "/announcements", icon: Megaphone, enabled: true },
   { label: "Reports", href: "/reports", icon: BarChart3, enabled: false },
   { label: "Settings", href: "/settings/profile", icon: Settings, enabled: false },
 ] as const;

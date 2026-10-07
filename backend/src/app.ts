@@ -12,6 +12,10 @@ import leaveTypesRoutes from "./routes/v1/leave-types.routes";
 import holidaysRoutes from "./routes/v1/holidays.routes";
 import leaveRequestsRoutes from "./routes/v1/leave-requests.routes";
 import leaveBalancesRoutes from "./routes/v1/leave-balances.routes";
+import documentTypesRoutes from "./routes/v1/document-types.routes";
+import documentsRoutes from "./routes/v1/documents.routes";
+import loansRoutes from "./routes/v1/loans.routes";
+import announcementsRoutes from "./routes/v1/announcements.routes";
 import { sendError } from "./utils/http";
 
 /** Builds the Fastify app without binding a port — used by index.ts and by tests (`fastify.inject`). */
@@ -26,7 +30,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     origin: [CORS_ORIGIN, "http://localhost:4000"],
     credentials: true,
   });
-  await app.register(multipart, { limits: { fileSize: 5 * 1024 * 1024 } });
+  await app.register(multipart, { limits: { fileSize: 50 * 1024 * 1024 } });
 
   // Must be set before any routes register — Fastify binds the applicable
   // error handler onto each route's context at registration time, not
@@ -46,6 +50,10 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(holidaysRoutes, { prefix: "/v1/holidays" });
   await app.register(leaveRequestsRoutes, { prefix: "/v1/leave-requests" });
   await app.register(leaveBalancesRoutes, { prefix: "/v1/leave-balances" });
+  await app.register(documentTypesRoutes, { prefix: "/v1/document-types" });
+  await app.register(documentsRoutes, { prefix: "/v1/documents" });
+  await app.register(loansRoutes, { prefix: "/v1/loans" });
+  await app.register(announcementsRoutes, { prefix: "/v1/announcements" });
 
   app.get("/health", async () => {
     let dbStatus = "unconfigured";
