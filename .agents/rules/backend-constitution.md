@@ -36,6 +36,7 @@
 | File upload | `@fastify/multipart` | Added Phase 2 for CSV bulk-import (`POST /v1/employees/import`). Streamed, size-capped. |
 | Spreadsheet export | `exceljs` | Added Phase 2 for XLSX export (`GET /v1/employees/export`). No CSV-injection: numeric/date cells typed, not raw strings. |
 | CSV parsing | hand-rolled (`backend/src/utils/csv.ts`) | No dependency — the import format is a fixed, known column set. |
+| PDF export | `pdfkit` | Added Phase 7 for Reports (`GET /v1/reports/*/export?format=pdf`). Pure JS, no native bindings, no system font dependency (bundles Helvetica). |
 | Rate limiting | `@fastify/rate-limit` | Registered globally with `global: false` — opt-in per route via `config.rateLimit`. Only `/v1/auth/login` and `/v1/auth/register` use it today; add it to any other unauthenticated or credential-bearing route before shipping it. |
 | Testing | Vitest + `fastify.inject` | Playwright for E2E |
 | Cache / Queue | **None in v1.** | Do not add Redis or BullMQ without a written proposal + update to this file first |

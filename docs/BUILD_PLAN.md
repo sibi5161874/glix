@@ -92,13 +92,13 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 7 — Reports (Week 5)
 
-- [ ] `/reports` hub
-- [ ] `/reports/employees` (demographics)
-- [ ] `/reports/leaves` (utilization)
-- [ ] `/reports/documents` (expiries)
-- [ ] `/reports/loans` (balances)
-- [ ] Excel + CSV + PDF export for each
-- [ ] Backend: server-side filters + export streaming
+- [x] `/reports` hub
+- [x] `/reports/employees` (demographics)
+- [x] `/reports/leaves` (utilization)
+- [x] `/reports/documents` (expiries)
+- [x] `/reports/loans` (balances)
+- [x] Excel + CSV + PDF export for each
+- [x] Backend: server-side filters + export streaming
 
 **Deliverable:** All 4 reports, exportable.
 

@@ -21,7 +21,7 @@ const NAV_ITEMS = [
   { label: "Documents", href: "/documents", icon: FileText, enabled: true },
   { label: "Loans", href: "/payroll/loans", icon: Wallet, enabled: true },
   { label: "Announcements", href: "/announcements", icon: Megaphone, enabled: true },
-  { label: "Reports", href: "/reports", icon: BarChart3, enabled: false },
+  { label: "Reports", href: "/reports", icon: BarChart3, enabled: true },
   { label: "Settings", href: "/settings/profile", icon: Settings, enabled: false },
 ] as const;
 

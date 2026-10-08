@@ -5,15 +5,15 @@
 - Started: 2026-10-05
 
 ## Current phase
-- Phase: 4–6 feature work complete; **this session's last work was a cross-cutting audit-fix pass, not a new phase** — CI, security, and test-debt items raised by an external code-audit of the repo (see "Audit-fix pass" below).
+- Phase: 7 (BUILD_PLAN.md numbering) — Reports — complete.
 - Task: —
-- Last action: Worked through a 15-item ranked audit (CI has no DB, no auth tests, no rate limiting, missing/broken E2E, dependency CVEs, disabled CSP, unfiltered export, duplicated tier-limit logic, no structured error context, an O(2 queries) list endpoint, stale BUILD_PLAN checkboxes, undocumented API versioning). All 15 addressed; #14 (formal a11y pass) deliberately deferred per the audit's own "premature today" call, though 3 concrete icon-button a11y bugs found along the way were fixed. Full backend suite: 67/67 passing (was 43 at the start of this pass). See CHANGELOG.md's two new "(audit-fix pass)" entries for the itemized list.
+- Last action: Built Reports end-to-end: backend (export builders, repository aggregation queries, 4 services, controller, routes) and frontend (`/reports` hub + 4 report pages, shared export-dropdown and subnav components), enabled "Reports" in `sidebar-nav.tsx`. Found and fixed a real `pg` concurrent-query bug along the way (see Phase 7 details below). Full backend suite: 78/78 passing (was 67 at the start of this phase). Browser-verified all 4 report pages + hub + one live export download as `owner@acme.test` (org_admin).
 
 ## Progress
-- Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management), 4 (Documents), 5 (Loans + Announcements) — manifest numbering; = BUILD_PLAN.md Phases 1,2,3,4,5,6
+- Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management), 4 (Documents), 5 (Loans + Announcements), 6 (Reports) — manifest numbering; = BUILD_PLAN.md Phases 1,2,3,4,5,6,7
 - Phases in progress: —
-- Phases pending: 6–11 (manifest numbering; = BUILD_PLAN.md Phases 7–12: Reports, Settings, Billing/Support, Superadmin, Polish, Launch)
-- Files read: 46 (bootstrap) + re-reads during cleanup + Phase 2/3 exploration + Phase 4-6 verification + audit-fix pass
+- Phases pending: 7–11 (manifest numbering; = BUILD_PLAN.md Phases 8–12: Settings, Billing/Support, Superadmin, Polish, Launch)
+- Files read: 46 (bootstrap) + re-reads during cleanup + Phase 2/3 exploration + Phase 4-6 verification + audit-fix pass + Phase 7 exploration
 
 ## Blockers
 - None currently open.
@@ -153,8 +153,32 @@ Registered globally with `global: false` — **routes don't get rate-limited unl
 ### Known gap, explicitly not fixed this pass
 Still **zero frontend tests**. The dashboard-crash bug (Phase 4-6 section above) and the response-envelope class of bug it represents is frontend-only and wouldn't be caught by backend tests, typecheck, or lint — only by actually loading the page. The new Playwright E2E test covers one flow; it is not a substitute for broader frontend test coverage.
 
+## Phase 7 details (Reports — for resume / handoff)
+
+### Backend (`backend/src/`)
+- `services/report-export.service.ts` — generic `buildCsv`/`buildXlsx`(ExcelJS)/`buildPdf`(pdfkit, landscape A4, manual column-positioned text with pagination)/`contentTypeFor`, shared by all 4 reports instead of each writing its own export logic.
+- `repositories/report.repository.ts` — `groupCount()` helper does generic `GROUP BY` counting with an optional name-lookup join (used for employees' department/designation breakdowns); `documentsByType`, `loansByStatus`, `employeeDemographics`, `leaveUtilization` live here.
+- `services/report-{employees,leaves,documents,loans}.service.ts` + `controllers/report.controller.ts` + `routes/v1/reports.routes.ts` — standard layering. Export routes carry both the group `reports:read` hook and their own `reports:export` preHandler (same permission set today, correct layered defense-in-depth regardless).
+- New dependency: `pdfkit` (+ `@types/pdfkit`) — pure JS, no native bindings, bundles Helvetica so no system font dependency. Documented in `.agents/rules/backend-constitution.md`.
+- **New lesson this phase, worth remembering for any future repository/service work:** a single `pg` `PoolClient` can't have two queries in flight at once. `Promise.all([client.query(...), client.query(...)])` sharing one client inside a `withTenant` callback doesn't error — `pg` queues them internally and logs a deprecation warning ("...will be removed in pg@9.0") — but it's still wrong and will break on a future `pg` major. Found in 3 places this phase (`employeeDemographics`'s 5 breakdowns, the documents report, the loans report), all fixed by converting to sequential `await`s. **If you're about to `Promise.all` multiple queries inside a `withTenant(ctx, async (client) => ...)` callback, don't — await them in sequence instead.**
+
+### Frontend (`frontend/src/`)
+- `app/(app)/reports/` — `page.tsx` (hub), `reports-subnav.tsx` (shared tab nav across all 5 report routes, same pattern as `document-subnav.tsx`), `report-export-button.tsx` (client dropdown: CSV/Excel/PDF, reuses the blob-download pattern already established in `employees/import-export/page.tsx`), `breakdown-table.tsx` (shared label/count/% table for the various "by X" breakdowns), `employees/page.tsx`, `documents/page.tsx`, `loans/page.tsx`, `leaves/page.tsx` + `leaves/year-select.tsx` (the one report with a filter — a year dropdown driving a `?year=` search param, same `useRouter().push` pattern as `employee-filters.tsx`).
+- `lib/reports.ts` — typed `apiFetch` wrappers for all 4 report GETs (export downloads go through plain `fetch` + blob in `report-export-button.tsx`, not `apiFetch`, since the response isn't JSON).
+- Every report page does its own `session.user.role === "org_viewer"` check and shows a permission message — this is a UI nicety only, the backend's `reports:read` permission (`org_admin`/`org_staff` only) is what actually enforces it; no seeded `org_viewer` user exists in `db/seed.sql` to browser-verify this specific path, but the backend integration tests cover the 403.
+- Enabled "Reports" in `sidebar-nav.tsx` (`enabled: false` → `true`).
+
+### Verified in-browser (not just typecheck)
+- Logged in as `owner@acme.test` (org_admin) → `/reports` hub → all 4 report cards link correctly → each of `/reports/employees`, `/reports/leaves` (year selector defaults to current year, shows all 6 seeded leave types), `/reports/documents`, `/reports/loans` renders real data from the dev DB with no console errors beyond a pre-existing unrelated devtools-injected one.
+- Export dropdown on `/reports/employees` → clicked CSV → network tab confirmed `GET /v1/reports/employees/export?format=csv` → `200 OK`, correct CORS preflight, no error toast.
+- Did not browser-verify Excel/PDF downloads individually or the `org_viewer` permission message (no seeded viewer account) — both are covered by the 11 backend integration tests instead (all 3 export formats' content-type headers, the 403 for `org_viewer`).
+
+### Known Phase 7 simplifications (deliberate, not bugs)
+- Leave Utilization's `Annual Leave` row showed `Used: 78` against `Allocated: 30` (260%) in the dev DB during verification — this reflects real (messy) accumulated dev-seed/test data from this session's many leave-workflow test runs, not a bug in the new report query (the query correctly filters `leave_balances` by the selected year). Worth a fresh `pnpm db:seed` before demoing this report if the numbers look odd.
+- No date-range or department filter on any report beyond leaves' year selector — matches `BUILD_PLAN.md`'s Phase 7 scope exactly, nothing more was promised.
+
 ## Next action
-- Await `next` from project owner to start Phase 6 (manifest numbering) / Phase 7 (`BUILD_PLAN.md` numbering) — Reports.
+- Await `next` from project owner to start Phase 7 (manifest numbering) / Phase 8 (`BUILD_PLAN.md` numbering) — Settings.
 - **Suggested follow-up, not yet actioned:** a frontend unit/component test suite (Vitest + Testing Library, or similar) — still the single biggest gap now that CI, auth tests, rate limiting, and E2E exist.
 - **Unverified, flag for next session:** confirm the `ci` job's Postgres service actually works on a real GitHub Actions run (see CI section above) — watch the first PR this branch's work goes through.
 

@@ -8,3 +8,4 @@ export * from "./document.schema";
 export * from "./organization.schema";
 export * from "./loan.schema";
 export * from "./announcement.schema";
+export * from "./report.schema";

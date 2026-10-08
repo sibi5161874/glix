@@ -17,6 +17,7 @@ import documentTypesRoutes from "./routes/v1/document-types.routes";
 import documentsRoutes from "./routes/v1/documents.routes";
 import loansRoutes from "./routes/v1/loans.routes";
 import announcementsRoutes from "./routes/v1/announcements.routes";
+import reportsRoutes from "./routes/v1/reports.routes";
 import { sendError } from "./utils/http";
 
 /** Builds the Fastify app without binding a port — used by index.ts and by tests (`fastify.inject`). */
@@ -73,6 +74,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(documentsRoutes, { prefix: "/v1/documents" });
   await app.register(loansRoutes, { prefix: "/v1/loans" });
   await app.register(announcementsRoutes, { prefix: "/v1/announcements" });
+  await app.register(reportsRoutes, { prefix: "/v1/reports" });
 
   app.get("/health", async () => {
     let dbStatus = "unconfigured";
