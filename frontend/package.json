@@ -9,7 +9,8 @@
     "start": "next start -p 4000",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@app/shared": "workspace:*",
@@ -37,6 +38,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/node": "^22.8.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

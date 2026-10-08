@@ -44,6 +44,22 @@ describe("employees routes", () => {
     );
   });
 
+  it("reports the correct total even when `page` is past the last page", async () => {
+    // Regression: the window-function count (`count(*) over()`) optimization
+    // in employee.repository.ts can only read the total off a row it
+    // actually returns — a page past the end returns zero rows, and a naive
+    // implementation would report total: 0 even though matches exist.
+    const res = await app.inject({
+      method: "GET",
+      url: "/v1/employees?limit=1&page=9999",
+      headers: authHeader({ role: "org_admin" }),
+    });
+    expect(res.statusCode).toBe(200);
+    const body = res.json().data;
+    expect(body.items).toEqual([]);
+    expect(body.total).toBeGreaterThan(0);
+  });
+
   it("denies create for org_staff (missing employees:create permission is granted, but org_viewer is not)", async () => {
     const res = await app.inject({
       method: "POST",

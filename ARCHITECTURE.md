@@ -124,3 +124,14 @@ unconditionally. The backend's `DATABASE_URL` must always point at `glix_app`;
   - `org_id UUID NOT NULL REFERENCES organizations(id) ON DELETE CASCADE`
   - Indexed: `(org_id, ...)`
   - RLS policy filtering `org_id = public.current_org_id() or public.is_platform_admin()`
+
+---
+
+## 7. API Versioning
+
+Every route is registered under `/v1` (`backend/src/app.ts`'s `app.register(...Routes, { prefix: "/v1/..." })` calls). There is no `/v2` yet and no versioning machinery beyond the literal prefix — this section exists so the first breaking change has a plan to follow instead of inventing one under deadline pressure.
+
+- **What counts as breaking:** removing/renaming a field or endpoint, changing a field's type or meaning, tightening validation on an existing field, changing a status code for an existing case. Additive changes (new optional field, new endpoint, new enum value a client can ignore) are not breaking and ship under `/v1` as normal.
+- **How a `/v2` would be introduced:** a new route prefix (`/v2/...`) registered alongside `/v1`, not a replacement — both mounted in the same `buildApp()`. Routes that didn't change keep being served under both prefixes from the same handler (register the same plugin under both prefixes) rather than duplicating logic.
+- **Deprecation window:** once a `/v2` route exists, its `/v1` equivalent is marked deprecated in code (a comment, not a behavior change) and stays functionally identical for at least one full release cycle before removal. The frontend (`frontend/src/lib/*.ts`) is the only caller that matters today — it must be migrated to `/v2` before `/v1` is ever removed, and that migration is a single-PR, single-deploy change since frontend and backend ship together.
+- **What does *not* require a version bump:** anything server-side-only (a repository query shape, an internal service signature) — only the wire contract (request/response shape, status codes, URL) is versioned. The response-envelope mismatch bug fixed this session (`CHANGELOG.md`: `announcementService.list`'s paginated envelope vs. `lib/announcements.ts`'s assumed bare array) was exactly this kind of contract drift happening *without* a version bump, inside what was supposed to be the same `/v1` contract — a reminder that "versioning" doesn't substitute for frontend/backend types actually agreeing, which `apiFetch<T>`'s caller-asserted `T` doesn't enforce today (see `frontend/src/lib/api.ts`).

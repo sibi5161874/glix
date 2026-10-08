@@ -15,6 +15,33 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
+    # Backend integration tests hit a real Postgres instance (backend-constitution.md
+    # §13: "never mock the repository layer"). Without this service, `pnpm test`
+    # fails outright the moment any backend test exists — it already did once.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: glix_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      # `postgres` (the Docker image's default superuser) plays the role
+      # db/migrations/020_roles.sql calls `glix_user` — the migration owner.
+      # It creates `glix_app` itself; nothing here pre-creates that role.
+      DATABASE_URL_MIGRATE: postgresql://postgres:postgres@localhost:5432/glix_ci
+      DATABASE_URL: postgresql://glix_app:glix_app_dev_password@localhost:5432/glix_ci
+      JWT_SECRET: ci-only-jwt-secret-never-use-outside-ci-0123456789
+      NODE_ENV: test
+
     steps:
       - uses: actions/checkout@v4
 
@@ -39,5 +66,88 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Run migrations
+        run: pnpm db:migrate
+
+      - name: Seed database
+        run: pnpm db:seed
+
       - name: Unit tests
         run: pnpm test
+
+  e2e:
+    name: E2E (Playwright)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: ci
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: glix_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DATABASE_URL_MIGRATE: postgresql://postgres:postgres@localhost:5432/glix_ci
+      DATABASE_URL: postgresql://glix_app:glix_app_dev_password@localhost:5432/glix_ci
+      JWT_SECRET: ci-only-jwt-secret-never-use-outside-ci-0123456789
+      NEXT_PUBLIC_API_URL: http://localhost:5000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright's Chromium
+        run: pnpm --filter frontend exec playwright install --with-deps chromium
+
+      - name: Run migrations
+        run: pnpm db:migrate
+
+      - name: Seed database
+        run: pnpm db:seed
+
+      # Backgrounded — persists for the rest of this job's steps on the same
+      # runner. Playwright's own webServer config (frontend/playwright.config.ts)
+      # starts the frontend; only the backend needs starting here.
+      - name: Start backend
+        run: nohup pnpm --filter backend dev > backend.log 2>&1 &
+
+      - name: Wait for backend health check
+        run: npx --yes wait-on http://localhost:5000/health --timeout 30000
+
+      - name: Run E2E tests
+        run: pnpm --filter frontend test:e2e
+
+      - name: Upload backend logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-logs
+          path: backend.log
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: frontend/playwright-report/

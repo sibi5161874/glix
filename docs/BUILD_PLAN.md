@@ -10,13 +10,13 @@ Build bottom-up: foundation → entities → flows → polish.
 
 Migration 008–020 + shared config + Zod schemas.
 
-- [ ] Migrations 008–020 (plans → org trigger)
-- [ ] `shared/config/permissions.config.ts`
-- [ ] `shared/config/tiers.config.ts`
-- [ ] `shared/config/document-types.config.ts`
-- [ ] `shared/config/currency.config.ts`
-- [ ] Zod schemas (organization, employee, leave, document, loan)
-- [ ] Seed script: 3 plans + default leave types + doc types
+- [x] Migrations 008–020 (plans → org trigger)
+- [x] `shared/config/permissions.config.ts`
+- [x] `shared/config/tiers.config.ts`
+- [x] `shared/config/document-types.config.ts`
+- [x] `shared/config/currency.config.ts`
+- [x] Zod schemas (organization, employee, leave, document, loan)
+- [x] Seed script: 3 plans + default leave types + doc types
 
 **Deliverable:** DB ready, types shared, no UI.
 
@@ -24,14 +24,14 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 2 — Auth + Tenancy (Week 1–2)
 
-- [ ] Frontend: `/login` (dual: email OR employee code + DOB)
-- [ ] Frontend: `/register` (4-step wizard)
-- [ ] Frontend: `/superadmin/login`
-- [ ] Backend: JWT verification middleware (JWKS)
-- [ ] Backend: `POST /v1/auth/create-org` (registration)
-- [ ] Backend: org creation trigger seeds defaults
-- [ ] Layout: app shell (sidebar + topbar)
-- [ ] Layout: superadmin shell
+- [x] Frontend: `/login` (dual: email OR employee code + DOB)
+- [x] Frontend: `/register` (4-step wizard)
+- [x] Frontend: `/superadmin/login`
+- [x] Backend: JWT verification middleware (bearer-token verify, not JWKS — see ARCHITECTURE.md §5)
+- [x] Backend: `POST /v1/auth/register` (registration — the route is named `/register`, not `/create-org`)
+- [x] Backend: org creation trigger seeds defaults
+- [x] Layout: app shell (sidebar + topbar)
+- [x] Layout: superadmin shell
 
 **Deliverable:** Login, register, empty dashboards.
 
@@ -39,13 +39,13 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 3 — Employees (Week 2)
 
-- [ ] `/employees` list (search, filter, sort, paginate)
-- [ ] `/employees/create` form (Zod + RHF)
-- [ ] `/employees/[id]` detail (tabs: Info, Documents, Activity)
-- [ ] `/employees/import-export` (CSV bulk import + Excel export)
-- [ ] Backend: employees CRUD (RLS-scoped)
-- [ ] Backend: CSV parse + validate + bulk insert
-- [ ] Backend: XLSX export
+- [x] `/employees` list (search, filter, sort, paginate)
+- [x] `/employees/create` form (Zod + RHF)
+- [x] `/employees/[id]` detail (tabs: Info, Documents, Activity)
+- [x] `/employees/import-export` (CSV bulk import + Excel export)
+- [x] Backend: employees CRUD (RLS-scoped)
+- [x] Backend: CSV parse + validate + bulk insert
+- [x] Backend: XLSX export
 
 **Deliverable:** Full employee management.
 
@@ -53,12 +53,12 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 4 — Leave Management (Week 3)
 
-- [ ] `/leaves/requests` (list + approve/reject)
-- [ ] `/leaves/balances` (with adjust modal)
-- [ ] `/leaves/types` (config CRUD)
-- [ ] `/holidays` (config CRUD)
-- [ ] `/leaves/calendar` (visual month view)
-- [ ] Backend: leave request flow + balance deduction trigger
+- [x] `/leaves/requests` (list + approve/reject/cancel)
+- [x] `/leaves/balances` (with adjust modal)
+- [x] `/leaves/types` (config CRUD)
+- [x] `/holidays` (config CRUD)
+- [x] `/leaves/calendar` (visual month view)
+- [x] Backend: leave request flow + balance deduction trigger
 
 **Deliverable:** End-to-end leave lifecycle.
 

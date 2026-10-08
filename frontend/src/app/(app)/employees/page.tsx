@@ -47,13 +47,21 @@ export default async function EmployeesPage({
 
   const canDelete = session.user.role === "org_admin";
 
+  // Carried through to /employees/import-export so "Export" downloads what's
+  // currently on screen, not an unfiltered dump of every employee.
+  const exportQuery = new URLSearchParams();
+  if (filter.search) exportQuery.set("search", filter.search);
+  if (filter.departmentId) exportQuery.set("departmentId", filter.departmentId);
+  if (filter.status) exportQuery.set("status", filter.status);
+  const importExportHref = `/employees/import-export${exportQuery.size > 0 ? `?${exportQuery}` : ""}`;
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-semibold">Employees</h1>
         <div className="flex gap-2">
           <Button variant="outline" asChild>
-            <Link href="/employees/import-export">
+            <Link href={importExportHref}>
               <Upload className="h-4 w-4" />
               Import / Export
             </Link>

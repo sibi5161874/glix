@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { Download, FileSpreadsheet, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,13 +11,20 @@ import { ApiError } from "@/lib/api";
 import type { ImportSummary } from "./types";
 
 const API_URL = process.env["NEXT_PUBLIC_API_URL"] ?? "http://localhost:5000";
+// The only filter keys the backend's EmployeeFilter schema accepts — forwarded
+// from /employees' active filters (see page.tsx's `importExportHref`) so
+// "Export" downloads what's on screen, not every employee in the org.
+const FORWARDED_FILTER_KEYS = ["search", "departmentId", "status"] as const;
 
 export default function ImportExportPage(): React.JSX.Element {
   const { data: session } = useSession();
+  const searchParams = useSearchParams();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isImporting, setIsImporting] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [summary, setSummary] = useState<ImportSummary | null>(null);
+
+  const activeFilterCount = FORWARDED_FILTER_KEYS.filter((key) => searchParams.get(key)).length;
 
   async function handleImport(file: File): Promise<void> {
     if (!session?.accessToken) return;
@@ -47,7 +55,13 @@ export default function ImportExportPage(): React.JSX.Element {
     if (!session?.accessToken) return;
     setIsExporting(true);
     try {
-      const res = await fetch(`${API_URL}/v1/employees/export`, {
+      const query = new URLSearchParams();
+      for (const key of FORWARDED_FILTER_KEYS) {
+        const value = searchParams.get(key);
+        if (value) query.set(key, value);
+      }
+      const qs = query.size > 0 ? `?${query}` : "";
+      const res = await fetch(`${API_URL}/v1/employees/export${qs}`, {
         headers: { Authorization: `Bearer ${session.accessToken}` },
       });
       if (!res.ok) throw new Error("Export failed");
@@ -117,7 +131,9 @@ export default function ImportExportPage(): React.JSX.Element {
             <FileSpreadsheet className="h-5 w-5" /> Export (XLSX)
           </CardTitle>
           <CardDescription>
-            Downloads every employee matching no filter — up to 10,000 rows.
+            {activeFilterCount > 0
+              ? `Downloads employees matching the filters from the Employees list you came from (${activeFilterCount} active) — up to 10,000 rows.`
+              : "Downloads every employee — no filters are active — up to 10,000 rows."}
           </CardDescription>
         </CardHeader>
         <CardContent>

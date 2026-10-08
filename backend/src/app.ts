@@ -2,6 +2,7 @@ import Fastify, { type FastifyInstance } from "fastify";
 import cors from "@fastify/cors";
 import helmet from "@fastify/helmet";
 import multipart from "@fastify/multipart";
+import rateLimit from "@fastify/rate-limit";
 import postgres from "@fastify/postgres";
 import dbPlugin from "./plugins/db.plugin";
 import authPlugin from "./plugins/auth.plugin";
@@ -25,18 +26,36 @@ export async function buildApp(): Promise<FastifyInstance> {
 
   const app = Fastify({ logger: process.env["NODE_ENV"] !== "test" });
 
-  await app.register(helmet, { contentSecurityPolicy: false });
+  // This API never renders HTML, so a strict, locked-down CSP costs nothing —
+  // `contentSecurityPolicy: false` disabled it outright rather than tuning
+  // it. `default-src 'none'` + explicit per-directive opt-ins is the correct
+  // default for a pure JSON/binary API (document/XLSX downloads included):
+  // there's no first-party script/style/font to allow, so there's nothing to
+  // add beyond helmet's base protections (frameAncestors, etc.).
+  await app.register(helmet, {
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'none'"],
+        frameAncestors: ["'none'"],
+      },
+    },
+  });
   await app.register(cors, {
     origin: [CORS_ORIGIN, "http://localhost:4000"],
     credentials: true,
   });
   await app.register(multipart, { limits: { fileSize: 50 * 1024 * 1024 } });
+  // Registered globally but opt-in per route (`global: false`) — only the
+  // auth routes declare a `config.rateLimit` override (see auth.routes.ts).
+  // Brute-force/credential-stuffing on /v1/auth/login was previously
+  // unmitigated entirely.
+  await app.register(rateLimit, { global: false });
 
   // Must be set before any routes register — Fastify binds the applicable
   // error handler onto each route's context at registration time, not
   // dynamically per-request, so routes registered before this line would
   // silently keep Fastify's default error shape instead of ours.
-  app.setErrorHandler((err, _req, reply) => sendError(reply, err));
+  app.setErrorHandler((err, req, reply) => sendError(reply, err, req));
 
   if (DATABASE_URL) {
     await app.register(postgres, { connectionString: DATABASE_URL });

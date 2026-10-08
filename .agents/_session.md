@@ -5,15 +5,15 @@
 - Started: 2026-10-05
 
 ## Current phase
-- Phase: 4–6 (Documents, Loans, Announcements — BUILD_PLAN.md numbering) — **complete, verified**
+- Phase: 4–6 feature work complete; **this session's last work was a cross-cutting audit-fix pass, not a new phase** — CI, security, and test-debt items raised by an external code-audit of the repo (see "Audit-fix pass" below).
 - Task: —
-- Last action: Phases 4-6 (Documents/Compliance Vault, Loans, Announcements) arrived pre-built (not written in this session) with uncommitted changes; did a full verification pass before the first commit — typecheck/lint/43 backend tests all passed going in, but browser verification caught a live dashboard crash and two silent date-shift bugs the test suite had missed. See CHANGELOG.md's "Fixed (found during post-hoc verification...)" entry for the full list: a paginated-envelope-vs-bare-array contract mismatch crashing `/dashboard`, the same `date`-column JS-Date-parsing pitfall independently reintroduced in both Documents (`issue_date`/`expiry_date`) and Loans (`start_month`) despite being documented fixed for Employees/Leave earlier this session, a test-data leak duplicating a document type 11x, and 4 files over the 250-line cap. All fixed, all now test-covered, re-verified in-browser.
+- Last action: Worked through a 15-item ranked audit (CI has no DB, no auth tests, no rate limiting, missing/broken E2E, dependency CVEs, disabled CSP, unfiltered export, duplicated tier-limit logic, no structured error context, an O(2 queries) list endpoint, stale BUILD_PLAN checkboxes, undocumented API versioning). All 15 addressed; #14 (formal a11y pass) deliberately deferred per the audit's own "premature today" call, though 3 concrete icon-button a11y bugs found along the way were fixed. Full backend suite: 67/67 passing (was 43 at the start of this pass). See CHANGELOG.md's two new "(audit-fix pass)" entries for the itemized list.
 
 ## Progress
 - Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management), 4 (Documents), 5 (Loans + Announcements) — manifest numbering; = BUILD_PLAN.md Phases 1,2,3,4,5,6
 - Phases in progress: —
 - Phases pending: 6–11 (manifest numbering; = BUILD_PLAN.md Phases 7–12: Reports, Settings, Billing/Support, Superadmin, Polish, Launch)
-- Files read: 46 (bootstrap) + re-reads during cleanup + Phase 2/3 exploration + Phase 4-6 verification
+- Files read: 46 (bootstrap) + re-reads during cleanup + Phase 2/3 exploration + Phase 4-6 verification + audit-fix pass
 
 ## Blockers
 - None currently open.
@@ -131,9 +131,32 @@ These phases' code wasn't written in this session — it arrived already in the 
 ### File-size cleanup (RULES.md §3)
 Split 4 files that exceeded 250 lines (see CHANGELOG.md for the full list and new file names). No behavior changes, pure extraction.
 
+## Audit-fix pass details (for resume / handoff)
+
+A code-review audit of the repo (not written by this agent — pasted in by the project owner) ranked 15 improvements. All 15 were addressed this session; details below for anything non-obvious.
+
+### CI (`.github/workflows/ci.yml`)
+- Main `ci` job: added a `postgres:16` service + `DATABASE_URL`/`DATABASE_URL_MIGRATE`/`JWT_SECRET` env + `db:migrate`/`db:seed` steps before `pnpm test`. **Could not fully dry-run this exact config locally** — no access to a local Postgres superuser password to simulate a truly fresh `glix_ci` database the way the Docker image's `postgres` user would be. Reasoned through the role architecture carefully (020_roles.sql's `glix_app` creation only needs *a* superuser-equivalent role as `DATABASE_URL_MIGRATE`, not literally a role named `glix_user`) but this is the one piece of this session's CI work that's unverified end-to-end. **If the `ci` job fails on its next real run, start here.**
+- New `e2e` job: own Postgres service, backend started backgrounded (`nohup ... &`, persists across steps on the same runner — verified this pattern works, not just assumed), `wait-on` for `/health`, then `pnpm --filter frontend test:e2e`. Uploads backend logs + Playwright report as artifacts on failure.
+
+### Playwright / E2E (`frontend/playwright.config.ts`, `frontend/e2e/`)
+- **Dev-mode cold-compile flakiness is real and was reproduced repeatedly**, not theoretical: on a freshly started `next dev` server (not `next build`), the first visit to `/dashboard` can take long enough to blow past a 15s `toHaveURL` assertion — same phenomenon Phase 1's notes already documented for `/superadmin/dashboard` ("~28s cold compile, not a bug"). **Fix: in CI (`isCI` check in the config), the webServer command is `pnpm build && pnpm start`, not `pnpm dev`.** A production server has no per-route compile tax. Locally, `pnpm dev` is still used (fast iteration, `reuseExistingServer: true`) — expect occasional first-run flakiness locally, that's normal, not a regression.
+- `next build` alone took 70-115s in this environment. `webServer.timeout` is `240_000` (4 min) — don't shrink this without re-timing a cold build first; it already timed out once at 120s.
+- The test's own cleanup is belt-and-suspenders: the UI delete step runs normally, but an `afterEach` hook also logs in via the API directly (seeded `owner@acme.test` credentials) and deletes anything matching `E2E-*` — so a failure mid-test still can't leak data into the dev DB the way earlier test files did (see Phase 4-6 section above).
+
+### Rate limiting (`@fastify/rate-limit`)
+Registered globally with `global: false` — **routes don't get rate-limited unless they explicitly opt in** via `{ config: { rateLimit: {...} } }` (see `auth.routes.ts`). Only `/v1/auth/login` (10/min) and `/v1/auth/register` (5/min) opt in today. If a future route is public-facing or credential-bearing, it needs the same treatment — nothing enforces this automatically.
+
+### Tier limits (`tier-limit.service.ts`)
+**Do not copy the original `isWithinLimit` (`shared/config/tiers.config.ts`) calling convention of `current + aboutToAdd - 1` into new code.** That arithmetic only happens to work for integer counts (employees) — it's subtly wrong for a continuous quantity like storage MB (verified wrong in `tier-limit.service.test.ts`'s "does the math correctly" test, which would fail against the old formula). `assertWithinTierLimit` does `current + aboutToAdd > limit` directly instead; use that function, don't call `isWithinLimit` directly from a service.
+
+### Known gap, explicitly not fixed this pass
+Still **zero frontend tests**. The dashboard-crash bug (Phase 4-6 section above) and the response-envelope class of bug it represents is frontend-only and wouldn't be caught by backend tests, typecheck, or lint — only by actually loading the page. The new Playwright E2E test covers one flow; it is not a substitute for broader frontend test coverage.
+
 ## Next action
 - Await `next` from project owner to start Phase 6 (manifest numbering) / Phase 7 (`BUILD_PLAN.md` numbering) — Reports.
-- **Suggested follow-up, not yet actioned:** add a frontend test suite (still zero frontend tests exist) — the dashboard crash this session is the second time a frontend-only bug has shipped past a fully green backend test suite.
+- **Suggested follow-up, not yet actioned:** a frontend unit/component test suite (Vitest + Testing Library, or similar) — still the single biggest gap now that CI, auth tests, rate limiting, and E2E exist.
+- **Unverified, flag for next session:** confirm the `ci` job's Postgres service actually works on a real GitHub Actions run (see CI section above) — watch the first PR this branch's work goes through.
 
 ## Last update
-- 2026-10-07
+- 2026-10-08

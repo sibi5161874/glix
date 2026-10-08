@@ -73,20 +73,33 @@ export const employeeRepository = {
     }
     const whereSql = where.length > 0 ? `where ${where.join(" and ")}` : "";
 
-    const { rows: countRows } = await client.query(
-      `select count(*)::int as total ${FROM} ${whereSql}`,
-      params,
-    );
-
+    // A window-function count piggybacks the total onto the same scan as the
+    // page of rows, instead of always running the WHERE clause twice as two
+    // round trips — matters once an org has enough employees that the filter
+    // can't be satisfied by an index-only scan. The one case this can't
+    // answer on its own: `page` beyond the last page returns zero rows, so
+    // there's no row left to carry the total on — fall back to a plain count
+    // only in that (uncommon) case, rather than always paying for one.
     const sortColumn = `e.${filter.sort}`;
     const limitIdx = params.length + 1;
     const offsetIdx = params.length + 2;
     const { rows } = await client.query(
-      `select ${SELECT_COLUMNS} ${FROM} ${whereSql}
+      `select ${SELECT_COLUMNS}, count(*) over()::int as total_count ${FROM} ${whereSql}
        order by ${sortColumn} ${filter.order} limit $${limitIdx} offset $${offsetIdx}`,
       [...params, filter.limit, (filter.page - 1) * filter.limit],
     );
-    return { rows: rows.map(mapRow), total: countRows[0]?.total ?? 0 };
+
+    if (rows.length > 0) {
+      return { rows: rows.map(mapRow), total: rows[0]["total_count"] as number };
+    }
+    if (filter.page === 1) {
+      return { rows: [], total: 0 };
+    }
+    const { rows: countRows } = await client.query(
+      `select count(*)::int as total ${FROM} ${whereSql}`,
+      params,
+    );
+    return { rows: [], total: countRows[0]?.total ?? 0 };
   },
 
   async count(client: PoolClient, orgId: string): Promise<number> {

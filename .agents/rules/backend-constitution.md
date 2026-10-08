@@ -36,6 +36,7 @@
 | File upload | `@fastify/multipart` | Added Phase 2 for CSV bulk-import (`POST /v1/employees/import`). Streamed, size-capped. |
 | Spreadsheet export | `exceljs` | Added Phase 2 for XLSX export (`GET /v1/employees/export`). No CSV-injection: numeric/date cells typed, not raw strings. |
 | CSV parsing | hand-rolled (`backend/src/utils/csv.ts`) | No dependency — the import format is a fixed, known column set. |
+| Rate limiting | `@fastify/rate-limit` | Registered globally with `global: false` — opt-in per route via `config.rateLimit`. Only `/v1/auth/login` and `/v1/auth/register` use it today; add it to any other unauthenticated or credential-bearing route before shipping it. |
 | Testing | Vitest + `fastify.inject` | Playwright for E2E |
 | Cache / Queue | **None in v1.** | Do not add Redis or BullMQ without a written proposal + update to this file first |
 
@@ -170,6 +171,7 @@ export class ConflictError extends AppError {
 - Fastify's built-in `pino` only. No `console.log` in committed code.
 - Structured: `fastify.log.info({ requestId, userId, orgId }, "employee created")`.
 - Never log passwords, tokens, secrets, or full PII payloads.
+- **Error observability (current state, be honest about it):** no external APM/error-tracker (Sentry or equivalent) is wired in anywhere — no DSN exists in `.env.example`. Every unhandled error (`utils/http.ts`'s `sendError`) is logged as a structured pino line with `orgId`/`userId`/`method`/`url`, and `index.ts` has `uncaughtException`/`unhandledRejection` handlers so a crash is never silent. That's the entire observability story today — grep the logs. If an APM is added later, `sendError`'s catch-all branch and `index.ts`'s two process handlers are the three places a `captureException` call belongs; don't scatter error-reporting calls elsewhere.
 
 ---
 

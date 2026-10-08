@@ -7,6 +7,9 @@ import { documentRepository, type DocumentRow } from "../repositories/document.r
 import { documentTypeRepository } from "../repositories/document-type.repository";
 import { employeeRepository } from "../repositories/employee.repository";
 import { ForbiddenError, NotFoundError, ValidationError } from "../utils/errors";
+import { assertWithinTierLimit } from "./tier-limit.service";
+
+const BYTES_PER_MB = 1024 * 1024;
 
 export const documentService = {
   async list(
@@ -56,6 +59,17 @@ export const documentService = {
       if (docType.requiresExpiry && !input.expiryDate) {
         throw new ValidationError(`Document type '${docType.name}' requires an expiry date`);
       }
+
+      // Tier storage limit (RULES.md §9) — was never enforced here; a lower
+      // tier's maxStorageMb (shared/config/tiers.config.ts) had no backing
+      // check anywhere in the app.
+      const { rows: storageRows } = await client.query(
+        "select coalesce(sum(file_size), 0)::bigint as total_bytes from public.attachments where org_id = $1",
+        [ctx.orgId],
+      );
+      const currentMb = Number(storageRows[0]?.["total_bytes"] ?? 0) / BYTES_PER_MB;
+      const newFileMb = input.fileSize / BYTES_PER_MB;
+      await assertWithinTierLimit(client, ctx.orgId, "storageMb", currentMb, newFileMb, "Storage");
 
       // Also create record in attachments table
       await client.query(

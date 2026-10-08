@@ -41,5 +41,9 @@ run migrations or seeds.
 - All attachment metadata and authorization is tracked in `public.attachments` protected by tenant-scoped RLS.
 - File downloads and streams are authenticated via backend API routes that verify organization membership.
 
-### 4. Reporting Vulnerabilities
+### 4. Request-Level Hardening
+- **Rate limiting:** `@fastify/rate-limit` is registered globally but **opt-in per route** (`global: false`) — a route is only protected if it explicitly sets `config.rateLimit`. Today that's `POST /v1/auth/login` (10/min per IP) and `POST /v1/auth/register` (5/min per IP), the only unauthenticated credential-bearing routes. Any new public or credential-bearing route must add this explicitly; nothing enforces it automatically.
+- **CSP:** the backend is a pure JSON/binary API (it never renders HTML, including the XLSX/document-download endpoints), so Helmet's Content-Security-Policy is set to `default-src 'none'; frame-ancestors 'none'` — there's no first-party script/style to allow.
+
+### 5. Reporting Vulnerabilities
 If you discover a security vulnerability, please send an advisory directly to `security@yourcompany.com` rather than opening a public issue.

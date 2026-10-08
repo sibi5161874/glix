@@ -1,12 +1,12 @@
 import type { FastifyInstance } from "fastify";
 import type { PoolClient } from "pg";
-import { isWithinLimit } from "@app/shared/config";
 import type { CreateEmployeeInput, UpdateEmployeeInput, EmployeeFilter } from "@app/shared/schemas";
 import type { RequestContext } from "../plugins/db.plugin";
 import { employeeRepository, type EmployeeRow } from "../repositories/employee.repository";
 import { ConflictError, NotFoundError } from "../utils/errors";
 import { importEmployeesFromCsv, type ImportSummary } from "./employee-import.service";
 import { buildEmployeeWorkbook } from "./employee-export.service";
+import { assertWithinTierLimit } from "./tier-limit.service";
 
 export const employeeService = {
   async list(
@@ -86,27 +86,14 @@ export const employeeService = {
   },
 };
 
-/**
- * Tier limit (RULES.md §9 — enforced server-side, never trust the client).
- * Must run on the same tenant-scoped `client` as the insert — a separate
- * pool connection has no `app.org_id` session var set, so RLS would hide
- * every row and the count would silently read as zero.
- */
+/** Thin wrapper over the shared tier-limit check — see tier-limit.service.ts. */
 export async function assertWithinEmployeeLimit(
   client: PoolClient,
   orgId: string,
   aboutToAdd: number,
 ): Promise<void> {
-  const { rows } = await client.query("select tier from public.organizations where id = $1", [
-    orgId,
-  ]);
-  const tier = rows[0]?.tier ?? "free";
   const current = await employeeRepository.count(client, orgId);
-  if (!isWithinLimit(tier, "employees", current + aboutToAdd - 1)) {
-    throw new ConflictError(
-      `Employee limit reached for the ${tier} plan. Upgrade to add more employees.`,
-    );
-  }
+  await assertWithinTierLimit(client, orgId, "employees", current, aboutToAdd, "Employee");
 }
 
 function mapInsertError(err: unknown): Error {
