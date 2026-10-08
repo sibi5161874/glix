@@ -1,6 +1,7 @@
 import fp from "fastify-plugin";
 import type { FastifyPluginAsync, FastifyRequest, FastifyReply } from "fastify";
 import jwt from "jsonwebtoken";
+import { getServerEnv } from "@app/shared/config";
 import { UnauthorizedError } from "../utils/errors";
 
 export interface AuthClaims {
@@ -23,9 +24,10 @@ declare module "fastify" {
 }
 
 const authPlugin: FastifyPluginAsync = async (fastify) => {
-  const secret = process.env["JWT_SECRET"];
-  if (!secret) throw new Error("JWT_SECRET required in environment");
-  const expiresIn = process.env["JWT_EXPIRES_IN"] ?? "7d";
+  // getServerEnv() requires JWT_SECRET (shared/config/env.ts) — already
+  // validated by the time this plugin registers, so this read can't fail
+  // silently the way a bare `process.env["JWT_SECRET"]` read could.
+  const { JWT_SECRET: secret, JWT_EXPIRES_IN: expiresIn } = getServerEnv();
 
   fastify.decorate("signAuthToken", function signAuthToken(claims: AuthClaims): string {
     return jwt.sign(claims, secret, { expiresIn } as jwt.SignOptions);

@@ -116,3 +116,24 @@ describe("GET /v1/reports/*/export", () => {
     expect(res.headers["content-type"]).toContain("spreadsheetml");
   });
 });
+
+describe("rate limiting on /v1/reports/*/export", () => {
+  it("returns 429 after exceeding the per-IP limit, isolated from other tests' counters", async () => {
+    const limitedApp = await buildApp();
+    await limitedApp.ready();
+    try {
+      let lastStatus = 200;
+      for (let i = 0; i < 21; i++) {
+        const res = await limitedApp.inject({
+          method: "GET",
+          url: "/v1/reports/employees/export?format=csv",
+          headers: authHeader({ role: "org_admin" }),
+        });
+        lastStatus = res.statusCode;
+      }
+      expect(lastStatus).toBe(429);
+    } finally {
+      await limitedApp.close();
+    }
+  });
+});

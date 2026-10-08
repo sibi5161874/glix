@@ -5,9 +5,9 @@
 - Started: 2026-10-05
 
 ## Current phase
-- Phase: 7 (BUILD_PLAN.md numbering) — Reports — complete.
+- Phase: 7 (BUILD_PLAN.md numbering) — Reports — complete. Followed immediately by a second cross-cutting audit-fix pass (not a new phase): a fresh expert-panel audit of the whole repo was run, and its top 3 ranked improvements were fixed in this same session (see below).
 - Task: —
-- Last action: Built Reports end-to-end: backend (export builders, repository aggregation queries, 4 services, controller, routes) and frontend (`/reports` hub + 4 report pages, shared export-dropdown and subnav components), enabled "Reports" in `sidebar-nav.tsx`. Found and fixed a real `pg` concurrent-query bug along the way (see Phase 7 details below). Full backend suite: 78/78 passing (was 67 at the start of this phase). Browser-verified all 4 report pages + hub + one live export download as `owner@acme.test` (org_admin).
+- Last action: Fixed the audit's top 3 ranked improvements: (1) rate-limited `/v1/employees/export` and all 4 `/v1/reports/*/export` routes (previously the only unmitigated cost-abuse surface — auth routes already had this), (2) wired `shared/config/env.ts` into actual use (`index.ts`/`app.ts`/`auth.plugin.ts`/`document.controller.ts` — it was fully written but never imported anywhere, a real architecture-drift finding), (3) stood up the project's first frontend test suite (`vitest` + 2 test files targeting the exact `lib/*.ts` response-envelope-mismatch bug class that's shipped 3 times already per this file's own history). 79 backend + 15 frontend tests passing (94 total).
 
 ## Progress
 - Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management), 4 (Documents), 5 (Loans + Announcements), 6 (Reports) — manifest numbering; = BUILD_PLAN.md Phases 1,2,3,4,5,6,7
@@ -177,9 +177,36 @@ Still **zero frontend tests**. The dashboard-crash bug (Phase 4-6 section above)
 - Leave Utilization's `Annual Leave` row showed `Used: 78` against `Allocated: 30` (260%) in the dev DB during verification — this reflects real (messy) accumulated dev-seed/test data from this session's many leave-workflow test runs, not a bug in the new report query (the query correctly filters `leave_balances` by the selected year). Worth a fresh `pnpm db:seed` before demoing this report if the numbers look odd.
 - No date-range or department filter on any report beyond leaves' year selector — matches `BUILD_PLAN.md`'s Phase 7 scope exactly, nothing more was promised.
 
+## Second audit-fix pass details (for resume / handoff)
+
+A fresh expert-panel audit (12-dimension scorecard, composite 6.6/10 — not written by this agent, requested by the project owner against the current repo state) ranked 15 improvements; only the top 3 were actioned this pass, per the owner's request ("fix all of this" against the top-3 excerpt, not the full 15).
+
+### 1. Rate limiting on export endpoints
+`employees.routes.ts` and `reports.routes.ts` both now declare a local `exportRateLimit = { max: 20, timeWindow: "1 minute" }` and pass it as `config: { rateLimit: exportRateLimit }` alongside each export route's existing `preHandler`, exactly like `auth.routes.ts`'s existing pattern. Added `reports.routes.test.ts`'s "rate limiting on /v1/reports/*/export" test (mirrors `auth.routes.test.ts`'s own 429 test: a fresh `buildApp()` instance, loop until 429, assert the last status). **Did not** add rate limiting to `employees:import` (CSV upload) or any other route — only the two ranked-#1 export surfaces were in scope.
+
+### 2. `shared/config/env.ts` wired up for real
+- `JWT_SECRET` changed from `.optional()` to required in the Zod schema (`z.string().min(32)`) — the app never actually ran without it (`auth.plugin.ts` already threw a manual error), the schema was just lying about that.
+- `backend/src/index.ts` calls `getServerEnv()` once, right after the `dotenv.config()` calls, before `buildApp()` — a misconfigured env now fails loudly with one aggregated Zod error at the very top of boot, not via three separate code paths discovering it independently.
+- `backend/src/app.ts` reads `CORS_ORIGIN`/`DATABASE_URL`/`NODE_ENV` via `getServerEnv()` instead of raw `process.env[...]` reads with inline fallbacks.
+- `backend/src/plugins/auth.plugin.ts` reads `JWT_SECRET`/`JWT_EXPIRES_IN` via `getServerEnv()`; the old `if (!secret) throw new Error(...)` is gone since the schema itself now guarantees it.
+- `backend/src/controllers/document.controller.ts`'s `UPLOAD_DIR` — **this one mattered more than it looked.** It was a module-level `const UPLOAD_DIR = process.env["UPLOAD_DIR"] || "./uploads"`, evaluated at import time. Since `index.ts` imports `buildApp` (which imports the full route tree, including this controller) *before* its own `dotenv.config()` calls run, that module-level read could only ever see whatever was in `process.env` before dotenv loaded — meaning in production (no OS-level `UPLOAD_DIR` set), it would silently lock in `"./uploads"` regardless of what `.env`/`.env.local` actually said. Fixed by making it a function (`uploadDir()`) that calls `getServerEnv()` lazily on each upload, by which point dotenv has definitely run. **This class of bug — a module-level env read in a file that gets imported before `index.ts`'s own dotenv calls execute — is worth checking for in any new controller/service that reads `process.env` directly.**
+- Did not touch `NEXTAUTH_SECRET`/`GOOGLE_CLIENT_ID`/`RESEND_API_KEY` — those are frontend/NextAuth-consumed and out of scope for this backend-focused pass; `getPublicEnv()` also remains unwired on the frontend side (not part of the audit's top 3).
+
+### 3. Frontend test suite (first one this project has had)
+- `frontend/vitest.config.ts` — `environment: "node"` (no DOM needed for `lib/*.ts`), `resolve.alias` manually mirrors `tsconfig.json`'s `@/*` → `./src/*` since plain Vitest doesn't read tsconfig paths without a plugin.
+- `frontend/src/lib/api.test.ts` — mocks `global.fetch`, asserts `apiFetch`'s Content-Type header logic (the exact bug class from the DELETE-500 fix earlier this project), `{data}` envelope unwrapping, and `ApiError` construction from a non-ok response.
+- `frontend/src/lib/response-envelopes.test.ts` — the one directly aimed at the audit's cited bug class: asserts `listAnnouncements`/`listDocuments`/`listEmployees`/`listLoans` all return `{items, total, page, limit}` (not a bare array) against a mocked backend response, and that `listLeaveTypes`/`listHolidays`/`listLeaveRequests`/`listLeaveBalances`/`listDepartments`/`listDesignations` all return a bare array — **verified first, by reading each backend controller/service, that today's actual contract really is "paginated for employees/documents/loans/announcements, bare array for everything else"** (not assumed) before writing the lock-in test, so this isn't testing a guess.
+- `pnpm --filter frontend test` / root `pnpm test` (via `pnpm -r test`) now both run it. 94 tests total across the monorepo (79 backend + 15 frontend).
+
+### Verified before committing
+- `pnpm typecheck && pnpm lint && pnpm format:check && pnpm test` all clean, repo-wide.
+- Smoke-tested the *actual* `index.ts` boot path (not just `buildApp()` via tests) against the real dev backend process already running on port 5000 — `tsx watch` auto-restarted it on the file edits, `/health` returned `200 ok`, and an invalid bearer token on `/v1/reports/employees/export` still correctly 401s — confirms the `auth.plugin.ts` refactor didn't regress real request handling, not just the test suite.
+
+### Remaining 12 improvements from the same audit, not actioned this pass (deliberately out of scope — owner asked for "all of this" against the top-3 excerpt only)
+Batching `withTenant`'s 5 `set_config` calls, an audit-log viewer UI, `pnpm audit` in CI, custom `error.tsx`/`not-found.tsx`, an accessibility pass, an OpenAPI spec, expanded E2E coverage beyond employees, the `005` migration-numbering gap, a dependency-upgrade pass, and a backend Dockerfile/deploy runbook are all still open — see the audit's own "Top 15 Improvements" table (ranks 4-15) if picking this back up.
+
 ## Next action
-- Await `next` from project owner to start Phase 7 (manifest numbering) / Phase 8 (`BUILD_PLAN.md` numbering) — Settings.
-- **Suggested follow-up, not yet actioned:** a frontend unit/component test suite (Vitest + Testing Library, or similar) — still the single biggest gap now that CI, auth tests, rate limiting, and E2E exist.
+- Await `next` from project owner to either start Phase 8 (`BUILD_PLAN.md` numbering) — Settings — or continue working down the audit's remaining 12 improvements.
 - **Unverified, flag for next session:** confirm the `ci` job's Postgres service actually works on a real GitHub Actions run (see CI section above) — watch the first PR this branch's work goes through.
 
 ## Last update

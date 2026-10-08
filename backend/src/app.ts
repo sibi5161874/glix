@@ -1,4 +1,5 @@
 import Fastify, { type FastifyInstance } from "fastify";
+import { getServerEnv } from "@app/shared/config";
 import cors from "@fastify/cors";
 import helmet from "@fastify/helmet";
 import multipart from "@fastify/multipart";
@@ -22,10 +23,11 @@ import { sendError } from "./utils/http";
 
 /** Builds the Fastify app without binding a port — used by index.ts and by tests (`fastify.inject`). */
 export async function buildApp(): Promise<FastifyInstance> {
-  const CORS_ORIGIN = process.env["CORS_ORIGIN"] || "http://localhost:4000";
-  const DATABASE_URL = process.env["DATABASE_URL"];
+  const env = getServerEnv();
+  const CORS_ORIGIN = env.CORS_ORIGIN;
+  const DATABASE_URL = env.DATABASE_URL;
 
-  const app = Fastify({ logger: process.env["NODE_ENV"] !== "test" });
+  const app = Fastify({ logger: env.NODE_ENV !== "test" });
 
   // This API never renders HTML, so a strict, locked-down CSP costs nothing —
   // `contentSecurityPolicy: false` disabled it outright rather than tuning

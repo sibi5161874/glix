@@ -2,13 +2,19 @@ import type { FastifyPluginAsync } from "fastify";
 import { employeeController } from "../../controllers/employee.controller";
 import { requirePermission } from "../../middleware/require-permission";
 
+// Export generates and streams a full XLSX workbook server-side on every
+// call — cheap to request, not cheap to serve repeatedly. Capped the same
+// way the unauthenticated auth routes are (app.ts's rate-limit plugin is
+// opt-in per route via `config.rateLimit`).
+const exportRateLimit = { max: 20, timeWindow: "1 minute" };
+
 const employeesRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.addHook("preHandler", fastify.authenticate);
 
   fastify.get("/", { preHandler: requirePermission("employees:read") }, employeeController.list);
   fastify.get(
     "/export",
-    { preHandler: requirePermission("employees:export") },
+    { preHandler: requirePermission("employees:export"), config: { rateLimit: exportRateLimit } },
     employeeController.exportXlsx,
   );
   fastify.post(

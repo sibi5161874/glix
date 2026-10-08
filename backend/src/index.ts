@@ -1,12 +1,17 @@
 import { config } from "dotenv";
 import { resolve } from "path";
+import { getServerEnv } from "@app/shared/config";
 import { buildApp } from "./app";
 
 config({ path: resolve(process.cwd(), "../.env.local") });
 config({ path: resolve(process.cwd(), ".env") });
 
-const PORT = Number(process.env["BACKEND_PORT"] || process.env["PORT"] || 5000);
-const HOST = process.env["BACKEND_HOST"] || "0.0.0.0";
+// Validates the entire server env shape in one place, before anything else
+// runs — a misconfigured/missing var (JWT_SECRET too short, DATABASE_URL not
+// a valid URL, ...) throws one clear aggregated Zod error here instead of
+// surfacing piecemeal as individual plugin crashes or, worse, a silent
+// fallback to a default that's wrong for this environment.
+const env = getServerEnv();
 
 async function bootstrap(): Promise<void> {
   const app = await buildApp();
@@ -27,8 +32,8 @@ async function bootstrap(): Promise<void> {
   });
 
   try {
-    await app.listen({ port: PORT, host: HOST });
-    app.log.info(`Backend ready on http://localhost:${PORT}`);
+    await app.listen({ port: env.BACKEND_PORT, host: env.BACKEND_HOST });
+    app.log.info(`Backend ready on http://localhost:${env.BACKEND_PORT}`);
   } catch (err) {
     app.log.error(err);
     process.exit(1);

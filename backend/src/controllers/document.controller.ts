@@ -2,13 +2,20 @@ import { existsSync, mkdirSync, createWriteStream, createReadStream } from "fs";
 import { resolve, join } from "path";
 import { pipeline } from "stream/promises";
 import type { FastifyRequest, FastifyReply } from "fastify";
+import { getServerEnv } from "@app/shared/config";
 import { DocumentFilter, UpdateDocumentInput, UploadDocumentInput } from "@app/shared/schemas";
 import { documentService } from "../services/document.service";
 import { sendSuccess } from "../utils/http";
 import { ValidationError } from "../utils/errors";
 import { toRequestContext } from "../utils/request-context";
 
-const UPLOAD_DIR = process.env["UPLOAD_DIR"] || "./uploads";
+// Read lazily (per-upload), not as a module-level constant — this module can
+// be imported (via app.ts's route registration) before index.ts's dotenv
+// config() calls have populated process.env, so a top-level read would risk
+// silently locking in the "./uploads" default instead of an env-set path.
+function uploadDir(): string {
+  return getServerEnv().UPLOAD_DIR;
+}
 
 export const documentController = {
   async list(req: FastifyRequest, reply: FastifyReply): Promise<FastifyReply> {
@@ -42,13 +49,14 @@ export const documentController = {
 
       for await (const part of parts) {
         if (part.type === "file") {
-          const orgFolder = join(UPLOAD_DIR, ctx.orgId);
+          const dir = uploadDir();
+          const orgFolder = join(dir, ctx.orgId);
           if (!existsSync(orgFolder)) {
             mkdirSync(orgFolder, { recursive: true });
           }
 
           const safeFilename = `${Date.now()}-${part.filename.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
-          const relPath = join(UPLOAD_DIR, ctx.orgId, safeFilename);
+          const relPath = join(dir, ctx.orgId, safeFilename);
           const fullPath = resolve(process.cwd(), relPath);
 
           let bytesWritten = 0;

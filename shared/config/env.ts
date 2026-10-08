@@ -19,7 +19,11 @@ const serverEnvSchema = z.object({
   // Migrations/seeds only — owns every table. Never used by the backend at
   // runtime (see db/migrations/020_roles.sql).
   DATABASE_URL_MIGRATE: z.string().url().optional(),
-  JWT_SECRET: z.string().min(32).optional(),
+  // The backend cannot issue or verify a session without this — required,
+  // not optional, so a missing/too-short secret fails fast at boot with one
+  // clear aggregated error instead of surfacing later as an opaque 500 the
+  // first time someone logs in.
+  JWT_SECRET: z.string().min(32),
   JWT_EXPIRES_IN: z.string().default("7d"),
   BACKEND_PORT: z.coerce.number().int().positive().default(5000),
   BACKEND_HOST: z.string().min(1).default("0.0.0.0"),
