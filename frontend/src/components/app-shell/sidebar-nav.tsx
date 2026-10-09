@@ -22,7 +22,7 @@ const NAV_ITEMS = [
   { label: "Loans", href: "/payroll/loans", icon: Wallet, enabled: true },
   { label: "Announcements", href: "/announcements", icon: Megaphone, enabled: true },
   { label: "Reports", href: "/reports", icon: BarChart3, enabled: true },
-  { label: "Settings", href: "/settings/profile", icon: Settings, enabled: false },
+  { label: "Settings", href: "/settings/profile", icon: Settings, enabled: true },
 ] as const;
 
 export function SidebarNav(): React.JSX.Element {

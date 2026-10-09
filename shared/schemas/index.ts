@@ -9,3 +9,6 @@ export * from "./organization.schema";
 export * from "./loan.schema";
 export * from "./announcement.schema";
 export * from "./report.schema";
+export * from "./department.schema";
+export * from "./designation.schema";
+export * from "./template.schema";

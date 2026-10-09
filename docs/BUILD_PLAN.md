@@ -106,11 +106,11 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 8 — Settings (Week 5)
 
-- [ ] `/settings/profile` (org branding, currency)
-- [ ] `/departments` (hierarchy CRUD)
-- [ ] `/designations` (CRUD)
-- [ ] `/settings/roles` (RBAC matrix editor)
-- [ ] `/settings/templates` (per-org template overrides)
+- [x] `/settings/profile` (org branding, currency)
+- [x] `/departments` (hierarchy CRUD)
+- [x] `/designations` (CRUD)
+- [x] `/settings/roles` (RBAC matrix editor)
+- [x] `/settings/templates` (per-org template overrides)
 
 **Deliverable:** Tenant self-configuration.
 

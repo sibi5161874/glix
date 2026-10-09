@@ -5,15 +5,15 @@
 - Started: 2026-10-05
 
 ## Current phase
-- Phase: 7 (BUILD_PLAN.md numbering) — Reports — complete. Followed immediately by a second cross-cutting audit-fix pass (not a new phase): a fresh expert-panel audit of the whole repo was run, and its top 3 ranked improvements were fixed in this same session (see below).
+- Phase: 8 (BUILD_PLAN.md numbering) — Settings & Tenant Configuration — complete.
 - Task: —
-- Last action: Fixed the audit's top 3 ranked improvements: (1) rate-limited `/v1/employees/export` and all 4 `/v1/reports/*/export` routes (previously the only unmitigated cost-abuse surface — auth routes already had this), (2) wired `shared/config/env.ts` into actual use (`index.ts`/`app.ts`/`auth.plugin.ts`/`document.controller.ts` — it was fully written but never imported anywhere, a real architecture-drift finding), (3) stood up the project's first frontend test suite (`vitest` + 2 test files targeting the exact `lib/*.ts` response-envelope-mismatch bug class that's shipped 3 times already per this file's own history). 79 backend + 15 frontend tests passing (94 total).
+- Last action: Phase 8's code arrived already written in the working tree, uncommitted (same pattern as Phases 4-6) — verified it, found and fixed one real issue (dead `lookup.*` files left unregistered after being superseded), corrected inaccurate CHANGELOG claims (a nonexistent timezone field, a nonexistent SMS channel, a wrong role name), browser-verified a full department create→delete cycle and a profile-field nullable round-trip, then shipped it. 86 backend + 15 frontend tests passing (101 total).
 
 ## Progress
-- Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management), 4 (Documents), 5 (Loans + Announcements), 6 (Reports) — manifest numbering; = BUILD_PLAN.md Phases 1,2,3,4,5,6,7
+- Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management), 4 (Documents), 5 (Loans + Announcements), 6 (Reports), 7 (Settings) — manifest numbering; = BUILD_PLAN.md Phases 1,2,3,4,5,6,7,8
 - Phases in progress: —
-- Phases pending: 7–11 (manifest numbering; = BUILD_PLAN.md Phases 8–12: Settings, Billing/Support, Superadmin, Polish, Launch)
-- Files read: 46 (bootstrap) + re-reads during cleanup + Phase 2/3 exploration + Phase 4-6 verification + audit-fix pass + Phase 7 exploration
+- Phases pending: 8–11 (manifest numbering; = BUILD_PLAN.md Phases 9–12: Billing/Support, Superadmin, Polish, Launch)
+- Files read: 46 (bootstrap) + re-reads during cleanup + Phase 2/3 exploration + Phase 4-6 verification + audit-fix pass + Phase 7 exploration + Phase 8 verification
 
 ## Blockers
 - None currently open.
@@ -205,9 +205,32 @@ A fresh expert-panel audit (12-dimension scorecard, composite 6.6/10 — not wri
 ### Remaining 12 improvements from the same audit, not actioned this pass (deliberately out of scope — owner asked for "all of this" against the top-3 excerpt only)
 Batching `withTenant`'s 5 `set_config` calls, an audit-log viewer UI, `pnpm audit` in CI, custom `error.tsx`/`not-found.tsx`, an accessibility pass, an OpenAPI spec, expanded E2E coverage beyond employees, the `005` migration-numbering gap, a dependency-upgrade pass, and a backend Dockerfile/deploy runbook are all still open — see the audit's own "Top 15 Improvements" table (ranks 4-15) if picking this back up.
 
+## Phase 8 details (Settings — for resume / handoff)
+
+As noted above, this phase's code (backend + frontend) arrived already in the working tree, uncommitted, when this session resumed — the same situation Phases 4-6 were in. `docs/BUILD_PLAN.md`'s Phase 8 checkboxes and a `CHANGELOG.md` draft entry were already present too, but the changelog draft had **3 factual errors**, caught only by cross-checking its claims against the actual schema/UI rather than trusting the pre-written text:
+- Claimed a "timezone" field on `/settings/profile` — no such field exists anywhere in `UpdateOrgProfileInput` or `profile-form.tsx`. Removed the claim.
+- Claimed template channel overrides support "email, SMS, WhatsApp" — `template.schema.ts`'s `TemplateChannel` enum is `["email", "whatsapp"]` only, no SMS. Removed the claim.
+- Claimed the roles matrix covers `project_owner`/`org_admin`/`org_staff`/`org_viewer` — the actual `roles` array in `permissions.config.ts` (and what the `/settings/roles` page literally renders) is `super_admin`/`org_admin`/`org_staff`/`org_viewer`. `project_owner` is CLAUDE.md's name for the platform-level actor; the code has always called it `super_admin` — a pre-existing docs/code naming drift, not something introduced this phase, but the changelog entry needed to match what the code and UI actually say, not what CLAUDE.md's prose calls it. **Worth noting for later: CLAUDE.md's "Actors" line and `permissions.config.ts`'s `roles` array disagree on this name — not fixed here, flagging in case it causes confusion again.**
+This is the second time in this project a pre-written changelog/doc entry has overstated what was actually built (see Phase 4-6's own section above for the first) — worth treating any changelog text that arrives already written, not authored during this session's own verification, as a claim to check rather than a fact to copy forward.
+
+### Real issue found and fixed: dead `lookup.*` files
+`backend/src/app.ts`'s diff showed `lookupsRoutes` removed from the route-registration list (superseded by the new `departments.routes.ts`/`designations.routes.ts`, which serve the same `/v1/departments`+`/v1/designations` paths with full CRUD instead of Phase 2's original read-only lookup). But the 4 old files (`lookup.repository.ts`, `lookup.service.ts`, `lookup.controller.ts`, `lookups.routes.ts`) were still sitting on disk, unregistered and unreferenced by anything else (confirmed via grep — only self-references remained). Deleted all 4. Its test file (`lookups.routes.test.ts`) still passed before deletion — because it hits the same live `/v1/departments`/`/v1/designations` paths, just now served by the new route files instead of the dead one its filename implied — but kept it misleadingly named, so its two assertions (anonymous 401, org-scoped list-shape check) were folded into `departments.routes.test.ts`/`designations.routes.test.ts` instead, then the old test file was deleted too. Net effect: same coverage, no dead code, no misleadingly-named test file. **If a future phase replaces another route file, check for this exact pattern — a superseded route file left unregistered but not deleted, with its test file silently still passing because it's actually exercising the new route under the hood.**
+
+### Verified in-browser (not just typecheck/lint/tests)
+- Logged in as `owner@acme.test` (org_admin) → all 5 `/settings/*` pages render with no console errors.
+- `/settings/departments`: created a department via the dialog (`POST /v1/departments` → 201), confirmed it appeared in the table, then deleted it. The delete path uses a native `window.confirm()` (`departments-table.tsx`'s `handleDelete`) which this session's browser tool couldn't drive through — no `DELETE` request fired after clicking through the confirm, twice — so cleaned up the test row directly via `DATABASE_URL_MIGRATE` instead (same pattern backend tests use). **Not a bug in the app** — confirmed the code path exists and is correct by reading `handleDelete`; just a browser-automation limitation worth remembering: any delete action gated by a bare `confirm()` can't be exercised through this session's browser tool, so verify those by reading the code + the backend integration test instead of expecting the UI click to go through.
+- `/settings/profile`: filled "Industry Sector" → "Technology" → Save → `PUT /v1/settings/profile` → 200 → reloaded page → value persisted. Cleared it back to empty → Save → 200 → reloaded → correctly back to the empty-placeholder state. Confirms `organization.schema.ts`'s new `.nullable()` additions (this phase's one schema change) actually round-trip correctly, not just typecheck.
+- `/settings/templates`: opened the "Add Template" dialog, confirmed all fields render (channel select, key, subject, body) — did not submit, no need to duplicate the backend integration test's coverage.
+- `/settings/roles`: confirmed the full ~70-row permission matrix renders against all 4 real roles.
+
+### Known Phase 8 simplifications (deliberate, not bugs)
+- No department/designation bulk-import, matching the scope the pre-existing code actually shipped (CRUD only, no CSV import like employees has).
+- Templates have no live-send/test-send action — purely a content-management CRUD surface, matching `BUILD_PLAN.md`'s "per-org template overrides" wording (not a messaging feature).
+
 ## Next action
-- Await `next` from project owner to either start Phase 8 (`BUILD_PLAN.md` numbering) — Settings — or continue working down the audit's remaining 12 improvements.
+- Await `next` from project owner to either start Phase 9 (`BUILD_PLAN.md` numbering — Billing/Support) or continue working down the audit's remaining 12 improvements (see above).
 - **Unverified, flag for next session:** confirm the `ci` job's Postgres service actually works on a real GitHub Actions run (see CI section above) — watch the first PR this branch's work goes through.
+- **Flag for whenever it's convenient:** the `project_owner` vs. `super_admin` naming drift between `CLAUDE.md` and `permissions.config.ts` (see Phase 8 details above) — not blocking, but worth reconciling so the docs and code agree on one name.
 
 ## Last update
-- 2026-10-08
+- 2026-10-09

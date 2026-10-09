@@ -9,7 +9,6 @@ import dbPlugin from "./plugins/db.plugin";
 import authPlugin from "./plugins/auth.plugin";
 import authRoutes from "./routes/v1/auth.routes";
 import employeesRoutes from "./routes/v1/employees.routes";
-import lookupsRoutes from "./routes/v1/lookups.routes";
 import leaveTypesRoutes from "./routes/v1/leave-types.routes";
 import holidaysRoutes from "./routes/v1/holidays.routes";
 import leaveRequestsRoutes from "./routes/v1/leave-requests.routes";
@@ -19,6 +18,9 @@ import documentsRoutes from "./routes/v1/documents.routes";
 import loansRoutes from "./routes/v1/loans.routes";
 import announcementsRoutes from "./routes/v1/announcements.routes";
 import reportsRoutes from "./routes/v1/reports.routes";
+import departmentsRoutes from "./routes/v1/departments.routes";
+import designationsRoutes from "./routes/v1/designations.routes";
+import settingsRoutes from "./routes/v1/settings.routes";
 import { sendError } from "./utils/http";
 
 /** Builds the Fastify app without binding a port — used by index.ts and by tests (`fastify.inject`). */
@@ -67,7 +69,6 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(authPlugin);
   await app.register(authRoutes, { prefix: "/v1/auth" });
   await app.register(employeesRoutes, { prefix: "/v1/employees" });
-  await app.register(lookupsRoutes, { prefix: "/v1" });
   await app.register(leaveTypesRoutes, { prefix: "/v1/leave-types" });
   await app.register(holidaysRoutes, { prefix: "/v1/holidays" });
   await app.register(leaveRequestsRoutes, { prefix: "/v1/leave-requests" });
@@ -77,6 +78,9 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(loansRoutes, { prefix: "/v1/loans" });
   await app.register(announcementsRoutes, { prefix: "/v1/announcements" });
   await app.register(reportsRoutes, { prefix: "/v1/reports" });
+  await app.register(departmentsRoutes, { prefix: "/v1/departments" });
+  await app.register(designationsRoutes, { prefix: "/v1/designations" });
+  await app.register(settingsRoutes, { prefix: "/v1/settings" });
 
   app.get("/health", async () => {
     let dbStatus = "unconfigured";

@@ -14,9 +14,10 @@ export const CreateOrganizationInput = z
     phone: z
       .string()
       .regex(/^\+\d{6,15}$/, "E.164 format")
+      .nullable()
       .optional(),
-    industry: z.string().max(100).optional(),
-    logoUrl: z.string().url().optional(),
+    industry: z.string().max(100).nullable().optional(),
+    logoUrl: z.string().url().nullable().optional(),
     planId: z.string().uuid(),
   })
   .strict();
@@ -30,3 +31,19 @@ export const UpdateOrganizationInput = CreateOrganizationInput.partial()
   .strict();
 
 export type UpdateOrganizationInput = z.infer<typeof UpdateOrganizationInput>;
+
+export const UpdateOrgProfileInput = z
+  .object({
+    name: z.string().min(2).max(255).optional(),
+    currency: z.string().length(3).optional(),
+    phone: z
+      .string()
+      .regex(/^\+\d{6,15}$/, "E.164 format")
+      .nullable()
+      .optional(),
+    industry: z.string().max(100).nullable().optional(),
+    logoUrl: z.string().url().nullable().optional(),
+  })
+  .strict();
+
+export type UpdateOrgProfileInput = z.infer<typeof UpdateOrgProfileInput>;
