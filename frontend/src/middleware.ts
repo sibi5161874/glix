@@ -8,7 +8,15 @@ export default auth((req) => {
     pathname.startsWith("/dashboard") ||
     pathname.startsWith("/employees") ||
     pathname.startsWith("/leaves") ||
-    pathname.startsWith("/holidays");
+    pathname.startsWith("/holidays") ||
+    pathname.startsWith("/documents") ||
+    pathname.startsWith("/payroll") ||
+    pathname.startsWith("/announcements") ||
+    pathname.startsWith("/reports") ||
+    pathname.startsWith("/settings") ||
+    pathname.startsWith("/departments") ||
+    pathname.startsWith("/designations") ||
+    pathname.startsWith("/support");
 
   if (!req.auth && (isApp || isSuperadmin)) {
     const loginPath = isSuperadmin ? "/superadmin/login" : "/login";
@@ -28,6 +36,14 @@ export const config = {
     "/employees/:path*",
     "/leaves/:path*",
     "/holidays/:path*",
+    "/documents/:path*",
+    "/payroll/:path*",
+    "/announcements/:path*",
+    "/reports/:path*",
+    "/settings/:path*",
+    "/departments/:path*",
+    "/designations/:path*",
+    "/support/:path*",
     "/superadmin/:path*",
   ],
 };

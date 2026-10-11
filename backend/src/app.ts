@@ -21,6 +21,11 @@ import reportsRoutes from "./routes/v1/reports.routes";
 import departmentsRoutes from "./routes/v1/departments.routes";
 import designationsRoutes from "./routes/v1/designations.routes";
 import settingsRoutes from "./routes/v1/settings.routes";
+import billingRoutes from "./routes/v1/billing.routes";
+import supportRoutes from "./routes/v1/support.routes";
+import platformSupportRoutes from "./routes/v1/platform-support.routes";
+import platformRoutes from "./routes/v1/platform.routes";
+import publicRoutes from "./routes/v1/public.routes";
 import { sendError } from "./utils/http";
 
 /** Builds the Fastify app without binding a port — used by index.ts and by tests (`fastify.inject`). */
@@ -81,6 +86,11 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(departmentsRoutes, { prefix: "/v1/departments" });
   await app.register(designationsRoutes, { prefix: "/v1/designations" });
   await app.register(settingsRoutes, { prefix: "/v1/settings" });
+  await app.register(billingRoutes, { prefix: "/v1/billing" });
+  await app.register(supportRoutes, { prefix: "/v1/support" });
+  await app.register(platformSupportRoutes, { prefix: "/v1/platform/support" });
+  await app.register(platformRoutes, { prefix: "/v1/platform" });
+  await app.register(publicRoutes, { prefix: "/v1/public" });
 
   app.get("/health", async () => {
     let dbStatus = "unconfigured";

@@ -13,7 +13,21 @@ config({ path: path.resolve(__dirname, "../.env") });
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   outputFileTracingRoot: path.resolve(__dirname, "../"),
-  reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: [
+      "lucide-react",
+      "@radix-ui/react-avatar",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-label",
+      "@radix-ui/react-select",
+      "@radix-ui/react-separator",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-tabs",
+      "@radix-ui/react-tooltip",
+      "sonner",
+    ],
+  },
 };
 
 export default nextConfig;

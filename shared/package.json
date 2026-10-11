@@ -16,7 +16,8 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest run --passWithNoTests",
     "dev": "echo \"(shared) no dev server\"",
-    "build": "echo \"(shared) no build step\""
+    "build": "echo \"(shared) no build step\"",
+    "start": "echo \"(shared) no start step\""
   },
   "dependencies": {
     "zod": "^3.23.8"

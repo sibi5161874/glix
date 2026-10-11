@@ -9,8 +9,8 @@ export const brandConfig = {
   tagline: "Multi-tenant HR operations & document automation",
   description: "Enterprise HR SaaS for the GCC — employees, leave, loans, documents, compliance.",
 
-  logo: "/logo.svg",
-  logoDark: "/logo-dark.svg",
+  logo: "/logo.jpg",
+  logoDark: "/logo.jpg",
   favicon: "/favicon.ico",
 
   colors: {

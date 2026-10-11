@@ -104,6 +104,7 @@ export const permissions = {
 
   // ── Support ─────────────────────────────────────
   "support:read": ["org_admin"],
+  "support:read:self": ["org_admin", "org_staff", "org_viewer"],
   "support:create": ["org_admin", "org_staff", "org_viewer"],
 
   // ── Settings ────────────────────────────────────

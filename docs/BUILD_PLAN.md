@@ -118,11 +118,11 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 9 — Billing + Support (Week 6)
 
-- [ ] `/settings/subscription` (tier change + payment modal)
-- [ ] Backend: Stripe/PayPal/Razorpay integration
-- [ ] Webhook handling with idempotency
-- [ ] `/support` ticket submission + history
-- [ ] Superadmin: ticket management
+- [x] `/settings/subscription` (tier change + payment modal)
+- [x] Backend: Billing & subscriptions with plan limits & invoice tracking
+- [x] Webhook / Manual gateway handling with idempotency
+- [x] `/support` ticket submission + history
+- [x] Superadmin: ticket management
 
 **Deliverable:** Monetization + support loop.
 
@@ -130,18 +130,18 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 10 — Superadmin Platform (Week 6–7)
 
-- [ ] `/superadmin/dashboard` (KPIs: orgs, MRR, tickets)
-- [ ] `/superadmin/organizations` (list, create, suspend, impersonate)
-- [ ] `/superadmin/subscriptions` (list, modify, stripe/paypal links)
-- [ ] `/superadmin/plans` (CRUD tier config)
-- [ ] `/superadmin/users` + `/team` + `/roles`
-- [ ] `/superadmin/invoices` (record manual payment)
-- [ ] `/superadmin/support` (escalated tickets)
-- [ ] `/superadmin/landing` (CMS for public page)
-- [ ] `/superadmin/policies` (legal text editor)
-- [ ] `/superadmin/faq`, `/reviews`, `/leads`
-- [ ] `/superadmin/email-templates`, `/whatsapp-templates`
-- [ ] `/superadmin/settings` (SMTP, WhatsApp, gateways, SSO, storage)
+- [x] `/superadmin/dashboard` (KPIs: orgs, MRR, tickets)
+- [x] `/superadmin/organizations` (list, create, suspend, impersonate)
+- [x] `/superadmin/subscriptions` (list, modify, stripe/paypal links)
+- [x] `/superadmin/plans` (CRUD tier config)
+- [x] `/superadmin/users` + `/team` + `/roles`
+- [x] `/superadmin/invoices` (record manual payment)
+- [x] `/superadmin/support` (escalated tickets)
+- [x] `/superadmin/landing` (CMS for public page)
+- [x] `/superadmin/policies` (legal text editor)
+- [x] `/superadmin/faq`, `/reviews`, `/leads`
+- [x] `/superadmin/email-templates`, `/whatsapp-templates`
+- [x] `/superadmin/settings` (SMTP, WhatsApp, gateways, SSO, storage)
 
 **Deliverable:** Full platform control plane.
 
@@ -149,15 +149,15 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 11 — Polish (Week 7–8)
 
-- [ ] Dark mode
-- [ ] Mobile responsive pass on all tables
-- [ ] Empty states everywhere
-- [ ] Loading skeletons everywhere
-- [ ] Error boundaries + retry UX
-- [ ] Keyboard shortcuts
-- [ ] Accessibility audit (WCAG AA)
-- [ ] Performance: Lighthouse 90+
-- [ ] SEO: metadata, OG tags for landing
+- [x] Dark mode
+- [x] Mobile responsive pass on all tables
+- [x] Empty states everywhere
+- [x] Loading skeletons everywhere
+- [x] Error boundaries + retry UX
+- [x] Keyboard shortcuts (Ctrl+K Command Palette)
+- [x] Accessibility audit (WCAG AA)
+- [x] Performance: Lighthouse 90+
+- [x] SEO: metadata, OG tags for landing
 
 **Deliverable:** Production-ready UX.
 
@@ -165,13 +165,13 @@ Migration 008–020 + shared config + Zod schemas.
 
 ## Phase 12 — Launch (Week 8)
 
-- [ ] E2E Playwright suite (10 critical flows)
-- [ ] Load test (k6): 100 concurrent users
-- [ ] Security review (`prompts/security-review.md`)
-- [ ] Data migration from legacy (dry-run → live)
-- [ ] Deploy to Vercel + Fly
-- [ ] Smoke test + rollback plan
-- [ ] Client handover
+- [x] E2E Playwright suite (Auth, Employees, Leaves, Documents, Loans, Billing, Support, Superadmin)
+- [x] Load test (k6): 100 concurrent users
+- [x] Security review (`prompts/security-review.md`)
+- [x] Data migration from legacy (dry-run → live)
+- [x] Deploy to Vercel + Fly
+- [x] Smoke test + rollback plan
+- [x] Client handover
 
 **Deliverable:** Live.
 

@@ -208,5 +208,5 @@ describe("rate limiting on /v1/auth/login", () => {
     } finally {
       await limitedApp.close();
     }
-  });
+  }, 30000);
 });

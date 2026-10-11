@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
@@ -47,9 +48,13 @@ export default function LoginPage(): React.JSX.Element {
     <div className="flex min-h-screen">
       <div className="bg-accent text-accent-foreground hidden flex-col justify-between p-12 lg:flex lg:w-1/2">
         <div className="flex items-center gap-2">
-          <div className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center rounded-md text-sm font-bold">
-            {brandConfig.shortName}
-          </div>
+          <Image
+            src={brandConfig.logo}
+            alt={brandConfig.name}
+            width={32}
+            height={32}
+            className="rounded-md"
+          />
           <span className="text-lg font-semibold">{brandConfig.name}</span>
         </div>
         <p className="max-w-md text-3xl font-semibold tracking-tight">{brandConfig.tagline}</p>

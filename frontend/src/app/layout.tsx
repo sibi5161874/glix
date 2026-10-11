@@ -6,6 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Glix Connect HR Portal",
   description: "Multi-tenant enterprise HR & document management SaaS platform",
+  icons: { icon: "/logo.jpg" },
 };
 
 export const viewport: Viewport = {

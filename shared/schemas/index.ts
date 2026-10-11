@@ -12,3 +12,6 @@ export * from "./report.schema";
 export * from "./department.schema";
 export * from "./designation.schema";
 export * from "./template.schema";
+export * from "./billing.schema";
+export * from "./support.schema";
+export * from "./platform.schema";

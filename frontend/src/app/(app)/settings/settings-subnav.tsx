@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Building2, Network, Award, ShieldCheck, Mail } from "lucide-react";
+import { Building2, Network, Award, ShieldCheck, Mail, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const TABS = [
   { label: "Company Profile", href: "/settings/profile", icon: Building2 },
+  { label: "Subscription & Billing", href: "/settings/subscription", icon: CreditCard },
   { label: "Departments", href: "/settings/departments", icon: Network },
   { label: "Designations", href: "/settings/designations", icon: Award },
   { label: "Roles & Permissions", href: "/settings/roles", icon: ShieldCheck },

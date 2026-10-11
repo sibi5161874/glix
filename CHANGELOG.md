@@ -8,6 +8,100 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added (Reference Public Landing & Superadmin CRM Flow)
+- Public Marketing Landing Page (`/` matching `https://connect.rmd.city/public/`):
+  - Ambient glow backdrop blobs with floating radial gradient animations.
+  - Glassmorphism navbar with Glix Connect branding, navigation anchors (`#features`, `#pricing`, `#faq`, `#contact`), Sign In (`/login`), and Register Org (`/register`).
+  - High-impact Hero section with "SaaS Organization Management Portal" badge, gradient typography, and dual CTAs.
+  - Interactive System Dashboard Mockup Card with macOS window bar, `edocs.glix.ae/dashboard` lock pill, mock navigation sidebar, real-time KPI tiles (124 employees, 3 pending leaves, 8 expiring docs), and recent activity table.
+  - 6 Platform Capabilities cards with custom icons and badges.
+  - Interactive Pricing Section with Monthly / Annual billing switch (20% off) and Range Slider Calculator (1 to 500+ employees dynamically computing recommended plan, required seats, and pricing).
+  - Plan comparison cards for Starter, Growth, and Enterprise tiers with feature checkmarks and "Select Plan" buttons.
+  - Interactive FAQ accordion section with smooth collapsible questions and answers.
+  - Get In Touch Contact section with form submission directly wired to CRM leads API.
+  - Modern footer with branding, legal links, and copyright.
+  - Floating bottom-right and navbar Dark/Light mode theme toggle.
+- Policy Pages:
+  - `/privacy-policy`: Data protection, multi-tenant RLS isolation disclosures.
+  - `/terms-conditions`: Subscription terms, employee seat quotas, SLA commitments.
+  - `/refund-policy`: Billing renewal, 14-day refund window, and proration policies.
+- Superadmin CRM Leads & Inquiries (`/superadmin/leads`):
+  - Platform leads overview with KPI cards: Total Inquiries, New Leads, Contacted, Qualified.
+  - Search, status filtering, and lead table.
+  - Lead inspection modal with status updates and internal sales notes tracking.
+  - Updated superadmin navigation header with Leads link.
+- Backend & Database:
+  - Database migration `024_leads.sql` creating `public.leads` table with RLS.
+  - Public route `POST /v1/public/contact` for visitor inquiry submissions.
+  - Platform routes `GET /v1/platform/leads` and `PATCH /v1/platform/leads/:id` for superadmin lead triage.
+
+### Added (Phase 11 & 12 — Polish, Production Hardening & Launch)
+- Global Navigation & Quick Command Palette:
+  - `CommandPalette` component (`Ctrl+K` / `Cmd+K` keyboard shortcut) for instant workspace jumping across all 11 modules.
+  - `MobileNav` responsive sheet sidebar for smooth mobile and tablet viewing.
+- Error Boundaries & Loading Skeletons:
+  - App Router error boundary `frontend/src/app/(app)/error.tsx` and superadmin error boundary `superadmin/(shell)/error.tsx` with one-click retry state.
+  - Root 404 page `frontend/src/app/not-found.tsx` with responsive layout and return navigation.
+  - App Router loading skeletons `(app)/loading.tsx` and `superadmin/(shell)/loading.tsx` for transitions.
+- Playwright E2E Test Suite (Comprehensive Multi-Flow Coverage):
+  - `e2e/auth-and-dashboard.spec.ts`: Authentication, unauthenticated redirects, invalid credential handling, workspace navigation.
+  - `e2e/employee-lifecycle.spec.ts`: End-to-end employee onboarding, listing, detail view, and deletion.
+  - `e2e/leaves-workflow.spec.ts`: Entitlements check, leave balance inspection, request submission.
+  - `e2e/documents-vault.spec.ts`: Vault directory, category filtering, expiry status indicators.
+  - `e2e/billing-and-support.spec.ts`: Subscription plan matrix, tier change modal, support helpdesk ticketing flow.
+  - `e2e/superadmin-control.spec.ts`: Platform command center metrics, tenant directory, tier pricing.
+- Complete Test & Build Verification:
+  - All 136 unit and integration tests passing (`vitest run`).
+  - 100% strict TypeScript checks and zero ESLint errors across shared, backend, and frontend packages.
+  - Clean Next.js 16 production build verification.
+
+### Added (Phase 10 — Superadmin Platform)
+- `/superadmin/dashboard` command center:
+  - Live KPI metric tiles: Total Organizations, Monthly Recurring Revenue (MRR in AED), Active Subscriptions, and Open Support Tickets.
+  - Recently registered organizations activity list and platform security/health status indicators.
+- `/superadmin/organizations` tenant directory & provisioning:
+  - Tenant organization directory table with search, plan filter, member counts, employee staff metrics, and created dates.
+  - `CreateOrgDialog` modal for superadmin tenant provisioning with custom subdomain slug, base currency, and tier assignment.
+- `/superadmin/plans` tier configuration engine:
+  - Tier limits and pricing editor (`EditPlanDialog`) supporting multi-currency (`AED`, `USD`, `SAR`), employee limits, storage quotas, and feature flags across all 3 tiers (`Starter`, `Growth`, `Enterprise`).
+- `/superadmin/team` platform operations team:
+  - Platform users management table and `AddMemberDialog` for provisioning platform owners, admins, and support engineers (`public.platform_users`).
+- `/superadmin/settings` global configuration & CMS engine:
+  - Tabbed CMS editor for Landing Page copy (Headline, Tagline), Legal Policies (Terms & Conditions, Privacy), and Integrations (SMTP Host/Port, Gateway dispatchers) backed by `public.platform_settings`.
+- Backend:
+  - `platform-org.repository.ts`, `platform-settings.repository.ts`, `platform-admin.service.ts`, `platform-admin.controller.ts`, `platform.routes.ts` (`/v1/platform/*`).
+  - Integration test suite in `platform.routes.test.ts` (112 backend tests passing).
+- Frontend:
+  - Typed client library in `lib/platform.ts`.
+  - Response contract tests in `lib/response-envelopes.test.ts` (24 frontend tests passing).
+  - Full platform subnavigation and header bar integrated in `superadmin/(shell)/layout.tsx`.
+
+### Added (Phase 9 — Billing & Support)
+- `/settings/subscription` subscription management and billing interface:
+  - Active subscription hero with real-time status badges, renewal dates, employee capacity, and document storage limits.
+  - Plan comparison cards across all 3 tiers (`Starter`, `Growth`, `Enterprise`) with feature matrix and dynamic multi-currency display (`AED`, `USD`, `SAR`).
+  - `ChangeTierDialog` payment & tier switch modal with instant plan activation, transaction audit logging, and automated invoice creation.
+  - `InvoicesTable` billing history with receipt tracking, payment gateway metadata, and status badges.
+- `/support` tenant helpdesk and ticketing system:
+  - `CreateTicketDialog` request submission with Zod validation for subject, category (`technical`, `billing`, `hr_feature`, `bug`), priority, and description.
+  - `TicketsTable` with search query, category, and status filters, and `TicketDetailDialog` view.
+  - Role-gated visibility: `org_admin` manages all organization tickets; `org_staff` and `org_viewer` access their submitted tickets (`support:read:self`).
+- `/superadmin/support` superadmin platform support control:
+  - Cross-tenant ticket desk with KPI tiles (Total Tickets, Open, In Progress, Resolved).
+  - Search, status, and category filtering across all organizations.
+  - `UpdateTicketDialog` for triaging, assigning engineers, and updating ticket status (`open`, `in_progress`, `resolved`, `closed`) and priority.
+- Backend:
+  - `billing.repository.ts`, `billing.service.ts`, `billing.controller.ts`, `billing.routes.ts` (`/v1/billing/*`).
+  - `support.repository.ts`, `support.service.ts`, `support.controller.ts`, `support.routes.ts` (`/v1/support/*`).
+  - `platform-support.service.ts`, `platform-support.controller.ts`, `platform-support.routes.ts` (`/v1/platform/support/*`).
+  - `withPlatform` Fastify helper in `db.plugin.ts` for cross-org platform admin operations without tenant scoping restrictions.
+  - Integration tests in `billing.routes.test.ts`, `support.routes.test.ts`, and `platform-support.routes.test.ts` (105 backend tests passing).
+- Frontend:
+  - Typed client libraries in `lib/billing.ts` and `lib/support.ts`.
+  - Response envelope contract tests in `lib/response-envelopes.test.ts` (20 frontend tests passing).
+  - Enabled "Support" in `sidebar-nav.tsx` and "Subscription & Billing" in `settings-subnav.tsx`.
+  - Updated `middleware.ts` to protect `/support` and `/settings` routes.
+
 ### Added (Phase 8 — Settings & Tenant Configuration)
 This phase's code wasn't written in this session — it arrived already in the working tree, uncommitted (same situation as Phases 4-6 earlier this project). The entries below are from verifying and shipping it, not from building it from scratch; see "Phase 8 verification" in `.agents/_session.md` for what was checked and what was fixed along the way.
 - `/settings` hub and shared subnavigation linking to:

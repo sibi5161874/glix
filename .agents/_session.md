@@ -5,14 +5,14 @@
 - Started: 2026-10-05
 
 ## Current phase
-- Phase: 8 (BUILD_PLAN.md numbering) — Settings & Tenant Configuration — complete.
+- Phase: 10 (BUILD_PLAN.md numbering) — Superadmin Platform — complete.
 - Task: —
-- Last action: Phase 8's code arrived already written in the working tree, uncommitted (same pattern as Phases 4-6) — verified it, found and fixed one real issue (dead `lookup.*` files left unregistered after being superseded), corrected inaccurate CHANGELOG claims (a nonexistent timezone field, a nonexistent SMS channel, a wrong role name), browser-verified a full department create→delete cycle and a profile-field nullable round-trip, then shipped it. 86 backend + 15 frontend tests passing (101 total).
+- Last action: Completed Phase 10: `/superadmin/dashboard` (live MRR/org/ticket analytics), `/superadmin/organizations` (tenant directory & CreateOrgDialog), `/superadmin/plans` (tier limits & pricing editor EditPlanDialog), `/superadmin/team` (platform operations team management & AddMemberDialog), `/superadmin/settings` (tabbed Landing CMS, Legal Policies, and Integrations editor), and `/superadmin/support` (cross-org ticket triage). 112 backend + 24 frontend tests passing (136 total).
 
 ## Progress
-- Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management), 4 (Documents), 5 (Loans + Announcements), 6 (Reports), 7 (Settings) — manifest numbering; = BUILD_PLAN.md Phases 1,2,3,4,5,6,7,8
+- Phases complete: 0 (Basement), 1 (Auth + Tenancy), 2 (Employees), 3 (Leave Management), 4 (Documents), 5 (Loans + Announcements), 6 (Reports), 7 (Settings), 8 (Billing & Support), 9 (Superadmin Platform) — manifest numbering; = BUILD_PLAN.md Phases 1,2,3,4,5,6,7,8,9,10
 - Phases in progress: —
-- Phases pending: 8–11 (manifest numbering; = BUILD_PLAN.md Phases 9–12: Billing/Support, Superadmin, Polish, Launch)
+- Phases pending: 10–11 (manifest numbering; = BUILD_PLAN.md Phases 11–12: Polish, Launch)
 - Files read: 46 (bootstrap) + re-reads during cleanup + Phase 2/3 exploration + Phase 4-6 verification + audit-fix pass + Phase 7 exploration + Phase 8 verification
 
 ## Blockers

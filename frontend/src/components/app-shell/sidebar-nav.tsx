@@ -11,6 +11,7 @@ import {
   Megaphone,
   BarChart3,
   Settings,
+  LifeBuoy,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +24,7 @@ const NAV_ITEMS = [
   { label: "Announcements", href: "/announcements", icon: Megaphone, enabled: true },
   { label: "Reports", href: "/reports", icon: BarChart3, enabled: true },
   { label: "Settings", href: "/settings/profile", icon: Settings, enabled: true },
+  { label: "Support", href: "/support", icon: LifeBuoy, enabled: true },
 ] as const;
 
 export function SidebarNav(): React.JSX.Element {
